@@ -7,7 +7,7 @@
 ![Specialization](https://img.shields.io/badge/Specialization-AI%20Use%20Cases%20%26%20SOA%20Architecture-teal?style=for-the-badge)
 ![Academic Honor](https://img.shields.io/badge/Academic%20Evaluation-HMS%209.8%20%2F%2010.0-green?style=for-the-badge)
 
-**[📄 View English CV](CV_Nguyen_Tien_Dung_English.html)** | **[🇻🇳 View Vietnamese CV](CV_Nguyen_Tien_Dung_TiengViet.html)** | **[🌐 Master Portfolio Hub](index.html)** | **[🤖 Case Study: Kidpro AI](kidpro-ai-system.html)** | **[🏥 Case Study: Hospital Management](hospital-management.html)**
+**[📄 View English CV](CV_Nguyen_Tien_Dung_English.html)** | **[🇻🇳 View Vietnamese CV](CV_Nguyen_Tien_Dung_TiengViet.html)** | **[🌐 Master Portfolio Hub](https://iamdunz221.github.io/CV/)** | **[🤖 Case Study: Kidpro AI](kidpro-ai-system.html)** | **[🏥 Case Study: Hospital Management](hospital-management.html)**
 
 </div>
 

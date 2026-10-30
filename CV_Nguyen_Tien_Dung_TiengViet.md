@@ -1,7 +1,7 @@
 # NGUYỄN TIẾN DŨNG
 ### BUSINESS ANALYST
 Hà Nội | (+84) 363 262 xxx | tiendunga2k13@gmail.com  
-| [Portfolio](index.html) | [GitHub](https://github.com)
+| [Portfolio](https://iamdunz221.github.io/CV/) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
 
 ---
 
@@ -20,13 +20,13 @@ Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT, 
 
 **Kidpro – Hệ thống Quản lý Mầm non Thông minh & AI điểm danh khuôn mặt** 
 | *Đồ án nhóm*  
-*Phân tích quy trình | User Story & AC | BPMN 2.0 | Wireframe | Jira | [Xem case study](kidpro-ai-system.html)*  
+*Phân tích quy trình | User Story & AC | BPMN 2.0 | Wireframe | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Phân tích các quy trình nghiệp vụ mầm non gồm điểm danh bán trú, đón trả trẻ, thời khóa biểu và tính tiền học phí; xây dựng tài liệu SRS và phân rã thành User Story kèm tiêu chí nghiệm thu (Acceptance Criteria) rõ ràng.  
 · Mô hình hóa quy trình điểm danh và đón trẻ; xác định quy tắc khấu trừ tiền ăn theo gói dịch vụ, cơ chế fallback xử lý khi mất kết nối mạng và quy trình xác thực người đón nhằm hạn chế nhầm lẫn khi chốt phí.  
 · Thiết kế wireframe và prototype giao diện bằng Figma; sử dụng Jira để quản lý công việc và log bug, tham gia kiểm thử luồng truyền/nhận dữ liệu theo với tài liệu yêu cầu trước khi hoàn thiện đồ án.  
 
 **Hệ thống Quản lý Bệnh viện (HMS)** | *COURSE PROJECT REPORT*  
-*Phân tích yêu cầu | Quy tắc nghiệp vụ | UML | Kiến trúc SOA | [Xem case study](hospital-management.html)*  
+*Phân tích yêu cầu | Quy tắc nghiệp vụ | UML | Kiến trúc SOA | [Xem case study](https://iamdunz221.github.io/CV/hospital-management.html)*  
 · Phân tích quy trình khám chữa bệnh ngoại trú/nội trú gồm tiếp nhận bệnh nhân, đặt lịch khám, lập bệnh án điện tử, kê đơn thuốc và thanh toán viện phí.  
 · Xác định các quy tắc nghiệp vụ về phân quyền và quy trình Khám chữa bệnh & Kê đơn; mô hình hóa các luồng xử lý và tương tác giữa các khoa phòng bằng biểu đồ Use Case, Activity, Sequence, Class diagram và State Diagram.  
 · Đề xuất giải pháp kiến trúc hướng dịch vụ (SOA) để phân tách các phân hệ chức năng độc lập dưới sự hướng dẫn của supervisor; phối hợp kiểm tra tính nhất quán giữa tài liệu thiết kế và yêu cầu nghiệp vụ.
@@ -41,4 +41,4 @@ Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT, 
 ---
 
 ### NGOẠI NGỮ & CHỨNG CHỈ
-- **Ngoại ngữ:** Tiếng Anh: IELTS 5.5 (2023-2025) 
+- **Ngoại ngữ:** Tiếng Anh: IELTS 5.0 (2023-2025) 

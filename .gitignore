@@ -12,3 +12,4 @@ Thumbs.db
 # Node / Build artifacts (if any)
 node_modules/
 npm-debug.log*
+

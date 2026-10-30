@@ -1,7 +1,7 @@
 # NGUYEN TIEN DUNG
 ### IT BUSINESS ANALYST
 Hanoi, Vietnam | (+84) 363 262 xxx | tiendunga2k13@gmail.com  
-[Portfolio](./index.html) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
+[Portfolio](https://iamdunz221.github.io/CV/) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
 
 ---
 
@@ -20,13 +20,13 @@ Final-year Software Engineering student at FPT University with academic project 
 ### FEATURED PROJECTS
 
 **Kidpro – Smart Preschool Management System & AI Face Attendance** | *Graduation Capstone Project*  
-*Process Analysis | User Story & AC | BPMN 2.0 | Wireframe | Jira | [View Case Study](./kidpro-ai-system.html)*  
+*Process Analysis | User Story & AC | BPMN 2.0 | Wireframe | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Analyzed core preschool operations including day-boarding attendance, child pickup/dismissal, class timetabling, and tuition billing; authored SRS documentation and decomposed requirements into User Stories with clear Acceptance Criteria (AC).  
 · Modeled attendance and pickup/dismissal workflows; specified business rules for package-based meal fee deductions, network offline fallback mechanisms, and guardian verification procedures to prevent billing discrepancies.  
 · Designed UI wireframes and interactive prototypes in Figma; managed tasks and bug tracking via Jira, and tested data transmission and API payloads against requirement specifications prior to project delivery.  
 
 **Hospital Management System (HMS)** | *COURSE PROJECT REPORT*  
-*Requirements Analysis | Business Rules | UML | SOA Architecture | [View Case Study](./hospital-management.html)*  
+*Requirements Analysis | Business Rules | UML | SOA Architecture | [View Case Study](https://iamdunz221.github.io/CV/hospital-management.html)*  
 · Analyzed outpatient and inpatient clinical workflows including patient intake, appointment scheduling, Electronic Medical Records (EMR), prescription issuance, and hospital billing.  
 · Specified business rules for role-based access control (RBAC) and clinical consultation/prescription procedures; modeled process flows and inter-departmental interactions using UML diagrams (Use Case, Activity, Sequence, Class, and State diagrams).  
 · Proposed Service-Oriented Architecture (SOA) solutions to decouple independent functional subsystems under supervisor guidance; collaborated in verifying consistency between design specifications and business requirements.
