@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Nguyen Tien Dung - IT Business Analyst</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 13mm 10mm 13mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Helvetica Neue", "Segoe UI", sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.36;
+      color: #222222;
+      background: #f4f6f8;
+      padding: 20px 10px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cv-page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 24px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+      }
+
+      .cv-page {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 11px;
+    }
+
+    .header h1 {
+      font-size: 21pt;
+      font-weight: 800;
+      color: #17335c;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .header .role-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #17335c;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .header .contact-line {
+      font-size: 9.3pt;
+      color: #333333;
+      line-height: 1.4;
+    }
+
+    .header .contact-line a {
+      color: #17335c;
+      text-decoration: underline;
+    }
+
+    .header .contact-line a:hover {
+      color: #2b6cb0;
+    }
+
+    .sep {
+      margin: 0 6px;
+      color: #888888;
+    }
+
+    /* Section Headings */
+    .section {
+      margin-top: 9px;
+    }
+
+    .section-title {
+      font-size: 10.8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #17335c;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .section-line {
+      height: 1.5px;
+      background-color: #17335c;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    /* Summary */
+    .intro-text {
+      text-align: justify;
+      color: #2d3748;
+      font-size: 9.3pt;
+      line-height: 1.38;
+    }
+
+    /* Education */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 700;
+      font-size: 9.6pt;
+      color: #17335c;
+    }
+
+    .edu-sub {
+      color: #333333;
+      font-size: 9.2pt;
+      margin: 1px 0 2px 0;
+    }
+
+    .edu-list {
+      margin-left: 17px;
+      font-size: 9.1pt;
+      color: #2d3748;
+    }
+
+    .edu-list li {
+      margin-bottom: 1px;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 7px;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 2px;
+    }
+
+    .project-header {
+      font-size: 9.6pt;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .project-header span.group {
+      font-weight: normal;
+      font-style: italic;
+      color: #4a5568;
+    }
+
+    .project-tags {
+      font-size: 8.7pt;
+      font-style: italic;
+      color: #4a5568;
+      margin: 1px 0 3px 0;
+    }
+
+    .project-tags a {
+      color: #17335c;
+      font-style: normal;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Bullet Points */
+    ul.bullet-list {
+      margin-left: 17px;
+    }
+
+    ul.bullet-list li {
+      margin-bottom: 2px;
+      text-align: justify;
+      color: #262626;
+      font-size: 9.15pt;
+      line-height: 1.35;
+    }
+
+    ul.bullet-list li strong {
+      color: #111111;
+    }
+
+    /* Skills */
+    .skill-row {
+      margin-bottom: 3px;
+      font-size: 9.15pt;
+      line-height: 1.35;
+      text-align: justify;
+      color: #262626;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: #111111;
+    }
+
+    /* Languages & Certifications */
+    .misc-row {
+      margin-bottom: 2px;
+      font-size: 9.15pt;
+      line-height: 1.35;
+      color: #262626;
+    }
+
+    .misc-label {
+      font-weight: 700;
+      color: #111111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cv-page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>NGUYEN TIEN DUNG</h1>
+      <div class="role-title">IT BUSINESS ANALYST</div>
+      <div class="contact-line">
+        Hanoi, Vietnam <span class="sep">|</span>
+        (+84) 363 262 xxx <span class="sep">|</span>
+        <a href="mailto:tiendunga2k13@gmail.com">tiendunga2k13@gmail.com</a>
+      </div>
+      <div class="contact-line" style="margin-top: 2px;">
+        <a href="./index.html" target="_blank">Portfolio</a> <span class="sep">|</span>
+        <a href="https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link"
+          target="_blank">Notion</a>
+      </div>
+    </header>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <section class="section">
+      <div class="section-title">PROFESSIONAL SUMMARY</div>
+      <div class="section-line"></div>
+      <p class="intro-text">
+        Final-year Software Engineering student at FPT University with academic project experience in requirements
+        analysis, business process modeling, technical documentation, and utilizing Postman to validate data transmission
+        flows against specifications. Solid foundation in UML, SQL, and relational databases; hands-on experience in
+        diagramming with Draw.io, designing wireframes/prototypes in Figma, managing project backlogs/user stories with
+        Jira, and leveraging AI toolsets (Stitch AI, Claude Code) to accelerate documentation efficiency. Seeking an IT
+        Business Analyst position to deliver impactful, high-value solutions to real-world software projects.
+      </p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <div class="section-title">EDUCATION</div>
+      <div class="section-line"></div>
+      <div class="edu-row">
+        <span>FPT University</span>
+        <span style="font-weight: normal; font-size: 9.3pt; color: #4a5568;">2023 – Present</span>
+      </div>
+      <div class="edu-sub">
+        Software Engineering – <strong>Final-year Student</strong> <span class="sep">|</span> GPA: <strong>3.0 /
+          4.0</strong> (Expected Graduation: 2027)
+      </div>
+      <ul class="edu-list">
+        <li>Awarded <strong>30% Academic Merit Scholarship</strong> for the entire 4-year undergraduate program.</li>
+      </ul>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section class="section">
+      <div class="section-title">FEATURED PROJECTS</div>
+      <div class="section-line"></div>
+
+      <!-- Project 1: Kidpro -->
+      <div class="project-item">
+        <div class="project-header">
+          Kidpro – Smart Preschool Management System &amp; AI Face Attendance <span class="group">| Graduation Capstone
+            Project</span>
+        </div>
+        <div class="project-tags">
+          Process Analysis <span class="sep">|</span> User Story &amp; AC <span class="sep">|</span> BPMN 2.0 <span
+            class="sep">|</span> Wireframe <span class="sep">|</span> Jira <span class="sep">|</span> <a
+            href="./kidpro-ai-system.html" target="_blank">View Case Study</a>
+        </div>
+        <ul class="bullet-list">
+          <li>Analyzed core preschool operations including day-boarding attendance, child pickup/dismissal, class
+            timetabling, and tuition billing; authored SRS documentation and decomposed requirements into User Stories
+            with clear Acceptance Criteria (AC).</li>
+          <li>Modeled attendance and pickup/dismissal workflows; specified business rules for package-based meal fee
+            deductions, network offline fallback mechanisms, and guardian verification procedures to prevent billing
+            discrepancies.</li>
+          <li>Designed UI wireframes and interactive prototypes in Figma; managed tasks and bug tracking via Jira, and
+            tested data transmission and API payloads against requirement specifications prior to project delivery.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2: HMS -->
+      <div class="project-item">
+        <div class="project-header">
+          Hospital Management System (HMS) <span class="group">| COURSE PROJECT REPORT</span>
+        </div>
+        <div class="project-tags">
+          Requirements Analysis <span class="sep">|</span> Business Rules <span class="sep">|</span> UML <span
+            class="sep">|</span> SOA Architecture <span class="sep">|</span> <a href="./hospital-management.html"
+            target="_blank">View Case Study</a>
+        </div>
+        <ul class="bullet-list">
+          <li>Analyzed outpatient and inpatient clinical workflows including patient intake, appointment scheduling,
+            Electronic Medical Records (EMR), prescription issuance, and hospital billing.</li>
+          <li>Specified business rules for role-based access control (RBAC) and clinical consultation/prescription
+            procedures; modeled process flows and inter-departmental interactions using UML diagrams (Use Case,
+            Activity, Sequence, Class, and State diagrams).</li>
+          <li>Proposed Service-Oriented Architecture (SOA) solutions to decouple independent functional subsystems
+            under supervisor guidance; collaborated in verifying consistency between design specifications and business
+            requirements.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <div class="section-title">SKILLS</div>
+      <div class="section-line"></div>
+
+      <div class="skill-row">
+        <span class="skill-label">Business Analysis:</span> Requirements Elicitation &amp; Analysis, Functional /
+        Non-Functional Requirements (FR/NFR), User Stories &amp; Acceptance Criteria, Business Process Modeling (BPMN
+        2.0), System Modeling (UML: Use Case, Sequence, Activity,...), Wireframing &amp; Prototyping, User Acceptance
+        Testing (UAT).
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Technical:</span> REST API, Postman, SQL (PostgreSQL, SQL Server).
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; Management:</span> Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub,
+        Notion, Microsoft Office, Teams.
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">AI-Assisted BA:</span> Leveraging Stitch AI and Claude AI for rapid wireframe
+        drafting, test scenario generation, and UI feasibility verification.
+      </div>
+    </section>
+
+    <!-- LANGUAGES & CERTIFICATIONS -->
+    <section class="section">
+      <div class="section-title">LANGUAGES &amp; CERTIFICATIONS</div>
+      <div class="section-line"></div>
+
+      <div class="misc-row">
+        <span class="misc-label">Languages:</span> English: IELTS 5.0 (2023-2025)
+      </div>
+    </section>
+
+  </div>
+
+</body>
+
+</html>

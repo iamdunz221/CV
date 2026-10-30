@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 2050" width="1200" height="2050" style="background-color: #FFFFFF;">
+  <defs>
+    <marker id="generalization" viewBox="0 0 16 16" refX="16" refY="8" markerWidth="14" markerHeight="14" orient="auto-start-reverse">
+      <polygon points="0,0 16,8 0,16" fill="#FFFFFF" stroke="#000000" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="2050" fill="#FFFFFF"/>
+
+  <!-- System Boundary Container -->
+  <g class="boundary">
+    <!-- Main Box -->
+    <rect x="310" y="50" width="460" height="1940" fill="#FFFFFF" stroke="#000000" stroke-width="2.5"/>
+    <!-- Header Line -->
+    <line x1="310" y1="94" x2="770" y2="94" stroke="#000000" stroke-width="2.5"/>
+    <!-- Header Title -->
+    <text x="540.0" y="78" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#000000" text-anchor="middle" letter-spacing="0.5">
+      KIDPRO SYSTEM - SCHOOL MANAGEMENT &amp; PRINCIPAL
+    </text>
+  </g>
+
+  <!-- Generalization Edge: User -> School Principal -->
+  <line x1="110" y1="1070" x2="110" y2="1025" stroke="#000000" stroke-width="2" marker-end="url(#generalization)"/>
+
+  <!-- Actors -->
+  
+    <!-- Actor: School Principal -->
+    <g class="actor">
+      <!-- Head -->
+      <circle cx="110" cy="923.2" r="18.4" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <!-- Body -->
+      <line x1="110" y1="941.6" x2="110" y2="978.4" stroke="#000000" stroke-width="2"/>
+      <!-- Arms -->
+      <line x1="80.1" y1="953.1" x2="139.9" y2="953.1" stroke="#000000" stroke-width="2"/>
+      <!-- Left Leg -->
+      <line x1="110" y1="978.4" x2="84.7" y2="1012.9" stroke="#000000" stroke-width="2"/>
+      <!-- Right Leg -->
+      <line x1="110" y1="978.4" x2="135.3" y2="1012.9" stroke="#000000" stroke-width="2"/>
+      <!-- Label -->
+      <text x="110" y="1035.9" font-family="Helvetica, Arial, sans-serif" font-size="16.099999999999998" font-weight="bold" fill="#000000" text-anchor="middle">School Principal</text>
+    </g>
+    
+  
+    <!-- Actor: User -->
+    <g class="actor">
+      <!-- Head -->
+      <circle cx="110" cy="1083.2" r="18.4" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <!-- Body -->
+      <line x1="110" y1="1101.6" x2="110" y2="1138.4" stroke="#000000" stroke-width="2"/>
+      <!-- Arms -->
+      <line x1="80.1" y1="1113.1" x2="139.9" y2="1113.1" stroke="#000000" stroke-width="2"/>
+      <!-- Left Leg -->
+      <line x1="110" y1="1138.4" x2="84.7" y2="1172.9" stroke="#000000" stroke-width="2"/>
+      <!-- Right Leg -->
+      <line x1="110" y1="1138.4" x2="135.3" y2="1172.9" stroke="#000000" stroke-width="2"/>
+      <!-- Label -->
+      <text x="110" y="1195.9" font-family="Helvetica, Arial, sans-serif" font-size="16.099999999999998" font-weight="bold" fill="#000000" text-anchor="middle">User</text>
+    </g>
+    
+  
+    <!-- Actor: Push Notification (FCM) -->
+    <g class="actor">
+      <!-- Head -->
+      <circle cx="990" cy="1794.2" r="18.4" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <!-- Body -->
+      <line x1="990" y1="1812.6" x2="990" y2="1849.4" stroke="#000000" stroke-width="2"/>
+      <!-- Arms -->
+      <line x1="960.1" y1="1824.1" x2="1019.9" y2="1824.1" stroke="#000000" stroke-width="2"/>
+      <!-- Left Leg -->
+      <line x1="990" y1="1849.4" x2="964.7" y2="1883.9" stroke="#000000" stroke-width="2"/>
+      <!-- Right Leg -->
+      <line x1="990" y1="1849.4" x2="1015.3" y2="1883.9" stroke="#000000" stroke-width="2"/>
+      <!-- Label -->
+      <text x="990" y="1906.9" font-family="Helvetica, Arial, sans-serif" font-size="16.099999999999998" font-weight="bold" fill="#000000" text-anchor="middle">Push Notification (FCM)</text>
+    </g>
+    
+
+  <!-- Association Edges (School Principal -> Use Cases) -->
+  <g class="principal-associations">
+    <line x1="138" y1="953" x2="380.0" y2="135" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="227" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="319" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="411" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="503" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="595" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="687" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="779" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="871" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="963" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1055" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1147" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1239" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1331" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1423" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1515" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1607" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1699" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1791" stroke="#c2185b" stroke-width="1.8"/>
+    <line x1="138" y1="953" x2="380.0" y2="1883" stroke="#c2185b" stroke-width="1.8"/>
+  </g>
+
+  <!-- Association Edges (FCM -> Last 2 Use Cases) -->
+  <g class="fcm-associations">
+    <line x1="962" y1="1824" x2="700.0" y2="1791" stroke="#37474f" stroke-width="1.8"/>
+    <line x1="962" y1="1824" x2="700.0" y2="1883" stroke="#37474f" stroke-width="1.8"/>
+  </g>
+
+  <!-- Use Case Ellipses -->
+  <g class="use-cases">
+    <g id="uc_1">
+      <ellipse cx="540.0" cy="135" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="140" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Setup School Year &amp; Semesters</text>
+    </g>
+    <g id="uc_2">
+      <ellipse cx="540.0" cy="227" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="232" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Manage Grades &amp; Capacities</text>
+    </g>
+    <g id="uc_3">
+      <ellipse cx="540.0" cy="319" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="324" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Manage Classroom List</text>
+    </g>
+    <g id="uc_4">
+      <ellipse cx="540.0" cy="411" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="416" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Manage Staff Profiles &amp; Status</text>
+    </g>
+    <g id="uc_5">
+      <ellipse cx="540.0" cy="503" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="508" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Assign Roles &amp; Permissions</text>
+    </g>
+    <g id="uc_6">
+      <ellipse cx="540.0" cy="595" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="600" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">View Management Audit Logs</text>
+    </g>
+    <g id="uc_7">
+      <ellipse cx="540.0" cy="687" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="692" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">View Tuition Revenue &amp; Debt</text>
+    </g>
+    <g id="uc_8">
+      <ellipse cx="540.0" cy="779" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="784" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve New Classes</text>
+    </g>
+    <g id="uc_9">
+      <ellipse cx="540.0" cy="871" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="876" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Teacher Assignments</text>
+    </g>
+    <g id="uc_10">
+      <ellipse cx="540.0" cy="963" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="968" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve &amp; Publish Timetable</text>
+    </g>
+    <g id="uc_11">
+      <ellipse cx="540.0" cy="1055" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1060" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Weekly Menu</text>
+    </g>
+    <g id="uc_12">
+      <ellipse cx="540.0" cy="1147" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1152" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Tuition Fee Policy</text>
+    </g>
+    <g id="uc_13">
+      <ellipse cx="540.0" cy="1239" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1244" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Monthly Tuition Roll</text>
+    </g>
+    <g id="uc_14">
+      <ellipse cx="540.0" cy="1331" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1336" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Open Extracurricular Clubs</text>
+    </g>
+    <g id="uc_15">
+      <ellipse cx="540.0" cy="1423" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1428" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Periodic Evaluations</text>
+    </g>
+    <g id="uc_16">
+      <ellipse cx="540.0" cy="1515" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1520" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Manage Toys &amp; Equipment</text>
+    </g>
+    <g id="uc_17">
+      <ellipse cx="540.0" cy="1607" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1612" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Approve Weekly Lesson Plans</text>
+    </g>
+    <g id="uc_18">
+      <ellipse cx="540.0" cy="1699" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1704" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Export Child Growth Report</text>
+    </g>
+    <g id="uc_19">
+      <ellipse cx="540.0" cy="1791" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1796" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Post School Announcements</text>
+    </g>
+    <g id="uc_20">
+      <ellipse cx="540.0" cy="1883" rx="160.0" ry="29.0" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <text x="540.0" y="1888" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#000000" text-anchor="middle">Broadcast Emergency Alerts</text>
+    </g>
+  </g>
+</svg>

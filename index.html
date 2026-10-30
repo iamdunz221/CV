@@ -1,0 +1,1902 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Nguyen Tien Dung | IT Business Analyst Portfolio</title>
+  <meta name="description"
+    content="Professional Portfolio of Nguyen Tien Dung - IT Business Analyst with Software Engineering background from FPT University (30% Academic Merit Scholarship). Specializing in Requirements Engineering, BPMN 2.0, UML, REST API validation, and AI-assisted workflows.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0f274a;
+      --navy-dark: #091a33;
+      --blue: #2563eb;
+      --blue-deep: #1d4ed8;
+      --blue-soft: #eff6ff;
+      --blue-subtle: #dbeafe;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
+      --amber: #d97706;
+      --ink: #1e293b;
+      --ink-dark: #0f172a;
+      --muted: #64748b;
+      --muted-light: #94a3b8;
+      --line: #e2e8f0;
+      --line-light: #f1f5f9;
+      --white: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --shadow-sm: 0 2px 8px rgba(15, 39, 74, 0.04);
+      --shadow-md: 0 10px 25px rgba(15, 39, 74, 0.07);
+      --shadow-lg: 0 20px 42px rgba(15, 39, 74, 0.10);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: 'Lora', Georgia, serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    body {
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 92% 5%, rgba(37, 99, 235, 0.07), transparent 35%),
+        radial-gradient(circle at 8% 15%, rgba(99, 102, 241, 0.06), transparent 30%),
+        linear-gradient(180deg, #fbfdff 0%, #f8fafc 40%, #ffffff 100%);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.05s ease-out;
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav .wrap {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), #1d4ed8);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .brand-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue-deep);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Mobile Menu Toggle Button */
+    .mobile-toggle {
+      display: none;
+      background: #f1f5f9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--navy);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-toggle:hover {
+      background: #e2e8f0;
+    }
+
+    /* Mobile Drawer Menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px 20px 20px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 12px 25px rgba(15, 39, 74, 0.08);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a.mobile-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .mobile-menu a.mobile-link:hover {
+      color: var(--blue-deep);
+    }
+
+    .mobile-cv-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      padding-top: 10px;
+    }
+
+    .mobile-cv-group .btn {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1.5px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+      color: var(--blue-deep);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--navy), #1e3a8a);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(15, 39, 74, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #162f55, #1d4ed8);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(29, 78, 216, 0.28);
+    }
+
+    .btn-secondary {
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-color: #bfdbfe;
+    }
+
+    .btn-secondary:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      color: var(--navy);
+    }
+
+    .btn-sm {
+      padding: 7px 12px;
+      font-size: 12px;
+      border-radius: 7px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 0 55px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue-deep);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 4.4vw, 52px);
+      line-height: 1.14;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .highlight {
+      color: var(--blue-deep);
+      position: relative;
+    }
+
+    .hero-lead {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #334155;
+      margin-bottom: 28px;
+    }
+
+    .hero-lead strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .meta-icon {
+      color: var(--emerald);
+      font-weight: bold;
+    }
+
+    /* Profile Visual Card */
+    .profile-card-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-glow {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(239, 246, 255, 0) 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .profile-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border: 1px solid #dce6f4;
+      border-radius: 24px;
+      padding: 30px 26px;
+      box-shadow: 0 20px 45px rgba(15, 39, 74, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .profile-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar-crest {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--navy), #1d4ed8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(29, 78, 216, 0.28);
+      border: 2px solid #ffffff;
+      flex-shrink: 0;
+    }
+
+    .crest-initials {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      font-family: var(--font-body);
+    }
+
+    .crest-sub {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    .profile-card-id h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .profile-card-id .badge-role {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .profile-card-id .badge-edu {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .profile-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-value {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy);
+      font-family: var(--font-mono);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .profile-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border: 1px solid #dbeafe;
+    }
+
+    /* Section Global Headers */
+    section {
+      padding: 65px 0;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+    }
+
+    .section-eyebrow {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--blue-deep);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 33px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    /* Case Studies Cards */
+    .case-studies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .case-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    .case-visual-header {
+      width: 100%;
+      height: 195px;
+      background: linear-gradient(180deg, #f8fbff 0%, #f1f5f9 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-visual-header svg {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
+
+    .case-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .case-context-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue-deep);
+      background: var(--blue-soft);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      border: 1px solid #bfdbfe;
+    }
+
+    .case-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.28;
+      margin-bottom: 8px;
+    }
+
+    .case-role {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .case-role span.role-val {
+      color: var(--blue-deep);
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .case-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3.5px 8.5px;
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .case-description {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .case-highlights-list {
+      list-style: none;
+      margin-bottom: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line-light);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .case-highlights-list li {
+      font-size: 13px;
+      color: #334155;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .check-mark {
+      color: var(--emerald);
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .case-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.22s ease;
+      min-width: 0;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+
+    .skill-icon-header {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border: 1px solid #bfdbfe;
+    }
+
+    .skill-card h4 {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.45;
+    }
+
+    .skill-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .skill-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .skill-list strong {
+      color: var(--ink);
+    }
+
+    /* About & Hybrid Advantage */
+    .about-box {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-box h3 {
+      font-family: var(--font-serif);
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .about-p {
+      font-size: 14.5px;
+      color: #334155;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .about-p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pillar-item {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .pillar-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .pillar-desc {
+      font-size: 12.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* CV Showcase Section */
+    .cv-section {
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      padding: 46px 40px;
+      margin-top: 20px;
+    }
+
+    .cv-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      margin-top: 28px;
+    }
+
+    .cv-preview-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s ease;
+      min-width: 0;
+    }
+
+    .cv-preview-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+
+    .cv-lang-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .lang-vn {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    .lang-en {
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border: 1px solid #bfdbfe;
+    }
+
+    .cv-preview-card h4 {
+      font-size: 18.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .cv-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .cv-specs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.5px;
+      color: #64748b;
+      margin-bottom: 22px;
+    }
+
+    .cv-specs-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cv-card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Footer & Contact */
+    footer {
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      padding: 60px 0 45px;
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand h4 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: #64748b;
+      max-width: 440px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .footer-contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      color: #334155;
+    }
+
+    .footer-contact-details a {
+      color: var(--blue-deep);
+      font-weight: 600;
+    }
+
+    .footer-contact-details a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .footer-col h5 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--blue-deep);
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      color: var(--muted-light);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Back-to-Top Floating Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(15, 39, 74, 0.25);
+      transition: all 0.25s ease;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      z-index: 40;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--blue-deep);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .profile-card-container {
+        order: 2;
+      }
+
+      .profile-card {
+        max-width: 100%;
+      }
+
+      .case-studies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-box {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .cv-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex !important;
+      }
+
+      .nav .wrap {
+        height: 64px;
+        padding: 0 16px;
+      }
+
+      .brand-title {
+        display: none;
+      }
+
+      .hero {
+        padding: 30px 0 25px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-ctas .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .case-actions {
+        flex-direction: column;
+      }
+
+      .case-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .profile-card {
+        padding: 22px 16px;
+      }
+
+      .metric-box {
+        padding: 10px 12px;
+      }
+
+      .metric-value {
+        font-size: 19px;
+      }
+
+      .metric-label {
+        font-size: 9px;
+      }
+
+      .about-box {
+        padding: 20px 16px;
+      }
+
+      .cv-section {
+        padding: 24px 16px;
+      }
+
+      .cv-card-actions {
+        flex-direction: column;
+      }
+
+      .cv-card-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .case-card h3 {
+        font-size: 19px;
+      }
+
+      .footer-links-group {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header & Navigation -->
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" class="brand">
+        <div class="brand-badge">NTD</div>
+        <div class="brand-text">
+          <span class="brand-name">Nguyen Tien Dung</span>
+          <span class="brand-title">IT Business Analyst</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="#projects">Case Studies</a>
+        <a href="#skills">Skills</a>
+        <a href="#cvs">CV Versions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Quick Action Buttons -->
+      <div class="nav-actions">
+        <a href="CV_Nguyen_Tien_Dung_TiengViet.html" target="_blank" class="btn btn-sm btn-secondary"
+          title="Xem CV Tiếng Việt">
+          CV Tiếng Việt
+        </a>
+        <a href="CV_Nguyen_Tien_Dung_English.html" target="_blank" class="btn btn-sm btn-primary"
+          title="View English CV">
+          English CV
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#projects" class="mobile-link">Selected Case Studies</a>
+      <a href="#skills" class="mobile-link">Core Competencies</a>
+      <a href="#about" class="mobile-link">The Hybrid Advantage</a>
+      <a href="#cvs" class="mobile-link">CV Versions &amp; Downloads</a>
+      <a href="#contact" class="mobile-link">Contact Information</a>
+      <div class="mobile-cv-group">
+        <a href="CV_Nguyen_Tien_Dung_TiengViet.html" target="_blank" class="btn btn-sm btn-secondary">🇻🇳 CV Tiếng
+          Việt</a>
+        <a href="CV_Nguyen_Tien_Dung_English.html" target="_blank" class="btn btn-sm btn-primary">🇬🇧 English CV</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-wrap">
+            <span class="pulse-dot"></span>
+            <span>Available for IT Business Analyst Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            Bridging Business Needs &amp; Technical Execution with <span class="highlight">Analytical Precision</span>
+          </h1>
+
+          <p class="hero-lead">
+            Final-year Software Engineering student at <strong>FPT University</strong> (awarded <strong>30% Academic
+              Merit Scholarship</strong>). Combining technical empathy with systematic business analysis: translating
+            fuzzy operational bottlenecks into executable <strong>SRS </strong>, <strong>BPMN 2.0 process
+              flows</strong>, <strong>Agile User Stories, AC</strong>, and verified system architectures.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">
+              Explore Case Studies &darr;
+            </a>
+            <a href="CV_Nguyen_Tien_Dung_TiengViet.html" target="_blank" class="btn">
+              📄 CV Tiếng Việt
+            </a>
+            <a href="CV_Nguyen_Tien_Dung_English.html" target="_blank" class="btn">
+              📄 English CV
+            </a>
+            <a href="https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link"
+              target="_blank" class="btn btn-secondary">
+              📚 Notion &nearr;
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-item">
+              <span class="meta-icon">✓</span>
+              <span>Software Engineering Foundation</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">✓</span>
+              <span>FPT University (30% Merit Scholarship)</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">✓</span>
+              <span>Hanoi, Vietnam</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Visual Card -->
+        <div class="profile-card-container">
+          <div class="profile-glow"></div>
+          <div class="profile-card">
+            <div class="profile-card-header">
+              <div class="avatar-crest">
+                <span class="crest-initials">TD</span>
+                <span class="crest-sub">IT BA</span>
+              </div>
+              <div class="profile-card-id">
+                <h3>Nguyễn Tiến Dũng</h3>
+                <span class="badge-role">IT Business Analyst</span>
+                <div class="badge-edu">B.S. in Software Engineering · FPT University</div>
+              </div>
+            </div>
+
+
+
+            <div class="profile-tags-row">
+              <span class="pill-tag">BPMN 2.0</span>
+              <span class="pill-tag">UML</span>
+              <span class="pill-tag">REST API &amp; Postman</span>
+              <span class="pill-tag">SQL &amp; ERD</span>
+              <span class="pill-tag">Jira &amp; Figma</span>
+              <span class="pill-tag">Stitch AI &amp; Claude</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Case Studies -->
+    <section id="projects">
+      <div class="section-head">
+        <span class="section-eyebrow">Evidence-Based Portfolio</span>
+        <h2 class="section-title">Selected Case Studies</h2>
+        <p class="section-desc">
+          In-depth project breakdowns demonstrating structured requirements engineering, clinical and educational
+          process modeling, and architectural feasibility validation.
+        </p>
+      </div>
+
+      <div class="case-studies-grid">
+
+        <!-- Case 1: Kidpro -->
+        <article class="case-card">
+          <div class="case-visual-header">
+            <!-- Clean SVG Vector Diagram: Kidpro AI & Process Pipeline -->
+            <svg viewBox="0 0 460 170" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="460" height="170" rx="8" fill="#f8fafc" />
+              <!-- Step 1: AI FaceID Scan -->
+              <g transform="translate(18, 20)">
+                <rect width="115" height="130" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" />
+                <rect x="12" y="12" width="91" height="60" rx="6" fill="#0f172a" />
+                <circle cx="57" cy="40" r="16" fill="#1e293b" />
+                <rect x="36" y="22" width="42" height="36" rx="4" fill="none" stroke="#22c55e" stroke-width="1.2"
+                  stroke-dasharray="3" />
+                <text x="57.5" y="44" font-size="7.5" font-family="monospace" fill="#86efac"
+                  text-anchor="middle">YOLOv11: 94%</text>
+                <rect x="12" y="80" width="91" height="18" rx="4" fill="#eff6ff" />
+                <text x="57.5" y="92" font-size="8" font-weight="700" font-family="sans-serif" fill="#1d4ed8"
+                  text-anchor="middle">FaceID Roll-Call</text>
+                <text x="57.5" y="118" font-size="7.5" font-family="sans-serif" fill="#64748b"
+                  text-anchor="middle">Real-time Timestamp</text>
+              </g>
+
+              <!-- Arrow 1 -->
+              <path d="M 141 85 L 165 85" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="3 3" />
+              <polygon points="167,85 161,81 161,89" fill="#2563eb" />
+
+              <!-- Step 2: Meal Reconciliation Rules -->
+              <g transform="translate(173, 20)">
+                <rect width="138" height="130" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.2" />
+                <rect width="138" height="26" rx="8" fill="#1d4ed8" />
+                <text x="69" y="17" font-size="8.5" font-weight="700" font-family="sans-serif" fill="#ffffff"
+                  text-anchor="middle">Meal Ledger Rules</text>
+                <text x="12" y="45" font-size="7.5" font-family="sans-serif" fill="#0f172a">• Package A (&lt; 07:00):
+                  Full Refund</text>
+                <text x="12" y="63" font-size="7.5" font-family="sans-serif" fill="#0f172a">• Package B (&lt; 08:30):
+                  Lunch Refund</text>
+                <text x="12" y="81" font-size="7.5" font-family="sans-serif" fill="#0f172a">• Offline Grace:
+                  `submitted_at`</text>
+                <text x="12" y="99" font-size="7.5" font-family="sans-serif" fill="#0f172a">• Dismissal: 2-Factor +
+                  Override</text>
+                <rect x="8" y="109" width="122" height="15" rx="3" fill="#ecfdf5" />
+                <text x="69" y="120" font-size="7" font-weight="700" font-family="sans-serif" fill="#059669"
+                  text-anchor="middle">✓ ~60% Billing Time Saved</text>
+              </g>
+
+              <!-- Arrow 2 -->
+              <path d="M 319 85 L 343 85" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="3 3" />
+              <polygon points="345,85 339,81 339,89" fill="#2563eb" />
+
+              <!-- Step 3: PayOS VietQR & Sync -->
+              <g transform="translate(351, 20)">
+                <rect width="92" height="130" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" />
+                <rect x="10" y="12" width="72" height="60" rx="5" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                <!-- QR representation -->
+                <rect x="18" y="20" width="16" height="16" fill="#0f274a" />
+                <rect x="48" y="20" width="16" height="16" fill="#0f274a" />
+                <rect x="18" y="46" width="16" height="16" fill="#0f274a" />
+                <rect x="42" y="44" width="8" height="8" fill="#2563eb" />
+                <rect x="54" y="52" width="10" height="10" fill="#2563eb" />
+                <rect x="10" y="80" width="72" height="18" rx="4" fill="#eff6ff" />
+                <text x="46" y="92" font-size="8" font-weight="700" font-family="sans-serif" fill="#1d4ed8"
+                  text-anchor="middle">PayOS VietQR</text>
+                <text x="46" y="118" font-size="7.5" font-family="sans-serif" fill="#64748b" text-anchor="middle">Auto
+                  Webhook Sync</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="case-body">
+            <span class="case-context-badge">Graduation Capstone Project</span>
+            <h3>Kidpro – Smart Preschool Management System & AI FaceID Attendance</h3>
+            <div class="case-role">
+              Role: <span class="role-val"> Business Analyst </span>
+            </div>
+
+            <div class="case-tags">
+              <span class="case-tag">AI FaceID Attendance</span>
+              <span class="case-tag">BPMN 2.0</span>
+              <span class="case-tag">PayOS VietQR</span>
+              <span class="case-tag">SRS &amp; User Stories</span>
+              <span class="case-tag">Figma &amp; Stitch AI</span>
+            </div>
+
+
+
+            <ul class="case-highlights-list">
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>AI Roll-Call &amp; Dynamic Meal Ledger:</strong> Automated face recognition attendance
+                  with multi-tier refund cutoffs (07:00 vs 08:30 AM), reducing fee reconciliation effort.</span>
+              </li>
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>Dual-Factor Dismissal Security:</strong> QR guardian verification combined with teacher
+                  familiar-face fallback to guarantee zero child handover mistakes.</span>
+              </li>
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>Interactive Mockup Suite:</strong> Delivered 153 high-fidelity Figma screens validated via
+                  Stitch AI rapid prototyping.</span>
+              </li>
+            </ul>
+
+            <div class="case-actions">
+              <a href="kidpro-ai-system.html" class="btn btn-primary btn-sm">
+                Read Full Case Study &rarr;
+              </a>
+              <a href="https://kidpro-kidsystem-mockups.vercel.app/" target="_blank" class="btn btn-secondary btn-sm">
+                Live Mockup Suite (153 Màn hình) &nearr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 2: HMS Architecture -->
+        <article class="case-card">
+          <div class="case-visual-header">
+            <!-- Clean SVG Vector Diagram: HMS SOA Architecture -->
+            <svg viewBox="0 0 460 170" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="460" height="170" rx="8" fill="#f8fafc" />
+              <!-- Gateway -->
+              <g transform="translate(18, 55)">
+                <rect width="90" height="60" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.2" />
+                <rect width="90" height="18" rx="6" fill="#2563eb" />
+                <text x="45" y="12" font-size="7.5" font-weight="700" font-family="sans-serif" fill="#ffffff"
+                  text-anchor="middle">API GATEWAY</text>
+                <text x="45" y="34" font-size="8" font-weight="600" font-family="sans-serif" fill="#0f172a"
+                  text-anchor="middle">RBAC Auth</text>
+                <text x="45" y="48" font-size="7" font-family="sans-serif" fill="#64748b" text-anchor="middle">BCrypt
+                  &amp; JWT</text>
+              </g>
+
+              <!-- Central Registry -->
+              <g transform="translate(145, 18)">
+                <rect width="135" height="36" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.2" />
+                <text x="67.5" y="16" font-size="8.5" font-weight="700" font-family="sans-serif" fill="#b45309"
+                  text-anchor="middle">Netflix Eureka Registry</text>
+                <text x="67.5" y="28" font-size="7" font-family="sans-serif" fill="#78350f" text-anchor="middle">Dynamic
+                  Service Discovery</text>
+              </g>
+
+              <!-- Connectors from Eureka -->
+              <path d="M 63 55 L 63 36 L 145 36" fill="none" stroke="#d97706" stroke-width="1.2"
+                stroke-dasharray="3 3" />
+
+              <!-- Microservices Stack -->
+              <g transform="translate(145, 62)">
+                <rect x="0" y="0" width="135" height="24" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="1" />
+                <text x="67.5" y="15" font-size="7.5" font-weight="600" font-family="sans-serif" fill="#166534"
+                  text-anchor="middle">Appointment &amp; Intake Svc</text>
+
+                <rect x="0" y="30" width="135" height="24" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="1" />
+                <text x="67.5" y="45" font-size="7.5" font-weight="600" font-family="sans-serif" fill="#166534"
+                  text-anchor="middle">EMR &amp; Clinical Records Svc</text>
+
+                <rect x="0" y="60" width="135" height="24" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="1" />
+                <text x="67.5" y="75" font-size="7.5" font-weight="600" font-family="sans-serif" fill="#166534"
+                  text-anchor="middle">Billing &amp; Pharmacy Storage</text>
+              </g>
+
+              <!-- Gateway to Services connector -->
+              <line x1="108" y1="85" x2="145" y2="85" stroke="#2563eb" stroke-width="1.5" />
+
+              <!-- Right Stat Badge -->
+              <g transform="translate(305, 25)">
+                <rect width="138" height="120" rx="8" fill="#0f274a" stroke="#1d4ed8" stroke-width="1.2" />
+                <rect x="14" y="12" width="110" height="20" rx="4" fill="#1e3a8a" />
+                <text x="69" y="25.5" font-size="8" font-weight="800" font-family="sans-serif" fill="#93c5fd"
+                  text-anchor="middle" letter-spacing="0.5">TEAM LEADER</text>
+                <text x="69" y="50" font-size="10" font-weight="700" font-family="sans-serif" fill="#ffffff"
+                  text-anchor="middle">SOA Architecture</text>
+                <line x1="18" y1="62" x2="120" y2="62" stroke="#254475" stroke-width="1" />
+                <text x="69" y="77" font-size="7.5" font-weight="600" font-family="sans-serif" fill="#38bdf8"
+                  text-anchor="middle">5 Subsystems Decomposed</text>
+                <text x="69" y="93" font-size="7.5" font-weight="600" font-family="sans-serif" fill="#cbd5e1"
+                  text-anchor="middle">7 Healthcare Actors</text>
+                <text x="69" y="108" font-size="7" font-weight="700" font-family="sans-serif" fill="#86efac"
+                  text-anchor="middle">19 Business Rules (BR1–19)</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="case-body">
+            <span class="case-context-badge">Course Project Report</span>
+            <h3>Hospital Management System (HMS) Architecture</h3>
+            <div class="case-role">
+              Role: <span class="role-val">Team Leader &amp; Business Analyst</span> (Team of 5)
+            </div>
+
+            <div class="case-tags">
+              <span class="case-tag">Healthcare IT</span>
+              <span class="case-tag">UML</span>
+              <span class="case-tag">SOA Architecture</span>
+              <span class="case-tag">19 Business Rules</span>
+            </div>
+
+
+
+            <ul class="case-highlights-list">
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>Rigorous Cross-Model Modeling:</strong> Orchestrated 5-tier traceability: Use Cases &rarr;
+                  Sequence &rarr; Class &rarr; Relational DB &rarr; SOA Deployment diagrams.</span>
+              </li>
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>19 Standardized Business Rules:</strong> Formulated strict validation logic (BR1–BR19)
+                  governing prescription limits, patient status transitions, and billing locks.</span>
+              </li>
+              <li>
+                <span class="check-mark">✓</span>
+                <span><strong>Service-Oriented Architecture (SOA):</strong> Decomposed 5 functional subsystems
+                  coordinated via API Gateway service discovery.</span>
+              </li>
+            </ul>
+
+            <div class="case-actions">
+              <a href="hospital-management.html" class="btn btn-primary btn-sm">
+                Read Full Case Study &rarr;
+              </a>
+              <a href="https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link"
+                target="_blank" class="btn btn-secondary btn-sm">
+                Notion Documentation &nearr;
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Core Competencies / Skills -->
+    <section id="skills">
+      <div class="section-head">
+        <span class="section-eyebrow">BA Toolkit &amp; Proficiencies</span>
+        <h2 class="section-title">Core Competencies</h2>
+        <p class="section-desc">
+          Structured capabilities aligned directly with standard IT Business Analyst roles, bridging requirements
+          engineering, system modeling, and technical validation.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- Col 1: Business Analysis -->
+        <div class="skill-card">
+          <div class="skill-icon-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h4>Business Analysis</h4>
+          <ul class="skill-list">
+            <li><strong>Requirements Elicitation:</strong> Stakeholder interviews, surveys, and requirement
+              clarification.</li>
+            <li><strong>Documentation:</strong> BRD, SRS , and Functional/Non-Functional Specs
+              (FR/NFR).</li>
+            <li><strong>Agile Stories:</strong> User Stories with concrete Acceptance Criteria
+              (Given-When-Then).</li>
+            <li><strong>Process Modeling:</strong> BPMN 2.0 (Pools, Swimlanes, Gateways, Events).</li>
+            <li><strong>UML Modeling:</strong> Use Case, Activity, Sequence, and Class diagrams.</li>
+            <li><strong>Quality Assurance:</strong> User Acceptance Testing (UAT) scenarios and traceability matrix.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Technical Competencies -->
+        <div class="skill-card">
+          <div class="skill-icon-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h4>Technical Competencies</h4>
+          <ul class="skill-list">
+            <li><strong>API Validation:</strong> RESTful API principles, request/response payload analysis, and Postman
+              testing.</li>
+            <li><strong>Database &amp; SQL:</strong> Relational Database design, Entity Relationship Diagrams (ERD),
+              queries with PostgreSQL and SQL Server.</li>
+            <li><strong>System Architecture:</strong> 3-Tier to SOA concepts, API Gateways, and service discovery
+              mechanisms.</li>
+            <li><strong>Security Controls:</strong> Role-Based Access Control (RBAC), authentication flows, and data
+              integrity rules.</li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Tools & Methodologies -->
+        <div class="skill-card">
+          <div class="skill-icon-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+              </path>
+            </svg>
+          </div>
+          <h4>Tools &amp; Methodologies</h4>
+          <ul class="skill-list">
+            <li><strong>Issue &amp; Sprint Tracking:</strong> Jira ,Backlog , and Sprint
+              Planning.</li>
+            <li><strong>Design &amp; Prototyping:</strong> Figma (Component libraries, design tokens, responsive
+              wireframes).</li>
+            <li><strong>Diagramming:</strong> Draw.io and Visual Paradigm for enterprise UML/ERD.</li>
+            <li><strong>Frameworks:</strong> Agile/Scrum, Kanban, WBS task decomposition, and Git/GitHub version
+              control.</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: AI-Assisted BA -->
+        <div class="skill-card">
+          <div class="skill-icon-header">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+              </path>
+            </svg>
+          </div>
+          <h4>AI-Assisted BA</h4>
+          <ul class="skill-list">
+            <li><strong>Rapid Prototyping:</strong> Stitch AI for prompt-to-UI wireframe drafting and interactive UI
+              validation.</li>
+            <li><strong>Test Synthesis:</strong> Claude Code &amp; LLMs for generating comprehensive UAT scenarios and
+              boundary test cases.</li>
+            <li><strong>AI Feasibility:</strong> Evaluating Computer Vision (YOLO model) thresholds, latency budgets,
+              and
+              fallback rules.</li>
+            <li><strong>Documentation Velocity:</strong> Accelerating SRS draft synthesis and requirement consistency
+              checks.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CV Versions Section -->
+    <section id="cvs" class="cv-section">
+      <div class="section-head" style="margin-bottom: 20px;">
+        <span class="section-eyebrow">Standardized Curricula Vitae</span>
+        <h2 class="section-title">Standardized CV Downloads</h2>
+        <p class="section-desc">
+          Professional, ATS-friendly 1-page A4 curricula vitae formatted specifically for domestic and multinational
+          tech recruiters.
+        </p>
+      </div>
+
+      <div class="cv-cards-grid">
+
+        <!-- Vietnamese CV Card -->
+        <div class="cv-preview-card">
+          <div>
+            <span class="cv-lang-tag lang-vn">Bản Tiếng Việt </span>
+            <h4>CV IT Business Analyst (Tiếng Việt)</h4>
+
+          </div>
+          <div class="cv-card-actions">
+            <a href="CV_Nguyen_Tien_Dung_TiengViet.html" target="_blank" class="btn btn-primary btn-sm">
+              Xem trực tiếp &rarr;
+            </a>
+
+          </div>
+        </div>
+
+        <!-- English CV Card -->
+        <div class="cv-preview-card">
+          <div>
+            <span class="cv-lang-tag lang-en">English Version </span>
+            <h4>CV IT Business Analyst (English)</h4>
+
+          </div>
+          <div class="cv-card-actions">
+            <a href="CV_Nguyen_Tien_Dung_English.html" target="_blank" class="btn btn-primary btn-sm">
+              View Live &rarr;
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer & Contact -->
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Nguyễn Tiến Dũng</h4>
+          <p class="footer-tagline">
+            IT Business Analyst · Software Engineering Graduate, FPT University (30% Academic Merit Scholarship). Ready
+            to drive business value and smooth technical implementation.
+          </p>
+
+          <div class="footer-contact-details">
+            <div><strong>Email:</strong> <a href="mailto:tiendunga2k13@gmail.com">tiendunga2k13@gmail.com</a></div>
+            <div><strong>Phone:</strong> <a href="tel:+84363262xxx">(+84) 363 262 xxx</a></div>
+            <div><strong>Location:</strong> Hanoi, Vietnam</div>
+          </div>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="#projects">Selected Case Studies</a></li>
+              <li><a href="#skills">Core Competencies</a></li>
+              <li><a href="#about">The Hybrid Advantage</a></li>
+              <li><a href="#cvs">CV Downloads</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Project Links &amp; CVs</h5>
+            <ul>
+              <li><a href="CV_Nguyen_Tien_Dung_TiengViet.html" target="_blank">CV Tiếng Việt (HTML)</a></li>
+              <li><a href="CV_Nguyen_Tien_Dung_English.html" target="_blank">English CV (HTML)</a></li>
+              <li><a href="kidpro-ai-system.html">Kidpro Case Study</a></li>
+              <li><a href="hospital-management.html">HMS Architecture Case Study</a></li>
+              <li><a href="https://kidpro-kidsystem-mockups.vercel.app/" target="_blank">Live Mockup Suite (153 Màn
+                  hình) &nearr;</a></li>
+              <li><a href="https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link"
+                  target="_blank">Notion Knowledge Base &nearr;</a></li>
+              <li><a href="https://github.com" target="_blank">GitHub &nearr;</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Nguyen Tien Dung. Built with precision for IT Business Analysis.</div>
+        <div>FPT University · Software Engineering</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    &uarr;
+  </button>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+      // Back to top button visibility
+      const backBtn = document.getElementById('backToTop');
+      if (winScroll > 350) {
+        backBtn.classList.add('show');
+      } else {
+        backBtn.classList.remove('show');
+      }
+    });
+
+    // Smooth scroll back to top
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Mobile Navigation Drawer Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+
+      // Close mobile menu when a link is clicked
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  </script>
+
+</body>
+
+</html>

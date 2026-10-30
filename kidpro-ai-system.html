@@ -1,0 +1,3106 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kidpro — Smart Preschool Management System | Nguyen Tien Dung</title>
+  <meta name="description"
+    content="Case study of Kidpro: AI-driven face recognition attendance, child pickup safety, automated boarding meal fee reconciliation, and late pickup fee calculation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;0,700;1,400;1,600&subset=vietnamese&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #17335c;
+      --blue: #5f7fc4;
+      --blue-deep: #4567ad;
+      --blue-soft: #eef4ff;
+      --ink: #25344f;
+      --muted: #748198;
+      --line: #dce6f4;
+      --white: #fff;
+      --shadow: 0 18px 45px rgba(62, 92, 145, .08);
+      --font-body: 'Inter', "Segoe UI", Arial, sans-serif;
+      --font-serif: 'Lora', 'Times New Roman', Times, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-feature-settings: "locl" 1, "kern" 1;
+      text-rendering: optimizeLegibility;
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(136, 170, 226, .15), transparent 26%),
+        radial-gradient(circle at 9% 18%, rgba(195, 216, 248, .22), transparent 24%),
+        linear-gradient(180deg, #fbfdff 0%, #f8fbff 58%, #fff 100%);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: auto;
+      padding: 0 28px;
+    }
+
+    /* Reading Progress Bar */
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #3b82f6, #6366f1, #2563eb);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.08s ease-out;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Floating Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(23, 51, 92, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 40;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--blue-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(23, 51, 92, 0.35);
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(251, 253, 255, .94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(220, 230, 244, .85);
+    }
+
+    .nav .wrap {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: .12em;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-back {
+      color: var(--blue-deep);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--blue-soft);
+      border: 1px solid #dbe7fb;
+      border-radius: 8px;
+      font-size: 12px;
+      transition: .2s;
+    }
+
+    .brand-back:hover {
+      background: #e2edff;
+      transform: translateX(-2px);
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      color: #6f7e97;
+      font-size: 14px;
+    }
+
+    .links a {
+      position: relative;
+      padding: 4px 0;
+      transition: color .2s ease;
+    }
+
+    .links a:hover {
+      color: var(--blue-deep);
+      font-weight: 600;
+    }
+
+    .links a.active {
+      color: var(--navy) !important;
+      font-weight: 700;
+    }
+
+    .links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
+
+    /* Language Switcher & Bilingual Styles */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      background: #edf3fc;
+      border: 1px solid #cbdcee;
+      border-radius: 20px;
+      padding: 2px 4px;
+      margin-left: 16px;
+      font-family: var(--font-body);
+      user-select: none;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      padding: 3px 9px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-weight: 700;
+      transition: all .2s;
+      line-height: 1.2;
+    }
+
+    .lang-btn:hover {
+      color: var(--navy);
+    }
+
+    .lang-btn.active {
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(23, 51, 92, .25);
+    }
+
+    .lang-divider {
+      color: #94a3b8;
+      font-size: 11px;
+      user-select: none;
+      padding: 0 1px;
+    }
+
+    /* Visibility rules for English vs Vietnamese */
+    html[data-lang="en"] .lang-vi {
+      display: none !important;
+    }
+
+    html[data-lang="vi"] .lang-en {
+      display: none !important;
+    }
+
+    /* Vietnamese typography normalization */
+    html[data-lang="vi"] h1,
+    html[data-lang="vi"] h2,
+    html[data-lang="vi"] h3,
+    html[data-lang="vi"] .head h2,
+    html[data-lang="vi"] .stage h3 {
+      letter-spacing: normal;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 70px 0 45px;
+      position: relative;
+    }
+
+    .k {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--blue-deep);
+      font-weight: 800;
+      background: rgba(238, 244, 255, .95);
+      border: 1px solid #dbe7fb;
+      border-radius: 999px;
+      padding: 7px 14px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 12px 0 16px;
+      color: var(--navy);
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5.2vw, 54px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .blueword {
+      color: var(--blue-deep);
+    }
+
+    .lead {
+      max-width: 880px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    /* Quick Jump Navigation Pills */
+    .quick-jump-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(62, 92, 145, .03);
+    }
+
+    .jump-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-right: 4px;
+    }
+
+    .jump-pill {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid #cbdcee;
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .jump-pill:hover {
+      background: var(--blue-soft);
+      border-color: var(--blue-deep);
+      color: var(--blue-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(62, 92, 145, .1);
+    }
+
+    /* Meta 3-col */
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .meta div {
+      background: rgba(250, 252, 255, .96);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 4px 14px rgba(62, 92, 145, .03);
+      transition: all .2s;
+    }
+
+    .meta div:hover {
+      border-color: #cbdcf2;
+      box-shadow: 0 6px 18px rgba(62, 92, 145, .06);
+    }
+
+    .meta b {
+      display: block;
+      color: var(--blue-deep);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 5px;
+    }
+
+    .meta span {
+      font-size: 13.5px;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* Sections */
+    section {
+      padding: 50px 0;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .head h2 {
+      color: var(--navy);
+      font: 600 32px/1.2 var(--font-serif);
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .head p {
+      max-width: 560px;
+      color: var(--muted);
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .block {
+      background: rgba(255, 255, 255, .96);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .block h3 {
+      margin-top: 0;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .block ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .block li {
+      margin-bottom: 9px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .block li strong {
+      color: var(--navy);
+    }
+
+    /* Scope Card Variations */
+    .scope-card-in {
+      border-top: 4px solid #10b981 !important;
+    }
+
+    .scope-card-out {
+      border-top: 4px solid #f59e0b !important;
+    }
+
+    .scope-pill {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .scope-pill-in {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+
+    .scope-pill-out {
+      background: #fffbeb;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+
+    /* Workflows cards (1.1 - 1.4) */
+    .workflow-card {
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      transition: all .2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .workflow-card:hover {
+      transform: translateY(-3px);
+      border-color: #bcd4f5;
+      box-shadow: 0 10px 24px rgba(62, 92, 145, .08);
+      background: #fff;
+    }
+
+    .workflow-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .workflow-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      border: 1px solid #dbe7fb;
+    }
+
+    .flow-arrow {
+      color: var(--blue-deep);
+      font-weight: 700;
+      margin: 0 2px;
+    }
+
+    /* Contribution Cards */
+    .contrib-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .contrib-card {
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue-deep);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 20px;
+      transition: all .2s;
+    }
+
+    .contrib-card:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(62, 92, 145, .06);
+      border-color: #cbdcf2;
+      border-left-color: var(--navy);
+    }
+
+    .contrib-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .contrib-icon {
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .contrib-title {
+      font-weight: 700;
+      font-size: 14.5px;
+      color: var(--navy);
+      margin: 0;
+    }
+
+    .contrib-body {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Stages & Badges */
+    .stage {
+      margin: 44px 0 16px;
+      padding-top: 14px;
+    }
+
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--blue-deep);
+      background: var(--blue-soft);
+      border: 1px solid #dce8fa;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .stage h3 {
+      color: var(--navy);
+      font: 600 25px/1.2 var(--font-serif);
+      margin: 0 0 6px;
+    }
+
+    .stage p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 840px;
+      font-size: 14.5px;
+    }
+
+    /* Artifacts cards */
+    .artifacts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .artifact {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(62, 92, 145, .05);
+      display: flex;
+      flex-direction: column;
+      transition: .24s;
+    }
+
+    .artifact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(62, 92, 145, .1);
+      border-color: #ccdcf2;
+    }
+
+    .artifact-media {
+      width: 100%;
+      height: 310px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .artifact-media img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform .25s ease;
+      display: block;
+    }
+
+    .artifact:hover .artifact-media img {
+      transform: scale(1.02);
+    }
+
+    .zoom-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(23, 51, 92, 0.86);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      opacity: 0.85;
+      transition: all .2s ease;
+      pointer-events: none;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .artifact-media:hover .zoom-badge,
+    .erd-media-box:hover .zoom-badge {
+      opacity: 1;
+      transform: scale(1.03);
+      background: rgba(23, 51, 92, 0.98);
+    }
+
+    .artifact .cap {
+      padding: 16px 18px;
+      background: #fcfdff;
+      flex-grow: 1;
+    }
+
+    .artifact .cap b {
+      display: block;
+      color: var(--navy);
+      font-size: 14.5px;
+      margin-bottom: 5px;
+    }
+
+    .artifact .cap span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      display: block;
+    }
+
+    /* Tab Switcher Containers */
+    .erd-container {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(62, 92, 145, .06);
+      margin-top: 26px;
+    }
+
+    .erd-header {
+      padding: 20px 24px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fcfdff;
+    }
+
+    .erd-header h4 {
+      margin: 0 0 5px;
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .erd-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .interactive-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+
+    .interactive-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2563eb;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.4;
+      }
+    }
+
+    .erd-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .erd-tab-btn,
+    .uc-tab-btn {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      color: var(--ink);
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .erd-tab-btn:hover,
+    .uc-tab-btn:hover {
+      border-color: var(--blue-deep);
+      color: var(--blue-deep);
+      background: #f0f7ff;
+    }
+
+    .erd-tab-btn.active,
+    .uc-tab-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(23, 51, 92, .2);
+    }
+
+    .erd-display {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+    }
+
+    .erd-media-box {
+      width: 100%;
+      min-height: 280px;
+      max-height: 480px;
+      background: #f8fafc;
+      border: 1px solid #e2eaf4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .erd-media-box img {
+      max-width: 100%;
+      max-height: 440px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      transition: transform .25s ease;
+    }
+
+    .erd-media-box:hover img {
+      transform: scale(1.015);
+    }
+
+    .erd-caption-box {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px 20px;
+      background: #f8fafc;
+      border-left: 4px solid var(--blue-deep);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .erd-caption-box b {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .erd-caption-box p b,
+    .erd-caption-box p strong {
+      display: inline;
+      font-size: inherit;
+      margin-bottom: 0;
+      color: var(--navy);
+    }
+
+    .erd-caption-box p {
+      margin: 0;
+      color: #4a5568;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .erd-entities-line {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: #2563eb;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    /* Mockup Suite Callout & Showcase Styles */
+    .mockup-hero-card {
+      background: linear-gradient(135deg, #173B31 0%, #1E4D40 50%, #275A4E 100%);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      border-radius: 18px;
+      padding: 28px 32px;
+      color: #fff;
+      box-shadow: 0 16px 36px rgba(23, 59, 49, 0.18);
+      position: relative;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .mockup-hero-card::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(229, 169, 60, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mockup-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(229, 169, 60, 0.18);
+      border: 1px solid rgba(229, 169, 60, 0.45);
+      color: #FCD34D;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .mockup-hero-title {
+      font-size: clamp(20px, 3vw, 24px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .mockup-hero-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #E2ECE7;
+      margin: 0 0 20px;
+      max-width: 900px;
+    }
+
+    .mockup-stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .mockup-stat-chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #F4F7F6;
+      backdrop-filter: blur(4px);
+    }
+
+    .mockup-stat-chip strong {
+      color: #E5A93C;
+      font-weight: 800;
+    }
+
+    .mockup-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #E5A93C 0%, #D4982A 100%);
+      color: #173B31;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(229, 169, 60, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .mockup-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(229, 169, 60, 0.5);
+      background: #F3B545;
+      color: #0F2821;
+    }
+
+    .mockup-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-green 1.8s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    /* Screen Meta Toolbar in Display Area */
+    .mockup-screen-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 16px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    .mockup-screen-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .mockup-srs-pill {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 11.5px;
+    }
+
+    .mockup-media-container {
+      width: 100%;
+      min-height: 320px;
+      max-height: 520px;
+      background: #f8fafc;
+      border: 1px solid #e2eaf4;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mockup-media-container img {
+      max-width: 100%;
+      max-height: 480px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform .25s ease;
+    }
+
+    .mockup-media-container:hover img {
+      transform: scale(1.015);
+    }
+
+    .mockup-action-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      background: #275A4E;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(39, 90, 78, 0.2);
+    }
+
+    .mockup-action-btn-primary:hover {
+      background: #1E4D40;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(39, 90, 78, 0.3);
+    }
+
+    .mockup-pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .mockup-pipeline-step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 12px rgba(62, 92, 145, .03);
+      position: relative;
+    }
+
+    .mockup-pipeline-step .step-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--blue-deep);
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Code / User Story block */
+    .story-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 22px;
+      color: #e2e8f0;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.7;
+      margin-top: 16px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .kw {
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    .sn {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .st {
+      color: #fde047;
+    }
+
+    .cm {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* Note box */
+    .note {
+      margin-top: 24px;
+      padding: 18px 22px;
+      border-radius: 14px;
+      background: #f4f8ff;
+      border: 1px solid #dce8fa;
+      color: #49638d;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .note strong {
+      color: var(--navy);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 36, 65, .92);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 95vw;
+      max-height: 92vh;
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content img.zoom-full {
+      max-width: none;
+      max-height: none;
+      cursor: zoom-out;
+    }
+
+    .lightbox-content img {
+      cursor: zoom-in;
+      max-width: 100%;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .close {
+      position: fixed;
+      top: 18px;
+      right: 25px;
+      color: #fff;
+      font-size: 38px;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+      transition: .2s;
+    }
+
+    .close:hover {
+      color: #60a5fa;
+    }
+
+    .lightbox-hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 6px 16px;
+      border-radius: 20px;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 44px 0;
+      color: #8490a4;
+      background: rgba(248, 251, 255, .6);
+      font-size: 13.5px;
+      margin-top: 50px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media(max-width: 900px) {
+
+      .grid,
+      .artifacts,
+      .meta,
+      .contrib-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav .wrap {
+        height: auto;
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .links {
+        order: 3;
+        width: 100%;
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .artifact-media {
+        height: auto;
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="scrollProgress" class="scroll-progress-bar"></div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="brand">
+        <a href="index.html" class="brand-back">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span class="lang-en">PORTFOLIO</span>
+          <span class="lang-vi">PORTFOLIO</span>
+        </a>
+        <span class="lang-en">KIDPRO CASE STUDY</span>
+        <span class="lang-vi">CASE STUDY HỆ THỐNG KIDPRO</span>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <div class="links">
+          <a href="#overview"><span class="lang-en">Overview</span><span class="lang-vi">Tổng quan</span></a>
+          <a href="#contribution"><span class="lang-en">My Contribution</span><span class="lang-vi">Đóng góp của
+              tôi</span></a>
+          <a href="#evidence"><span class="lang-en">Evidence &amp; Artifacts</span><span class="lang-vi">Mô hình &amp;
+              Hiện vật</span></a>
+          <a href="#impact"><span class="lang-en">Target Outcomes</span><span class="lang-vi">Kết quả hướng
+              tới</span></a>
+        </div>
+        <div class="lang-switch" role="group" aria-label="Language selection">
+          <button type="button" class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" id="btn-vi" onclick="setLanguage('vi')">VI</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero Section -->
+    <div class="hero">
+      <span class="k">
+        <span class="lang-en">AI Feature Engineering &amp; EdTech Case Study</span>
+        <span class="lang-vi">Kỹ thuật Tính năng AI &amp; Case Study Công nghệ Giáo dục</span>
+      </span>
+      <h1>
+        <span class="lang-en">Kidpro – Smart Preschool Management &amp; <span class="blueword">AI-face attendance
+            Automation</span></span>
+        <span class="lang-vi">Kidpro – Quản lý Mầm non Thông minh &amp; <span class="blueword">tích hợp AI điểm danh
+            khuôn mặt</span></span>
+      </h1>
+      <p class="lead">
+        <span class="lang-en">A comprehensive preschool platform integrating AI facial recognition for student check-in,
+          dual-factor child pickup security, and automated boarding meal fee reconciliation tied to dynamic leave
+          policies.</span>
+        <span class="lang-vi">Nền tảng quản lý trường mầm non toàn diện tích hợp AI nhận diện khuôn mặt điểm danh, cơ
+          chế an toàn kép khi trả trẻ và tự động đối soát hoàn phí tiền ăn bán trú theo chính sách xin nghỉ phép linh
+          hoạt.</span>
+      </p>
+
+      <!-- Metadata Grid -->
+      <div class="meta">
+        <div>
+          <b>
+            <span class="lang-en">Context &amp; Scope</span>
+            <span class="lang-vi">Bối cảnh &amp; Quy mô</span>
+          </b>
+          <span>
+            <span class="lang-en">Academic Capstone Project · 4 Months · Team of 5</span>
+            <span class="lang-vi">Đồ án Tốt nghiệp · 4 Tháng · Nhóm 5 thành viên</span>
+          </span>
+        </div>
+        <div>
+          <b>
+            <span class="lang-en">My BA Responsibilities</span>
+            <span class="lang-vi">Trách nhiệm BA của tôi</span>
+          </b>
+          <span>
+            <span class="lang-en">Boarding Attendance, Pickup &amp; Late Fee Rules, Class Timetables, Stitch AI / Figma
+              Mockups, Claude Code UI Demo</span>
+            <span class="lang-vi">Điểm danh bán trú, Quy tắc đón trẻ &amp; phí trông muộn, Thời khóa biểu, Mockup Stitch
+              AI / Figma, Demo UI Claude Code</span>
+          </span>
+        </div>
+        <div>
+          <b>
+            <span class="lang-en">Tools &amp; Technologies</span>
+            <span class="lang-vi">Công cụ &amp; Công nghệ</span>
+          </b>
+          <span>
+            <span class="lang-en">AI Camera (model YOLO + InsightFace), PayOS VietQR, Figma, Stitch AI, Claude Code,
+              BPMN
+              2.0, Jira</span>
+            <span class="lang-vi">Camera AI (model YOLO + InsightFace), PayOS VietQR, Figma, Stitch AI, Claude Code,
+              BPMN
+              2.0, Jira</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Jump Navigation Pills -->
+      <div class="quick-jump-bar">
+        <span class="jump-label"><span class="lang-en">Quick Jump:</span><span class="lang-vi">Xem nhanh:</span></span>
+        <a href="#overview" class="jump-pill"><span class="lang-en">🎯 Overview &amp; Scope</span><span
+            class="lang-vi">🎯 Tổng quan &amp; Phạm vi</span></a>
+        <a href="#workflows-section" class="jump-pill"><span class="lang-en">🏥 5 Preschool Workflows</span><span
+            class="lang-vi">🏥 4 Luồng vận hành mầm non</span></a>
+        <a href="#contribution" class="jump-pill"><span class="lang-en">💼 BA Ownership</span><span class="lang-vi">💼
+            Vai trò &amp; Đóng góp BA</span></a>
+        <a href="#context-diagram" class="jump-pill"><span class="lang-en">🌐 System Context</span><span
+            class="lang-vi">🌐 Ngữ cảnh Hệ thống</span></a>
+        <a href="#workflows-explorer" class="jump-pill"><span class="lang-en">🔄 5 BPMN Workflows</span><span
+            class="lang-vi">🔄 5 Quy trình BPMN</span></a>
+        <a href="#usecases-explorer" class="jump-pill"><span class="lang-en">📋 Use Cases</span><span class="lang-vi">📋
+            Use Cases</span></a>
+        <a href="#data-architecture" class="jump-pill"><span class="lang-en">📐 ERD Architecture</span><span
+            class="lang-vi">📐 Mô hình Dữ liệu ERD</span></a>
+        <a href="#prototyping" class="jump-pill"><span class="lang-en">🎨 Mockup Suite (153 Screens)</span><span
+            class="lang-vi">🎨 Mockup Suite (153 Màn hình)</span></a>
+        <a href="#impact" class="jump-pill"><span class="lang-en">📈 Business Value</span><span class="lang-vi">📈 Hiệu
+            quả Nghiệp vụ</span></a>
+      </div>
+    </div>
+
+    <!-- Section 1: Project Overview -->
+    <section id="overview">
+      <div class="head">
+        <h2>
+          <span class="lang-en">Project Overview</span>
+          <span class="lang-vi">Tổng quan Dự án</span>
+        </h2>
+      </div>
+
+      <!-- Problem vs Solutions Grid -->
+      <div class="grid">
+        <div class="block">
+          <h3>
+            <span class="lang-en">🚨 The Business Problem</span>
+            <span class="lang-vi">🚨 Vấn đề Nghiệp vụ Thực tế</span>
+          </h3>
+          <ul>
+            <li>
+              <strong><span class="lang-en">Boarding Meal Fee Disputes:</span><span class="lang-vi">Tranh chấp tiền ăn
+                  bán trú:</span></strong>
+              <span class="lang-en">Morning headcounts taken manually on paper sheets frequently caused end-of-month
+                invoice disputes between parents and accountants regarding absent-day meal deductions.</span>
+              <span class="lang-vi">Điểm danh buổi sáng thủ công bằng sổ giấy thường xuyên gây ra tranh chấp hóa đơn
+                cuối tháng giữa phụ huynh và kế toán về việc hoàn trừ tiền ăn các ngày nghỉ.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Dismissal &amp; Child Pickup Vulnerabilities:</span><span class="lang-vi">Lỗ
+                  hổng an toàn khi trả trẻ:</span></strong>
+              <span class="lang-en">Paper logbooks during busy 4:30 PM - 5:30 PM rush hours created risks of
+                unauthorized individuals picking up children without digital audit trails.</span>
+              <span class="lang-vi">Sổ ký nhận bằng giấy trong giờ cao điểm 16:30 - 17:30 tiềm ẩn rủi ro người lạ đón
+                trẻ mà không có dấu vết kiểm toán số (digital audit trail).</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Accountant Bottlenecks:</span><span class="lang-vi">Điểm nghẽn kế
+                  toán:</span></strong>
+              <span class="lang-en">Reconciling manual attendance books with variable boarding meal pricing consumed ~4
+                full business days each monthly billing cycle.</span>
+              <span class="lang-vi">Việc đối soát sổ điểm danh giấy với chính sách giá ăn bán trú phức tạp làm tiêu tốn
+                khoảng 4 ngày làm việc trọn vẹn trong mỗi kỳ quyết toán tháng.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Network Offline Edge Cases:</span><span class="lang-vi">Rủi ro mất kết nối
+                  mạng:</span></strong>
+              <span class="lang-en">Parents submitting leave requests on the app could be unfairly charged if teachers
+                experienced mobile network outages and could not approve before meal preparation lock.</span>
+              <span class="lang-vi">Phụ huynh nộp đơn xin nghỉ đúng giờ trên ứng dụng nhưng giáo viên bị mất mạng di
+                động và không kịp duyệt trước giờ chốt suất ăn khiến phụ huynh bị tính tiền oan.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>
+            <span class="lang-en">🎯 Core Objectives &amp; Solutions</span>
+            <span class="lang-vi">🎯 Mục tiêu Cốt lõi &amp; Giải pháp</span>
+          </h3>
+          <ul>
+            <li>
+              <strong><span class="lang-en">Automate Attendance:</span><span class="lang-vi">Tự động hóa điểm
+                  danh:</span></strong>
+              <span class="lang-en">Deploy AI facial recognition at the school gate for morning roll-call with real-time
+                sync to the kitchen and accounting modules.</span>
+              <span class="lang-vi">Triển khai camera AI nhận diện khuôn mặt tại cổng trường để điểm danh buổi sáng,
+                đồng bộ tức thời đến phân hệ nhà bếp và kế toán.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Package-Differentiated Meal Policies:</span><span class="lang-vi">Chính sách
+                  hoàn tiền ăn theo gói:</span></strong>
+              <span class="lang-en">Enforce strict, transparent cutoff times for meal fee refunds based on service
+                packages (07:00 AM for Full Boarding vs 08:30 AM for Lunch-Only).</span>
+              <span class="lang-vi">Thiết lập giờ chốt hủy suất ăn minh bạch theo từng gói dịch vụ bán trú (07:00 sáng
+                cho gói Toàn phần vs 08:30 sáng cho gói Chỉ ăn trưa và xế chiều).</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Dual-Verification Pickup with Human Backup:</span><span class="lang-vi">Xác
+                  minh trả trẻ kép kèm dự phòng:</span></strong>
+              <span class="lang-en">Authenticate authorized guardians via AI, while providing a seamless Teacher
+                Familiarity Override for known parents.</span>
+              <span class="lang-vi">Xác thực người đón hợp lệ qua AI, đồng thời cung cấp cơ chế Giáo viên trả thủ công
+                đối với phụ huynh quen mặt.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Automated Late Pickup Billing:</span><span class="lang-vi">Tự động tính phí
+                  trông muộn:</span></strong>
+              <span class="lang-en">Dynamically compute after-hours care fees beyond 5:30 PM to compensate on-duty
+                teachers fairly.</span>
+              <span class="lang-vi">Tự động tính phụ phí giữ trẻ ngoài giờ sau 17:30 theo các khung bậc lũy tiến để bù
+                đắp công bằng cho giáo viên trực muộn.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- In-Scope vs Outside Scope Boundary -->
+      <div class="grid" style="margin-top: 22px;">
+        <div class="block scope-card-in">
+          <span class="scope-pill scope-pill-in"><span class="lang-en">✓ In-Scope Boundary</span><span class="lang-vi">✓
+              Trong phạm vi hệ thống</span></span>
+          <h3>
+            <span class="lang-en">📋 In-Scope System Capabilities</span>
+            <span class="lang-vi">📋 Phạm vi Nghiệp vụ Trong Hệ thống</span>
+          </h3>
+          <p style="color: var(--ink); font-size: 14px; line-height: 1.65; margin-bottom: 14px;">
+            <span class="lang-en">The core KidPro platform manages student lifecycle and daily operational routines
+              across 7 preschool stakeholders:</span>
+            <span class="lang-vi">Nền tảng KidPro quản lý trọn vẹn vòng đời học sinh và chuỗi vận hành hàng ngày của 7
+              tác nhân mầm non:</span>
+          </p>
+          <ul>
+            <li>
+              <strong><span class="lang-en">People (7 Actors):</span><span class="lang-vi">Tác nhân (7 Vai
+                  trò):</span></strong>
+              <span class="lang-en">Preschool Teachers, Parents/Guardians, School Accountants, Academic Affairs
+                Officers, Kitchen Staff, School Principals, Platform Super Admins.</span>
+              <span class="lang-vi">Giáo viên, Phụ huynh, Kế toán trường, Cán bộ giáo vụ, Nhân
+                viên nhà bếp, Ban giám hiệu, Quản trị viên hệ thống.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Core Functional Modules:</span><span class="lang-vi">Các phân hệ nghiệp vụ
+                  cốt lõi:</span></strong>
+              <span class="lang-en">AI Morning Attendance, Afternoon Child Dismissal Security, Boarding Meal Count
+                Aggregation, Automated Tuition Billing with PayOS VietQR, Class Allocation &amp; Teacher(school manage)
+                Assignment.</span>
+              <span class="lang-vi">Điểm danh FaceID buổi sáng, An toàn trả trẻ buổi chiều, Tổng hợp suất ăn bán trú nhà
+                bếp, Quyết toán học phí tự động PayOS VietQR, Phân bổ lớp &amp; Phân công giáo viên(quản trị
+                trường).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="block scope-card-out">
+          <span class="scope-pill scope-pill-out"><span class="lang-en">✕ Outside Scope Boundary</span><span
+              class="lang-vi">✕ Ngoài phạm vi hệ thống</span></span>
+          <h3>
+            <span class="lang-en">🚫 Outside Scope (Architectural Demarcations)</span>
+            <span class="lang-vi">🚫 Ngoài phạm vi (Ranh giới Kiến trúc)</span>
+          </h3>
+          <p style="color: var(--muted); font-size: 13.5px; margin-bottom: 14px;">
+            <span class="lang-en">Explicit architectural boundary demarcations delegating specialized services to
+              third-party providers:</span>
+            <span class="lang-vi">Các ranh giới kiến trúc xác định rõ chức năng ủy nhiệm cho các nhà cung cấp chuyên
+              biệt bên ngoài:</span>
+          </p>
+          <ul>
+            <li>
+              <strong><span class="lang-en">Direct Core Banking Ledgering:</span><span class="lang-vi">Hệ thống hạch
+                  toán ngân hàng:</span></strong>
+              <span class="lang-en">KidPro does not store bank card numbers; payment processing and settlement are
+                delegated to the licensed PayOS VietQR Payment Gateway.</span>
+              <span class="lang-vi">KidPro không lưu trữ thẻ ngân hàng; việc xử lý giao dịch tài chính do Cổng thanh
+                toán trung gian PayOS VietQR đảm nhiệm qua Webhook.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">External Food Procurement &amp; Logistics:</span><span class="lang-vi">Chuỗi
+                  cung ứng thực phẩm bên ngoài:</span></strong>
+              <span class="lang-en">Direct contracts and logistical purchase orders with agricultural vendors remain
+                managed by external school procurement.</span>
+              <span class="lang-vi">Hợp đồng và chuỗi giao nhận hàng hóa từ các nhà cung cấp thực phẩm do phòng hành
+                chính mua sắm quản lý ngoài phần mềm.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">General Teacher Payroll &amp; Social Insurance:</span><span
+                  class="lang-vi">Quản lý lương &amp; Bảo hiểm giáo viên:</span></strong>
+              <span class="lang-en">The platform outputs late-stay overtime hours and attendance metrics to external
+                accounting systems without managing national social insurance files.</span>
+              <span class="lang-vi">Hệ thống chỉ xuất số giờ trông muộn và tỷ lệ chuyên cần phục vụ tính phụ cấp, không
+                quản lý hồ sơ bảo hiểm xã hội toàn diện.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Core Preschool Operational Workflows (1.1 - 1.5) -->
+      <div class="block" id="workflows-section" style="margin-top: 22px;">
+        <h3>
+          <span class="lang-en">🏫 5 Core Preschool Operational Workflows (Scope Specification)</span>
+          <span class="lang-vi">🏫 5 Luồng Nghiệp vụ Vận hành Mầm non Cốt lõi (Đặc tả Phạm vi)</span>
+        </h3>
+        <div class="grid"
+          style="grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; margin-top: 14px;">
+          <div class="workflow-card">
+            <div class="workflow-card-head">
+              <strong style="color: var(--navy); font-size: 14.5px;">
+                <span class="lang-en">1.1 Morning AI FaceID Attendance</span>
+                <span class="lang-vi">1.1 Điểm danh AI FaceID Buổi sáng</span>
+              </strong>
+              <span class="workflow-num">01</span>
+            </div>
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
+              <span class="lang-en">Tablet camera scans child at entrance <span class="flow-arrow">&rarr;</span> AI
+                Facial Recognition evaluates feature vectors <span class="flow-arrow">&rarr;</span> auto logs attendance
+                &amp; sends real-time push notification with photo to Parent <span class="flow-arrow">&rarr;</span>
+                fallbacks to 1-tap manual roll-call if unverified.</span>
+              <span class="lang-vi">Camera tablet quét mặt trẻ tại cổng <span class="flow-arrow">&rarr;</span>
+                Microservice AI nhận diện vector <span class="flow-arrow">&rarr;</span> tự động ghi nhận điểm danh &amp;
+                gửi thông báo kèm ảnh tức thời về App Phụ huynh <span class="flow-arrow">&rarr;</span> dự phòng điểm
+                danh thủ công 1 chạm nếu nhận diện không khớp.</span>
+            </p>
+          </div>
+
+          <div class="workflow-card">
+            <div class="workflow-card-head">
+              <strong style="color: var(--navy); font-size: 14.5px;">
+                <span class="lang-en">1.2 Boarding Meal Cutoff &amp; Headcount</span>
+                <span class="lang-vi">1.2 Chốt Suất ăn Bán trú Nhà bếp</span>
+              </strong>
+              <span class="workflow-num">02</span>
+            </div>
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
+              <span class="lang-en">At 08:30 AM daily cutoff <span class="flow-arrow">&rarr;</span> system aggregates
+                total present students minus excused leaves <span class="flow-arrow">&rarr;</span> generates live
+                kitchen meal preparation dashboard <span class="flow-arrow">&rarr;</span> late arrivals after 08:30
+                require Academic Affairs override for extra food portions.</span>
+              <span class="lang-vi">Đến giờ chốt 08:30 sáng hàng ngày <span class="flow-arrow">&rarr;</span> hệ thống tự
+                động tổng hợp sĩ số học sinh có mặt trừ đi các đơn nghỉ hợp lệ <span class="flow-arrow">&rarr;</span>
+                kết xuất số lượng suất ăn cho Nhà bếp chuẩn bị <span class="flow-arrow">&rarr;</span> các ca đến muộn
+                sau 08:30 cần Giáo vụ duyệt để bổ sung suất ăn.</span>
+            </p>
+          </div>
+
+          <div class="workflow-card">
+            <div class="workflow-card-head">
+              <strong style="color: var(--navy); font-size: 14.5px;">
+                <span class="lang-en">1.3 Afternoon Dual-Verification Pickup</span>
+                <span class="lang-vi">1.3 Xác minh Kép khi Trả trẻ Buổi chiều</span>
+              </strong>
+              <span class="workflow-num">03</span>
+            </div>
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
+              <span class="lang-en">Teacher scans pickup guardian <span class="flow-arrow">&rarr;</span> system verifies
+                against authorized profile <span class="flow-arrow">&rarr;</span> child handoff logged. If
+                unidentifiable, registered photo is pushed to teacher for Teacher Familiarity Override inspection <span
+                  class="flow-arrow">&rarr;</span> auto calculates incremental late fees for departures after
+                17:30.</span>
+              <span class="lang-vi">Giáo viên quét mặt người đón <span class="flow-arrow">&rarr;</span> hệ thống kiểm
+                tra tính hợp lệ với hồ sơ người giám hộ <span class="flow-arrow">&rarr;</span> trả trẻ &amp; lưu nhật
+                ký. Nếu không nhận diện được, gửi ảnh gốc về máy giáo viên để đối chiếu bằng mắt <span
+                  class="flow-arrow">&rarr;</span> tự tính phí đón muộn sau 17:30.</span>
+            </p>
+          </div>
+
+          <div class="workflow-card">
+            <div class="workflow-card-head">
+              <strong style="color: var(--navy); font-size: 14.5px;">
+                <span class="lang-en">1.4 Automated Tuition Billing &amp; PayOS VietQR</span>
+                <span class="lang-vi">1.4 Quyết toán Học phí &amp; PayOS VietQR</span>
+              </strong>
+              <span class="workflow-num">04</span>
+            </div>
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
+              <span class="lang-en">Accountant initiates batch invoices <span class="flow-arrow">&rarr;</span> system
+                deducts verified meal refunds &amp; adds late pickup fees <span class="flow-arrow">&rarr;</span>
+                generates Dynamic VietQR code with unique invoice string <span class="flow-arrow">&rarr;</span> banking
+                webhook triggers instant debt crossing &amp; issues e-receipt.</span>
+              <span class="lang-vi">Kế toán phát hành bảng kê học phí hàng loạt <span class="flow-arrow">&rarr;</span>
+                hệ thống tự động hoàn trừ tiền ăn ngày nghỉ hợp lệ &amp; cộng phụ phí trông muộn <span
+                  class="flow-arrow">&rarr;</span> tạo mã VietQR động gắn mã hóa đơn <span
+                  class="flow-arrow">&rarr;</span> Webhook gạch nợ tự động tức thì.</span>
+            </p>
+          </div>
+
+          <div class="workflow-card">
+            <div class="workflow-card-head">
+              <strong style="color: var(--navy); font-size: 14.5px;">
+                <span class="lang-en">1.5 Academic Year Setup &amp; Class Provisioning</span>
+                <span class="lang-vi">1.5 Khởi tạo Năm học &amp; Phân bổ Lớp học</span>
+              </strong>
+              <span class="workflow-num">05</span>
+            </div>
+            <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
+              <span class="lang-en">Principal / Academic Officer initializes new academic year &amp; semesters <span
+                  class="flow-arrow">&rarr;</span> configures grade levels, classroom capacities &amp; room wings <span
+                  class="flow-arrow">&rarr;</span> assigns homeroom / assistant teachers <span
+                  class="flow-arrow">&rarr;</span> allocates student roster &amp; activates parent portal
+                accounts.</span>
+              <span class="lang-vi">Hiệu trưởng / Giáo vụ khởi tạo niên khóa &amp; học kỳ mới <span
+                  class="flow-arrow">&rarr;</span> thiết lập cấu trúc khối tuổi, định biên sĩ số &amp; bố trí phòng học
+                <span class="flow-arrow">&rarr;</span> phân công giáo viên chủ nhiệm / trợ giảng <span
+                  class="flow-arrow">&rarr;</span> phân bổ danh sách học sinh vào lớp &amp; kích hoạt tài khoản phụ
+                huynh đầu năm.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: My Contribution -->
+    <section id="contribution">
+      <div class="head">
+        <h2>
+          <span class="lang-en">My Contribution </span>
+          <span class="lang-vi">Đóng góp của tôi </span>
+        </h2>
+
+      </div>
+
+      <div class="block">
+        <h3>
+          <span class="lang-en">Specific Ownership &amp; Deliverables</span>
+          <span class="lang-vi">Phạm vi Trách nhiệm &amp; Sản phẩm Bàn giao Cụ thể</span>
+        </h3>
+        <p style="color: var(--muted); margin-bottom: 16px; font-size: 14px;">
+          <span class="lang-en">Within a 5-member project team, I held direct responsibility for formulating
+            requirements, modeling process flows, and developing interactive prototypes for three critical functional
+            domains:</span>
+          <span class="lang-vi">Trong nhóm dự án 5 thành viên, tôi trực tiếp chịu trách nhiệm thu thập yêu cầu, mô hình
+            hóa quy trình và xây dựng nguyên mẫu tương tác cho 3 miền chức năng cốt lõi:</span>
+        </p>
+
+        <div class="contrib-grid">
+          <div class="contrib-card">
+            <div class="contrib-card-header">
+              <span class="contrib-icon">📋</span>
+              <h4 class="contrib-title">
+                <span class="lang-en">Boarding Attendance Subsystem</span>
+                <span class="lang-vi">Phân hệ Điểm danh Bán trú</span>
+              </h4>
+            </div>
+            <p class="contrib-body">
+              <span class="lang-en">Defined stakeholder requirements with school principals and teachers; modeled
+                morning gate scan workflows and formulated automated meal fee refund business rules based on service
+                tier packages.</span>
+              <span class="lang-vi">Thu thập và thống nhất yêu cầu từ hội đồng đồ án cùng giáo viên; mô hình hóa quy
+                trình quét mặt tại trường và xây dựng quy tắc hoàn tiền ăn tự động dựa trên các gói bán trú.</span>
+            </p>
+          </div>
+
+          <div class="contrib-card">
+            <div class="contrib-card-header">
+              <span class="contrib-icon">🚗</span>
+              <h4 class="contrib-title">
+                <span class="lang-en">Child Pickup &amp; Late Fee Billing</span>
+                <span class="lang-vi">Quy trình Đón trẻ &amp; Tính phí Trông muộn</span>
+              </h4>
+            </div>
+            <p class="contrib-body">
+              <span class="lang-en">Formulated dual-verification security logic (matching child with registered guardian
+                profile), designed the <strong>Teacher Familiarity Override</strong> fallback flow, and specified
+                automatic incremental late fee calculations.</span>
+              <span class="lang-vi">Xây dựng logic bảo mật xác minh kép (đối khớp trẻ với hồ sơ người đón đã đăng ký),
+                thiết kế luồng dự phòng <strong>Giáo viên quen mặt cho trả trẻ thủ công</strong>, và
+                đặc tả thuật toán tính phí đón muộn lũy tiến.</span>
+            </p>
+          </div>
+
+          <div class="contrib-card">
+            <div class="contrib-card-header">
+              <span class="contrib-icon">🏫</span>
+              <h4 class="contrib-title">
+                <span class="lang-en">Classroom &amp; Timetable Management</span>
+                <span class="lang-vi">Quản lý Lớp học &amp; Thời khóa biểu</span>
+              </h4>
+            </div>
+            <p class="contrib-body">
+              <span class="lang-en">Specified academic year division, classroom teacher assignments, and weekly activity
+                scheduling with role-based viewing permissions for parents.</span>
+              <span class="lang-vi">Đặc tả cấu trúc phân chia năm học, phân công giáo viên chủ nhiệm và lập lịch hoạt
+                động tuần kèm cơ chế phân quyền xem cho phụ huynh.</span>
+            </p>
+          </div>
+
+          <div class="contrib-card">
+            <div class="contrib-card-header">
+              <span class="contrib-icon">🎨</span>
+              <h4 class="contrib-title">
+                <span class="lang-en">Prototyping &amp; Technical Validation</span>
+                <span class="lang-vi">Tạo mẫu &amp; Thẩm định Kỹ thuật</span>
+              </h4>
+            </div>
+            <p class="contrib-body">
+              <span class="lang-en">Rapidly generated initial wireframes using <strong>Stitch AI</strong>, built
+                high-fidelity interactive component systems in <strong>Figma</strong>, and utilized <strong>Claude
+                  Code</strong> to develop working HTML/CSS UI demos for stakeholder validation.</span>
+              <span class="lang-vi">Sử dụng <strong>Stitch AI</strong> để tạo nhanh bố cục wireframe ban đầu, hoàn thiện
+                thiết kế chi tiết trên <strong>Figma</strong>, và ứng dụng <strong>Claude Code</strong> để lập trình bản
+                demo HTML/CSS tương tác phục vụ trình diễn và đánh giá.</span>
+            </p>
+          </div>
+
+          <div class="contrib-card" style="grid-column: 1 / -1;">
+            <div class="contrib-card-header">
+              <span class="contrib-icon">🤝</span>
+              <h4 class="contrib-title">
+                <span class="lang-en">Cross-Team Support &amp; Peer Reviews</span>
+                <span class="lang-vi">Phối hợp &amp; Phản biện Nhóm</span>
+              </h4>
+            </div>
+            <p class="contrib-body">
+              <span class="lang-en">Collaborated with teammates to review use cases across Financial Billing, Nutrition
+                Management, and Parent Portal modules, guaranteeing end-to-end data integrity across all 87 SRS use
+                cases.</span>
+              <span class="lang-vi">Đồng hành phản biện các Use Case của đồng đội thuộc phân hệ Quyết toán Tài chính,
+                Quản lý Dinh dưỡng và Cổng thông tin Phụ huynh, bảo đảm tính nhất quán trên toàn bộ 87 UC trong
+                tài liệu SRS.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Case Study Evidence & Artifacts -->
+    <section id="evidence">
+      <div class="head">
+        <h2>
+          <span class="lang-en">Case Study Evidence &amp; Analysis</span>
+          <span class="lang-vi">Mô hình &amp; Bằng chứng Phân tích Nghiệp vụ</span>
+        </h2>
+        <p>
+          <span class="lang-en">A step-by-step walkthrough of analytical models, business logic specifications, and
+            interactive interface artifacts extracted from the SRS document.</span>
+          <span class="lang-vi">Hành trình trực quan hóa các mô hình phân tích, đặc tả logic nghiệp vụ và sản phẩm giao
+            diện tương tác trích xuất từ tài liệu SRS.</span>
+        </p>
+      </div>
+
+      <!-- Macro System Context Diagram (Level 0 DFD) -->
+      <div class="stage" id="context-diagram">
+        <div class="stage-badge"><span class="lang-en">System Boundary · Macro Context</span><span class="lang-vi">Ranh
+            giới Hệ thống · Ngữ cảnh Vĩ mô</span></div>
+        <h3>
+          <span class="lang-en">System Context Diagram – KIDPRO Platform Core &amp; Ecosystem Boundaries</span>
+          <span class="lang-vi">Sơ đồ Ngữ cảnh Hệ thống – KIDPRO Platform Core &amp; Ranh giới Hệ sinh thái</span>
+        </h3>
+        <p>
+          <span class="lang-en">Defining bidirectional information flows between the central KIDPRO engine, 7 human
+            stakeholder personas, 1 internal AI computer vision microservice, and 5 external cloud ecosystems.</span>
+          <span class="lang-vi">Xác định các luồng thông tin hai chiều giữa hệ thống trung tâm KIDPRO, 7 nhóm tác nhân
+            con người, 1 microservice AI thị giác máy tính nội bộ và 5 hệ sinh thái dịch vụ đám mây tích hợp.</span>
+        </p>
+      </div>
+
+      <div class="artifact" style="margin-top: 20px;">
+        <div class="artifact-media" style="height: auto; min-height: 280px; max-height: 520px; padding: 18px;"
+          onclick="zoomArtifact(this)">
+          <img src="assets/kidpro-context-diagram.png" alt="KIDPRO System Context Diagram"
+            style="max-height: 480px; width: 100%; object-fit: contain;">
+          <span class="zoom-badge"><span class="lang-en">🔍 Click to enlarge</span><span class="lang-vi">🔍 Click phóng
+              to</span></span>
+        </div>
+        <div class="cap">
+          <b>
+            <span class="lang-en">System Context Diagram – Architectural Scope &amp; External
+              Integrations</span>
+            <span class="lang-vi">Sơ đồ Ngữ cảnh Hệ thống – Ranh giới Kiến trúc &amp; Tích hợp Ngoài</span>
+          </b>
+          <span>
+            <span class="lang-en">Establishes the macro-level boundary of the <strong>KIDPRO Platform Core</strong>:
+              Interfaces with <strong>7 human roles</strong> (Super Admin, School Accountant, Academic Affairs, Parent,
+              Preschool Teacher, Kitchen Staff, School Principal); integrates with <strong>1 internal system</strong>
+              (AI Facial Recognition Microservice sending Student_ID and confidence scores); and connects to <strong>5
+                external ecosystems</strong> (Cloud Storage CDN for images, Email Service, Firebase Cloud Messaging FCM,
+              PayOS VietQR Payment Gateway, and SMS OTP).</span>
+            <span class="lang-vi">Thiết lập ranh giới vĩ mô của trung tâm <strong>KIDPRO Platform Core</strong>: Giao
+              tiếp với <strong>7 tác nhân con người</strong> (Quản trị viên, Kế toán, Giáo vụ, Phụ huynh, Giáo viên, Nhà
+              bếp, Hiệu trưởng); tích hợp <strong>1 hệ thống nội bộ</strong> (Microservice AI nhận diện khuôn mặt truyền
+              mã học sinh và điểm tin cậy); và kết nối với <strong>5 hệ thống đám mây bên ngoài</strong> (Lưu trữ ảnh
+              Cloud Storage CDN, Dịch vụ Email, Thông báo đẩy FCM, Cổng thanh toán PayOS VietQR, và Dịch vụ SMS
+              OTP).</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Stage 1: Business Process & Core Operational Workflows -->
+      <div class="stage" id="workflows-explorer" style="margin-top: 50px;">
+        <div class="stage-badge"><span class="lang-en">Stage 1 · Business Process Modeling</span><span
+            class="lang-vi">Giai đoạn 1 · Mô hình hóa Quy trình Nghiệp vụ</span></div>
+        <h3>
+          <span class="lang-en">1. 5 Core Operational BPMN Workflows</span>
+          <span class="lang-vi">1. 5 Quy trình Vận hành BPMN Cốt lõi</span>
+        </h3>
+        <p>
+          <span class="lang-en">Decomposing end-to-end preschool operations into standardized swimlane activity models,
+            balancing AI computer vision verification with human teacher operational flexibility and cross-functional
+            exception handling.</span>
+          <span class="lang-vi">Mô hình hóa toàn bộ nghiệp vụ vận hành trường mầm non thành các quy trình phân làn
+            (Swimlanes) chuẩn mực, cân bằng giữa độ chính xác của camera AI và tính linh hoạt nghiệp vụ của giáo viên,
+            làm rõ điểm rẽ nhánh xử lý ngoại lệ.</span>
+        </p>
+
+        <!-- Aggregated Interactive 5-Workflow Switcher -->
+        <div class="erd-container" style="margin-top: 24px;">
+          <div class="erd-header">
+            <div
+              style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+              <h4>
+                <span class="lang-en">5 Core Operational BPMN Workflows</span>
+                <span class="lang-vi">5 Quy trình Vận hành BPMN Cốt lõi</span>
+              </h4>
+              <span class="interactive-tag">
+                <span class="interactive-dot"></span>
+                <span class="lang-en">5 Core Workflows</span>
+                <span class="lang-vi">5 Quy trình Cốt lõi</span>
+              </span>
+            </div>
+            <p>
+              <span class="lang-en">Click each tab below to examine the corresponding swimlane activity diagram and its
+                business logic:</span>
+              <span class="lang-vi">Bấm chọn từng tab bên dưới để xem sơ đồ luồng nghiệp vụ phân làn (Swimlane) và quy
+                tắc xử lý tương ứng:</span>
+            </p>
+          </div>
+
+          <!-- Tab buttons -->
+          <div class="erd-tabs" id="wfTabs">
+            <button class="erd-tab-btn active" onclick="selectWfTab('attendance', this)" data-key="attendance">
+              <span class="lang-en">🕒 1. Attendance &amp; Day-boarding</span>
+              <span class="lang-vi">🕒 1. Điểm danh &amp; Bán trú</span>
+            </button>
+            <button class="erd-tab-btn" onclick="selectWfTab('pickup', this)" data-key="pickup">
+              <span class="lang-en">🚗 2. Afternoon Child Pick-up</span>
+              <span class="lang-vi">🚗 2. Trả trẻ Buổi chiều</span>
+            </button>
+            <button class="erd-tab-btn" onclick="selectWfTab('tuition', this)" data-key="tuition">
+              <span class="lang-en">💳 3. Tuition &amp; VietQR</span>
+              <span class="lang-vi">💳 3. Học phí &amp; VietQR</span>
+            </button>
+            <button class="erd-tab-btn" onclick="selectWfTab('child_mgmt', this)" data-key="child_mgmt">
+              <span class="lang-en">👶 4. Child Profile &amp; FaceID</span>
+              <span class="lang-vi">👶 4. Hồ sơ Trẻ &amp; FaceID</span>
+            </button>
+            <button class="erd-tab-btn" onclick="selectWfTab('schoolyear', this)" data-key="schoolyear">
+              <span class="lang-en">🏫 5. School Year &amp; Classes</span>
+              <span class="lang-vi">🏫 5. Khởi tạo Năm học &amp; Lớp</span>
+            </button>
+          </div>
+
+          <!-- Display Area -->
+          <div class="erd-display">
+            <div class="erd-media-box" onclick="zoomArtifact(this)">
+              <img id="wfMainImg" src="assets/kidpro-workflow-attendance.png"
+                alt="Attendance and Day-boarding Workflow">
+              <span class="zoom-badge"><span class="lang-en">🔍 Click to enlarge</span><span class="lang-vi">🔍 Click
+                  phóng to</span></span>
+            </div>
+
+            <div class="erd-caption-box">
+              <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+                <div style="flex: 1; min-width: 280px;">
+                  <b id="wfTitle"
+                    style="font-size: 15px; color: var(--navy); display: block; margin-bottom: 6px;">Morning Attendance
+                    &amp; Day-boarding Workflow (FaceID &amp; Cutoff)</b>
+                  <p id="wfDesc" style="margin: 0 0 10px; line-height: 1.6; color: var(--ink);">
+                    Morning check-in with AI computer vision roll-call: Tablet camera captures child's face &rarr;
+                    System
+                    validates Face ID against vector store &rarr; Evaluates reliability threshold. Fallback to 1-tap
+                    manual
+                    attendance if unverified. At 08:30 AM, system aggregates summary meal count and pushes real-time
+                    portions to Kitchen staff.
+                  </p>
+                  <div id="wfMeta" class="erd-entities-line">
+                    Swimlanes: Teacher, System, Academic Affairs, Kitchen &middot; Gateways: Reliability Thresholds,
+                    Supplementary Meal Approval
+                  </div>
+                </div>
+                <a id="wfNewTabBtn" href="assets/kidpro-workflow-attendance.png" target="_blank" class="erd-action-btn"
+                  style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #eef4ff; color: #17335c; border: 1px solid #c7d7f2; border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s; box-shadow: 0 2px 6px rgba(23, 51, 92, 0.05);">
+                  <span>🔍</span>
+                  <span class="lang-en">Open High-Res (New Tab) &nearr;</span>
+                  <span class="lang-vi">Mở ảnh độ nét cao &nearr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 5 Use Case Diagrams Switcher -->
+        <div class="erd-container" id="usecases-explorer" style="margin-top: 32px;">
+          <div class="erd-header">
+            <div
+              style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+              <h4>
+                <span class="lang-en">📋 Role-Based Use Case Decomposition by Actor</span>
+                <span class="lang-vi">📋 Phân rã Use Cases theo Từng Nhóm Tác nhân</span>
+              </h4>
+
+            </div>
+            <p>
+              <span class="lang-en">Functional decomposition covering all UC, categorizing operational
+                duties, parent touchpoints, and financial authorization boundaries:</span>
+              <span class="lang-vi">Phân rã chức năng bao quát toàn bộ các UC, phân định rõ quyền hạn của giáo
+                viên, điểm chạm của phụ huynh và ranh giới quản trị tài chính:</span>
+            </p>
+          </div>
+
+          <!-- Tab buttons -->
+          <div class="erd-tabs" id="ucTabs">
+            <button class="erd-tab-btn uc-tab-btn active" onclick="selectUcTab('teachers', this)" data-key="teachers">
+              <span class="lang-en">👩‍🏫 1. Class Teachers</span>
+              <span class="lang-vi">👩‍🏫 1. Giáo viên</span>
+            </button>
+            <button class="erd-tab-btn uc-tab-btn" onclick="selectUcTab('parent', this)" data-key="parent">
+              <span class="lang-en">👨‍👩‍👧 2. Parents</span>
+              <span class="lang-vi">👨‍👩‍👧 2. Phụ huynh</span>
+            </button>
+            <button class="erd-tab-btn uc-tab-btn" onclick="selectUcTab('accountant', this)" data-key="accountant">
+              <span class="lang-en">📊 3. School Accountant</span>
+              <span class="lang-vi">📊 3. Kế toán</span>
+            </button>
+            <button class="erd-tab-btn uc-tab-btn" onclick="selectUcTab('kitchen', this)" data-key="kitchen">
+              <span class="lang-en">🍳 4. Kitchen Staff</span>
+              <span class="lang-vi">🍳 4. Nhà bếp</span>
+            </button>
+            <button class="erd-tab-btn uc-tab-btn" onclick="selectUcTab('academic', this)" data-key="academic">
+              <span class="lang-en">🏛️ 5. Academic Affairs</span>
+              <span class="lang-vi">🏛️ 5. Cán bộ Giáo vụ</span>
+            </button>
+            <button class="erd-tab-btn uc-tab-btn" onclick="selectUcTab('principal_admin', this)"
+              data-key="principal_admin">
+              <span class="lang-en">👑 6. Principal &amp; Super Admin</span>
+              <span class="lang-vi">👑 6. Hiệu trưởng &amp; Admin</span>
+            </button>
+          </div>
+
+          <!-- Display Area -->
+          <div class="erd-display">
+            <!-- Sub-selector for Principal & Admin role -->
+            <div id="ucSubTabs" style="display: none; margin-bottom: 14px; gap: 8px; flex-wrap: wrap;">
+              <button class="erd-action-btn uc-sub-btn active" onclick="switchUcSub('both', this)" data-sub="both"
+                style="padding: 6px 14px; font-size: 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--accent); background: var(--navy); color: #fff; font-weight: 600; transition: .2s;">
+                <span class="lang-en">🖼️ Both Diagrams (Side-by-Side)</span>
+                <span class="lang-vi">🖼️ Cả 2 sơ đồ (Song song)</span>
+              </button>
+              <button class="erd-action-btn uc-sub-btn" onclick="switchUcSub('principal', this)" data-sub="principal"
+                style="padding: 6px 14px; font-size: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #c7d7f2; background: #fff; color: var(--navy); font-weight: 600; transition: .2s;">
+                <span class="lang-en">🏛️ School Principal</span>
+                <span class="lang-vi">🏛️ Hiệu trưởng</span>
+              </button>
+              <button class="erd-action-btn uc-sub-btn" onclick="switchUcSub('admin', this)" data-sub="admin"
+                style="padding: 6px 14px; font-size: 12px; border-radius: 8px; cursor: pointer; border: 1px solid #c7d7f2; background: #fff; color: var(--navy); font-weight: 600; transition: .2s;">
+                <span class="lang-en">🛡️ Platform Super Admin</span>
+                <span class="lang-vi">🛡️ Super Admin</span>
+              </button>
+            </div>
+
+            <div class="erd-media-box" onclick="zoomArtifact(this)">
+              <img id="ucMainImg" src="assets/kidpro-usecase-teachers.png" alt="Use Case Diagram for Class Teachers">
+              <span class="zoom-badge"><span class="lang-en">🔍 Click to enlarge</span><span class="lang-vi">🔍 Click
+                  phóng to</span></span>
+            </div>
+
+            <div class="erd-caption-box">
+              <div
+                style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+                <div style="flex: 1; min-width: 280px;">
+                  <b id="ucTitle" style="font-size: 15px; color: var(--navy); display: block; margin-bottom: 6px;">Use
+                    Case Diagram: Class Teachers</b>
+                  <p id="ucDesc" style="margin: 0 0 10px; line-height: 1.6; color: var(--ink);">
+                    Core classroom teacher operational use cases: Morning roll-call attendance via AI FaceID camera,
+                    1-tap
+                    manual check-in override, student health/medication administration logging, afternoon child
+                    dismissal
+                    verification, and daily classroom activity journal logging.
+                  </p>
+                  <div id="ucMeta" class="erd-entities-line">
+                    Actor: Class Teacher &middot; Modules: Attendance, Health Check, Medication Logs, Afternoon
+                    Dismissal, Class
+                    Journal
+                  </div>
+                </div>
+                <a id="ucNewTabBtn" href="assets/kidpro-usecase-teachers.png" target="_blank" class="erd-action-btn"
+                  style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #eef4ff; color: #17335c; border: 1px solid #c7d7f2; border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s; box-shadow: 0 2px 6px rgba(23, 51, 92, 0.05);">
+                  <span>🔍</span>
+                  <span class="lang-en">Open High-Res (New Tab) &nearr;</span>
+                  <span class="lang-vi">Mở ảnh độ nét cao &nearr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Stage 2: Package-Differentiated Meal Fee Refund Business Rules -->
+      <div class="stage" style="margin-top: 50px;">
+        <div class="stage-badge"><span class="lang-en">Stage 2 · Package Rules &amp; Financial Logic</span><span
+            class="lang-vi">Giai đoạn 2 · Quy tắc Gói &amp; Logic Tài chính</span></div>
+        <h3>
+          <span class="lang-en">2. Package-Differentiated Meal Fee Refund Business Rules</span>
+          <span class="lang-vi">2. Quy tắc Nghiệp vụ Hoàn phí Tiền ăn theo Gói Dịch vụ</span>
+        </h3>
+        <p>
+          <span class="lang-en">Formulating rigorous business rules based on school boarding service tiers, with
+            protective clauses for network latency.</span>
+          <span class="lang-vi">Thiết lập các quy tắc nghiệp vụ chặt chẽ theo phân hạng gói bán trú, bổ sung điều khoản
+            bảo vệ phụ huynh khi mạng gặp sự cố.</span>
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="block">
+          <h3>
+            <span class="lang-en">📋 Boarding Service Package Rules</span>
+            <span class="lang-vi">📋 Quy tắc Gói Dịch vụ Bán trú</span>
+          </h3>
+          <ul>
+            <li>
+              <strong><span class="lang-en">Package A (Full Day Boarding - Sáng, Trưa, Xế):</span><span
+                  class="lang-vi">Gói A (Bán trú Toàn phần - Sáng, Trưa, Xế):</span></strong>
+              <span class="lang-en">Includes breakfast, lunch, and afternoon snack. Due to early morning food
+                preparation at 07:15 AM, leave requests must be submitted on the system <strong>before 07:00 AM</strong>
+                to qualify for a full meal fee refund .</span>
+              <span class="lang-vi">Bao gồm bữa sáng, trưa và xế. Do nhà bếp sơ chế bữa sáng lúc 07:15, đơn xin nghỉ
+                phải gửi lên hệ thống <strong>trước 07:00 sáng</strong> để được hoàn toàn bộ tiền ăn.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Package B (Standard Boarding - Trưa, Xế):</span><span class="lang-vi">Gói B
+                  (Bán trú Tiêu chuẩn - Trưa, Xế):</span></strong>
+              <span class="lang-en">Includes lunch and afternoon snack only. The kitchen lock cutoff is 08:30 AM;
+                therefore, leave requests submitted <strong>before 08:00 AM</strong> are eligible for meal
+                deduction.</span>
+              <span class="lang-vi">Chỉ bao gồm bữa trưa và xế. Giờ khóa thực phẩm bữa trưa là 08:30; do đó, đơn xin
+                nghỉ nộp <strong>trước 08:00 sáng</strong> sẽ hợp lệ để trừ tiền ăn.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">Unexcused Absence (Nghỉ không phép):</span><span class="lang-vi">Nghỉ không
+                  phép (Unexcused Absence):</span></strong>
+              <span class="lang-en">Students absent without an advance portal request receive <strong>zero meal fee
+                  refund</strong>, as food ingredients were already prepped.</span>
+              <span class="lang-vi">Học sinh nghỉ học không có đơn báo trước trên app sẽ <strong>không được hoàn tiền
+                  ăn</strong> vì nguyên liệu suất ăn đã được chuẩn bị và nấu chín.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>
+            <span class="lang-en">⚡ Offline Protection Rule (Chống lỗi mạng)</span>
+            <span class="lang-vi">⚡ Cơ chế Bảo vệ khi Mất mạng (Offline Protection Rule)</span>
+          </h3>
+          <ul>
+            <li>
+              <strong><span class="lang-en">The Problem:</span><span class="lang-vi">Vấn đề phát sinh:</span></strong>
+              <span class="lang-en">When a parent submits a leave request on time, but the classroom teacher experiences
+                3G/Wi-Fi disconnection, the request sits in a pending queue unapproved.</span>
+              <span class="lang-vi">Khi phụ huynh gửi đơn xin nghỉ đúng giờ quy định, nhưng điện thoại giáo viên mất kết
+                nối 3G/Wi-Fi, đơn bị kẹt ở trạng thái chờ duyệt.</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">The BA Solution:</span><span class="lang-vi">Giải pháp của
+                  BA:</span></strong>
+              <span class="lang-en">The financial reconciliation engine strictly evaluates the request's creation
+                timestamp (<code>submitted_at</code>) recorded on the server/cloud, rather than the teacher's approval
+                timestamp (<code>approved_at</code>).</span>
+              <span class="lang-vi">Động cơ đối soát tài chính đối chiếu nghiêm ngặt theo thời điểm gửi đơn của phụ
+                huynh ghi nhận trên máy chủ (<code>submitted_at</code>), thay vì thời điểm giáo viên duyệt
+                (<code>approved_at</code>).</span>
+            </li>
+            <li>
+              <strong><span class="lang-en">The Business Impact:</span><span class="lang-vi">Tác động nghiệp
+                  vụ:</span></strong>
+              <span class="lang-en">Protects parent financial rights 100% against operational edge cases, eliminating
+                unfair charges and disputes.</span>
+              <span class="lang-vi">Bảo vệ quyền lợi tài chính của phụ huynh 100% trước các sự cố ngoại cảnh, triệt tiêu
+                hoàn toàn khiếu nại tính phí sai.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sample Gherkin User Story -->
+      <div class="story-card lang-en"><span class="kw">Feature:</span> Automated Boarding Meal Fee Deduction &amp;
+        Package Tier Evaluation
+
+        <span class="sn">Scenario 1: Full Boarding Student - Valid Early Leave Request</span>
+        <span class="kw">Given</span> student "Pham Minh Khang" is enrolled in "Package A - Full Boarding"
+        <span class="kw">When</span> the parent submits a leave request with timestamp "06:48 AM" (before 07:00 AM
+        cutoff)
+        <span class="kw">Then</span> the system marks the attendance status as "EXCUSED_LEAVE"
+        <span class="kw">And</span> issues an automatic credit voucher deducted from the monthly tuition
+        invoice
+        <span class="kw">And</span> updates the kitchen headcount dashboard before breakfast ingredient allocation.
+
+        <span class="sn">Scenario 2: Offline Network Grace Policy (Teacher Device Disconnected)</span>
+        <span class="kw">Given</span> parent of student "Nguyen Bao An" submitted a leave request at "08:15 AM" (before
+        08:30 AM cutoff for Package B)
+        <span class="kw">And</span> the classroom teacher's tablet loses internet connection until 10:15 AM
+        <span class="kw">When</span> the financial batch job runs monthly statement reconciliations
+        <span class="kw">Then</span> the engine evaluates `request.submitted_at` (&lt; 08:30 AM) rather than
+        `approval.timestamp`
+        <span class="kw">And</span> grants the full meal refund according to statutory boarding regulations.
+      </div>
+
+      <div class="story-card lang-vi"><span class="kw">Tính năng:</span> Tự động Hoàn trừ Tiền ăn Bán trú &amp; Đánh giá
+        Gói Dịch vụ
+
+        <span class="sn">Kịch bản 1: Học sinh Bán trú Toàn phần - Nộp đơn xin nghỉ sớm hợp lệ</span>
+        <span class="kw">Cho biết</span> học sinh "Phạm Minh Khang" đăng ký "Gói A - Bán trú Toàn phần"
+        <span class="kw">Khi</span> phụ huynh gửi đơn xin nghỉ vào lúc "06:48 AM" (trước giờ chốt 07:00 AM)
+        <span class="kw">Thì</span> hệ thống tự động ghi nhận trạng thái điểm danh là "NGHỈ_CÓ_PHÉP"
+        <span class="kw">Và</span> tạo phiếu khấu trừ tự động vào hóa đơn học phí tháng kế tiếp
+        <span class="kw">Và</span> cập nhật sĩ số suất ăn hiển thị trên bảng điều khiển của nhà bếp trước giờ xuất kho.
+
+        <span class="sn">Kịch bản 2: Cơ chế Bảo vệ khi Mất mạng (Thiết bị giáo viên mất kết nối)</span>
+        <span class="kw">Cho biết</span> phụ huynh của học sinh "Nguyễn Bảo An" đã nộp đơn xin nghỉ lúc "08:15 AM"
+        (trước giờ chốt 08:30 AM của Gói B(gói trưa và xế))
+        <span class="kw">Và</span>thiết bị của giáo viên bị mất mạng internet đến tận 10:15 AM
+        <span class="kw">Khi</span> tác vụ định kỳ tự động chạy đối soát sao kê tài chính cuối tháng
+        <span class="kw">Thì</span> hệ thống kiểm tra trường `request.submitted_at` (&lt; 08:30 AM) thay vì
+        `approval.timestamp`
+        <span class="kw">Và</span> chấp thuận hoàn tiền ăn đầy đủ theo quy định của nhà trường.
+      </div>
+
+      <!-- Stage 3: Data Architecture & Enterprise Relational ERD -->
+      <div class="stage" id="data-architecture" style="margin-top: 50px;">
+        <div class="stage-badge"><span class="lang-en">Stage 3 · Relational Schema &amp; ERD Architecture</span><span
+            class="lang-vi">Giai đoạn 3 · Kiến trúc Mô hình Dữ liệu ERD</span></div>
+        <h3>
+          <span class="lang-en">3. Enterprise Data Architecture &amp; Comprehensive Relational ERD</span>
+          <span class="lang-vi">3. Kiến trúc Dữ liệu Doanh nghiệp &amp; Sơ đồ Thực thể ERD</span>
+        </h3>
+        <p>
+          <span class="lang-en">Structuring a comprehensive relational database schema comprising 30+ normalized
+            entities to ensure immutable audit trails across biometric face recognition attendance, dynamic boarding
+            meal deductions, dynamic VietQR invoicing, and student medical profiles.</span>
+          <span class="lang-vi">Thiết kế mô hình cơ sở dữ liệu quan hệ doanh nghiệp chuẩn hóa với hơn 30 bảng thực thể,
+            bảo đảm dấu vết kiểm toán bất biến giữa điểm danh sinh trắc học, khấu trừ tiền ăn bán trú tự động, phát hành
+            hóa đơn VietQR động và theo dõi y tế học sinh.</span>
+        </p>
+      </div>
+
+      <!-- Enterprise ERD Central Showcase (Ultra-Clear 2048px Display) -->
+      <div class="artifact"
+        style="margin-top: 20px; border: 1px solid #c7d7f2; border-radius: 14px; overflow: hidden; background: #ffffff; box-shadow: 0 10px 30px rgba(23, 51, 92, 0.06);">
+        <div class="artifact-media"
+          style="height: auto; min-height: 480px; max-height: 760px; padding: 22px; background: #ffffff; display: flex; align-items: center; justify-content: center;"
+          onclick="zoomArtifact(this)">
+          <img src="assets/kidpro-erd.png" alt="Enterprise Relational Database Architecture (Comprehensive ERD)"
+            style="max-height: 720px; width: 100%; object-fit: contain; cursor: zoom-in;">
+          <span class="zoom-badge"><span class="lang-en">🔍 Click to enlarge high-res ERD</span><span class="lang-vi">🔍
+              Click phóng to sơ đồ ERD sắc nét</span></span>
+        </div>
+        <div class="cap" style="padding: 20px 24px; background: #fafcff; border-top: 1px solid #e2e8f0;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+            <div>
+              <b style="font-size: 16px; color: var(--navy); display: block; margin-bottom: 6px;">
+                <span class="lang-en">Enterprise Relational Database Architecture (30+ Normalized Tables)</span>
+                <span class="lang-vi">Bản vẽ Kiến trúc Dữ liệu Quan hệ Doanh nghiệp (Hơn 30 Bảng Chuẩn hóa)</span>
+              </b>
+              <span style="display: block; line-height: 1.6; color: var(--ink);">
+                <span class="lang-en">Enterprise-grade preschool database schema covering 30+ relational entities:
+                  biometric face recognition logs, emergency pickup authorizations with time-limited OTP tokens,
+                  multi-period attendance ledgers,
+                  dynamic tuition billing invoices with VietQR payment reconciliation, weekly dietary meal planning with
+                  food sample retention safety logs,
+                  allergy alerts, and student health monitoring records.</span>
+                <span class="lang-vi">Mô hình dữ liệu quan hệ doanh nghiệp chuẩn hóa cấp độ toàn diện với hơn 30 bảng
+                  thực thể:
+                  nhật ký nhận diện khuôn mặt sinh trắc học, ủy quyền đón khẩn cấp kèm mã OTP giới hạn thời gian, sổ cái
+                  điểm danh nhiều buổi,
+                  hóa đơn học phí động &amp; đối soát giao dịch VietQR, thực đơn dinh dưỡng theo tuần kèm lưu mẫu thực
+                  phẩm bảo đảm an toàn,
+                  cảnh báo dị ứng và sổ theo dõi sức khỏe học sinh.</span>
+              </span>
+            </div>
+            <a href="assets/kidpro-erd.png" target="_blank" class="erd-action-btn"
+              style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: #eef4ff; color: #17335c; border: 1px solid #c7d7f2; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s; box-shadow: 0 2px 6px rgba(23, 51, 92, 0.05);">
+              <span>🔍</span>
+              <span class="lang-en">Open Full Resolution (2048 &times; 1169)</span>
+              <span class="lang-vi">Mở ảnh gốc rõ nét (2048 &times; 1169)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4: AI-Assisted Rapid Prototyping Pipeline -->
+      <div class="stage" id="prototyping" style="margin-top: 50px;">
+        <div class="stage-badge"><span class="lang-en">Stage 4 · AI-Assisted Prototyping Pipeline</span><span
+            class="lang-vi">Giai đoạn 4 · Quy trình Tạo mẫu Nhanh cùng AI</span></div>
+        <h3>
+          <span class="lang-en">4. AI-Driven Rapid Prototyping &amp; Design System Validation</span>
+          <span class="lang-vi">4. Quy trình Tạo mẫu Nhanh &amp; Chuẩn hóa Thiết kế cùng AI</span>
+        </h3>
+        <p>
+          <span class="lang-en">Translating 70+ granular SRS requirements into a fully realized, interactive 153-screen
+            prototype suite across 7 operational kindergarten roles. By chaining Stitch AI for rapid layout exploration,
+            Figma for component atomic tokens, and Claude Code for semantic frontend generation, the team validated
+            usability, edge cases, and business rules prior to engineering handoff.</span>
+          <span class="lang-vi">Chuyển hóa yêu cầu chức năng SRS thành bộ nguyên mẫu tương tác hoàn chỉnh gồm 153
+            màn hình trải rộng trên 7 nhóm tác nhân trường mầm non. Thông qua chuỗi phối hợp giữa Stitch AI để thăm dò
+            bố cục, Figma để chuẩn hóa hệ thống component nguyên tử và Claude Code để xuất mã giao diện ngữ nghĩa, toàn
+            bộ luồng nghiệp vụ và xử lý ngoại lệ được thẩm định thực tế trước khi bàn giao cho đội ngũ phát
+            triển.</span>
+        </p>
+
+        <!-- Prominent Callout Card: Mockup Suite 153 Screens Live Production -->
+        <div class="mockup-hero-card">
+          <div class="mockup-hero-badge">
+            <span class="mockup-pulse-dot"></span>
+            <span class="lang-en">Live Production Prototype v2.4 · 153 Interactive Screens</span>
+            <span class="lang-vi">Môi trường Thực tế v2.4 · 153 Màn hình Tương tác</span>
+          </div>
+          <h4 class="mockup-hero-title">
+            <span class="lang-en">KIDPRO System · Mockup Suite </span>
+            <span class="lang-vi">KIDPRO System · Mockup Suite </span>
+          </h4>
+          <p class="mockup-hero-desc">
+            <span class="lang-en">Full-fidelity interactive prototype suite featuring 153 standardized screens
+              meticulously aligned with SRS functional modules: multi-tenant administration, AI computer vision
+              roll-call, PayOS VietQR billing &amp; meal rebate automation, and tablet kitchen nutrition. Covers all 7
+              user roles across Web Desktop, Mobile App, and Tablet platforms.</span>
+            <span class="lang-vi">Bộ prototype tương tác đầy đủ 153 màn hình chuẩn hóa toàn diện theo SRS phân hệ quản
+              trị, điểm danh AI, tài chính và dinh dưỡng. Bao phủ trọn vẹn 7 tác nhân từ Quản trị nền tảng, Ban Giám
+              Hiệu, Giáo vụ, Kế toán, Giáo viên, Phụ huynh đến Bếp ăn bán trú trên cả 3 nền tảng Web Desktop, Mobile App
+              và Tablet.</span>
+          </p>
+
+          <div class="mockup-stats-grid">
+            <div class="mockup-stat-chip">
+              <span>🖥️</span>
+              <div><strong class="lang-en">153 Screens</strong><strong class="lang-vi">153 Màn hình</strong> · <span
+                  class="lang-en">Full UI flows</span><span class="lang-vi">Đầy đủ luồng UI</span></div>
+            </div>
+            <div class="mockup-stat-chip">
+              <span>👥</span>
+              <div><strong class="lang-en">7 Roles</strong><strong class="lang-vi">7 Nhóm tác nhân</strong> · <span
+                  class="lang-en">SuperAdmin to Kitchen</span><span class="lang-vi">Từ Admin đến Bếp</span></div>
+            </div>
+            <div class="mockup-stat-chip">
+              <span>📱</span>
+              <div><strong class="lang-en">3 Platforms</strong><strong class="lang-vi">Web, mobile app</strong> · <span
+                  class="lang-en">Web, Mobile &amp; Tablet</span><span class="lang-vi"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://kidpro-kidsystem-mockups.vercel.app/" target="_blank" rel="noopener noreferrer"
+          class="mockup-cta-btn">
+          <span>🌐</span>
+          <span class="lang-en">Launch Live Mockup Suite on Vercel &nearr;</span>
+          <span class="lang-vi">Trải nghiệm Toàn bộ Mockup Suite trên Vercel &nearr;</span>
+        </a>
+      </div>
+
+      <!-- Interactive Role Mockup Explorer (7 Representative Screens) -->
+      <div class="erd-container" style="margin-top: 32px;">
+        <div class="erd-header">
+          <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+            <h4>
+              <span class="lang-en">📋 Interactive Role Mockup Explorer · 7 Representative Portals</span>
+              <span class="lang-vi">📋 Khám phá Màn hình Tiêu biểu theo Role · 7 Nhóm Tác nhân Vận hành</span>
+            </h4>
+            <span class="interactive-tag">
+              <span class="interactive-dot"></span>
+              <span class="lang-en">7 Key Screens · 7 Roles</span>
+              <span class="lang-vi">7 Màn hình Tiêu biểu · 7 Role</span>
+            </span>
+          </div>
+          <p>
+            <span class="lang-en">Select each operational role below to inspect its representative screen, SRS
+              validation rules, and launch live interactive preview directly on Vercel:</span>
+            <span class="lang-vi">Bấm chọn từng vai trò vận hành bên dưới để khảo sát màn hình đại diện, quy chuẩn
+              nghiệp vụ SRS và mở giao diện tương tác trực tiếp trên Vercel:</span>
+          </p>
+        </div>
+
+        <!-- Role Tabs -->
+        <div class="erd-tabs" id="mockupTabs">
+          <button class="erd-tab-btn active" onclick="selectMockupTab('superadmin', this)" data-key="superadmin">
+            <span class="lang-en">👑 1. Super Admin</span>
+            <span class="lang-vi">👑 1. Super Admin</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('principal', this)" data-key="principal">
+            <span class="lang-en">🏫 2. Principal</span>
+            <span class="lang-vi">🏫 2. Hiệu trưởng</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('academic', this)" data-key="academic">
+            <span class="lang-en">📚 3. Academic Affairs</span>
+            <span class="lang-vi">📚 3. Giáo vụ</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('accountant', this)" data-key="accountant">
+            <span class="lang-en">💳 4. Accountant</span>
+            <span class="lang-vi">💳 4. Kế toán</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('teacher', this)" data-key="teacher">
+            <span class="lang-en">👩‍🏫 5. Teacher</span>
+            <span class="lang-vi">👩‍🏫 5. Giáo viên</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('parent', this)" data-key="parent">
+            <span class="lang-en">👨‍👩‍👧 6. Parent</span>
+            <span class="lang-vi">👨‍👩‍👧 6. Phụ huynh</span>
+          </button>
+          <button class="erd-tab-btn" onclick="selectMockupTab('kitchen', this)" data-key="kitchen">
+            <span class="lang-en">🍳 7. Kitchen</span>
+            <span class="lang-vi">🍳 7. Nhà bếp</span>
+          </button>
+        </div>
+
+        <!-- Display Area -->
+        <div class="erd-display">
+          <!-- Screen Bar with SRS compliance -->
+          <div class="mockup-screen-bar">
+            <div class="mockup-screen-tag">
+              <span id="mockupPlatformBadge">💻 Web Desktop (1440px)</span>
+              <span style="color: #cbd5e1;">|</span>
+              <span id="mockupScreenCode" style="color: #275A4E; font-weight: 800;">Screen #03</span>
+            </div>
+
+          </div>
+
+          <!-- Media Box (Click to enlarge in Lightbox) -->
+          <div class="mockup-media-container" onclick="zoomArtifact(this)">
+            <img id="mockupMainImg" src="assets/kidpro-mockup-superadmin.png"
+              alt="System Admin Dashboard (Executive View)">
+            <span class="zoom-badge">
+              <span class="lang-en">🔍 Click to enlarge (Lightbox)</span>
+              <span class="lang-vi">🔍 Click phóng to (Lightbox)</span>
+            </span>
+          </div>
+
+          <!-- Caption Box -->
+          <div class="erd-caption-box">
+            <div
+              style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+              <div style="flex: 1; min-width: 280px;">
+                <b id="mockupTitle" style="font-size: 16px; color: var(--navy); display: block; margin-bottom: 6px;">
+                  Màn #03: Bàn Điều Hành Quản Trị Hệ Thống (Giám sát Hạ tầng &amp; AI Hub)
+                </b>
+                <p id="mockupDesc" style="margin: 0 0 10px; line-height: 1.6; color: var(--ink);">
+                  Trung tâm điều hành tổng quan toàn bộ nền tảng KIDPRO dành cho Super Admin. Giám sát thời gian thực
+                  toàn bộ chuỗi trường mầm non (multi-tenant): lưu lượng API/giây, trạng thái cụm máy chủ, hồ sơ
+                  tenant đang hoạt động và biểu đồ kiểm soát sức khỏe cụm microservice AI (nhận diện khuôn mặt YOLO
+                  &amp; véc-tơ InsightFace 512D).
+                </p>
+                <div id="mockupMeta" class="erd-entities-line">
+                  Tác nhân: Quản trị viên Nền tảng · Phân hệ: Bàn điều hành cấp cao, Quản lý đa trường (Tenants), Giám
+                  sát cụm AI
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px; align-self: flex-start;">
+                <a id="mockupVercelBtn" href="https://kidpro-kidsystem-mockups.vercel.app/screens/screen_003.html"
+                  target="_blank" rel="noopener noreferrer" class="mockup-action-btn-primary">
+                  <span>🚀</span>
+                  <span class="lang-en">Live Interactive Demo &nearr;</span>
+                  <span class="lang-vi">Trải nghiệm tương tác trên Vercel &nearr;</span>
+                </a>
+                <a id="mockupFullImgBtn" href="assets/kidpro-mockup-superadmin.png" target="_blank"
+                  class="erd-action-btn"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 14px; background: #eef4ff; color: #17335c; border: 1px solid #c7d7f2; border-radius: 8px; font-size: 11.5px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: .2s;">
+                  <span>🔍</span>
+                  <span class="lang-en">View High-Res Image &nearr;</span>
+                  <span class="lang-vi">Mở ảnh độ nét cao &nearr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Business Value & Quantified Impact -->
+    <section id="impact">
+      <div class="head">
+        <h2>
+          <span class="lang-en">Target Outcomes &amp; Strategic Key Results</span>
+          <span class="lang-vi">Kết quả hướng tới</span>
+        </h2>
+      </div>
+
+      <div class="meta" style="margin-top: 0;">
+        <div>
+          <b>
+            <span class="lang-en">Accounting Efficiency</span>
+            <span class="lang-vi">Hiệu suất Kế toán</span>
+          </b>
+          <span style="font-size: 20px; font-weight: 800; color: #059669; display: block; margin: 4px 0;">
+            <span class="lang-en">~60% Reduction</span>
+            <span class="lang-vi">~60% Giảm tải</span>
+          </span>
+          <span style="font-size: 13px; color: var(--muted);">
+            <span class="lang-en">Monthly reconciliation time was significantly streamlined to optimize operational
+              workload.</span>
+            <span class="lang-vi">Thời gian đối soát sổ sách cuối tháng giảm đáng kể đế tối đa công việc.
+              ngày.</span>
+          </span>
+        </div>
+        <div>
+          <b>
+            <span class="lang-en">Financial Transparency</span>
+            <span class="lang-vi">Minh bạch Tài chính</span>
+          </b>
+          <span style="font-size: 20px; font-weight: 800; color: #2563eb; display: block; margin: 4px 0;">
+            <span class="lang-en">0 Billing Disputes</span>
+            <span class="lang-vi">Không tranh chấp Hóa đơn</span>
+          </span>
+          <span style="font-size: 13px; color: var(--muted);">
+            <span class="lang-en">Automated, timestamped meal deduction vouchers eliminated 100% of parent
+              complaints.</span>
+            <span class="lang-vi">Phiếu khấu trừ tiền ăn tự động gắn dấu thời gian đã giải quyết triệt để 100% khiếu nại
+              của phụ huynh.</span>
+          </span>
+        </div>
+        <div>
+          <b>
+            <span class="lang-en">Pickup Safety Assurance</span>
+            <span class="lang-vi">An toàn Tuyệt đối khi Đón trẻ</span>
+          </b>
+          <span style="font-size: 20px; font-weight: 800; color: #d97706; display: block; margin: 4px 0;">
+            <span class="lang-en">100% Digital Trace</span>
+            <span class="lang-vi">100% Dấu vết Số</span>
+          </span>
+          <span style="font-size: 13px; color: var(--muted);">
+            <span class="lang-en">Every child departure is authenticated via AI camera or verified teacher
+              override.</span>
+            <span class="lang-vi">Mọi lượt đưa đón đều được xác thực danh tính qua camera AI hoặc giáo viên bảo lãnh kèm
+              nhật ký số.</span>
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeBox(event)">
+    <span class="close">&times;</span>
+    <div class="lightbox-content" id="boxContent"></div>
+    <div class="lightbox-hint"><span class="lang-en">Click image or press Esc to close</span><span class="lang-vi">Click
+        ảnh hoặc nhấn Esc để đóng</span></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <strong>Nguyen Tien Dung</strong> · <span class="lang-en">IT Business Analyst · FPT University</span><span
+          class="lang-vi">Chuyên viên Phân tích Nghiệp vụ IT · Đại học FPT</span>
+      </div>
+      <div>
+        <a href="index.html" style="color: var(--blue-deep); font-weight: 600; margin-right: 18px;">
+          <span class="lang-en">← Return to Portfolio</span>
+          <span class="lang-vi">← Về Trang Portfolio</span>
+        </a>
+        <a href="hospital-management.html" style="color: var(--navy); font-weight: 600;">
+          <span class="lang-en">Next Case Study: Hospital Management (SOA Architecture) →</span>
+          <span class="lang-vi">Xem Case Study Tiếp theo: Quản lý Bệnh viện HMS (Kiến trúc SOA) →</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back-to-Top Button -->
+  <button id="backToTop" class="back-to-top" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script>
+    let currentLang = 'en';
+    let currentWfKey = 'attendance';
+    let currentUcKey = 'teachers';
+
+    const wfModules = {
+      attendance: {
+        img: "assets/kidpro-workflow-attendance.png",
+        en: {
+          title: "Attendance & Day-boarding Workflow (Morning FaceID)",
+          desc: "Morning check-in with AI computer vision roll-call: Tablet camera captures child's face &rarr; System validates Face ID against vector store &rarr; Evaluates reliability threshold. Fallback to 1-tap manual attendance if unverified. At 08:30 AM, system aggregates summary meal count and pushes real-time portions to Kitchen staff.",
+          meta: "Swimlanes: Teacher, System, Academic Affairs, Kitchen · Gateways: Reliability Thresholds, Supplementary Meal Approval"
+        },
+        vi: {
+          title: "Quy trình Điểm danh Buổi sáng & Chốt Suất ăn Bán trú",
+          desc: "Điểm danh đón trẻ buổi sáng qua camera AI: Tablet quét khuôn mặt trẻ &rarr; Hệ thống đối chiếu Face ID với kho vector &rarr; Đánh giá ngưỡng tin cậy. Nếu không nhận diện được, chuyển sang điểm danh thủ công 1 chạm. Đến 08:30 sáng, hệ thống tự động chốt tổng sĩ số suất ăn gửi xuống Nhà bếp.",
+          meta: "Các bên tham gia: Giáo viên, Hệ thống, Giáo vụ, Nhà bếp · Cổng logic: Ngưỡng tin cậy, Phê duyệt suất ăn bổ sung"
+        }
+      },
+      pickup: {
+        img: "assets/kidpro-workflow-pickup.png",
+        en: {
+          title: "Afternoon Child Pick-up & Dual-Verification Workflow (BPMN)",
+          desc: "Afternoon dismissal security workflow: Teacher scans pickup guardian's face &rarr; System checks eligibility against authorized profiles &rarr; If verified, teacher executes child handoff. If unverified, system pushes registered guardian photo to teacher for Teacher Familiarity Override inspection. Automatically calculates incremental late fees for departures after 17:30.",
+          meta: "Swimlanes: Parent, Teacher, System · Gateways: Eligibility Verification, Visual Inspection (Valid?), After 5:30 Cutoff"
+        },
+        vi: {
+          title: "Sơ đồ Quy trình Trả trẻ Buổi chiều & Xác thực Người đón Hợp lệ",
+          desc: "Quy trình an toàn đón trẻ chiều: Giáo viên quét mặt người đón &rarr; Hệ thống kiểm tra tính hợp lệ &rarr; Nếu khớp, bàn giao trẻ. Nếu không nhận diện được, gửi ảnh hồ sơ người đón về máy giáo viên để đối chiếu bằng mắt (Teacher Familiarity Override). Tự động kích hoạt tính phí trông muộn sau 17:30.",
+          meta: "Các bên tham gia: Phụ huynh, Giáo viên, Hệ thống · Cổng logic: Kiểm tra tính hợp lệ, Giáo viên xác nhận, Mốc sau 17:30"
+        }
+      },
+      tuition: {
+        img: "assets/kidpro-workflow-tuition-payment.png",
+        en: {
+          title: "Tuition Fee Reconciliation & Dynamic VietQR Webhook Workflow",
+          desc: "Financial billing and automated banking reconciliation: School accountant generates batch tuition listings &rarr; Approves draft invoices &rarr; System publishes invoices and generates Dynamic VietQR code string. Parent scans VietQR via mobile banking &rarr; PayOS Payment Gateway fires Webhook &rarr; Exact match triggers instant debt crossing and issues digital receipt.",
+          meta: "Swimlanes: Parent App, School Accountant, Dynamic Tuition Engine, Banking & VietQR · Gateways: Exact Match Verification"
+        },
+        vi: {
+          title: "Quy trình Quyết toán Học phí & Đối soát PayOS VietQR Tự động",
+          desc: "Quy trình thu học phí và đối soát ngân hàng tự động: Kế toán tạo bảng kê học phí hàng loạt &rarr; Phê duyệt danh sách nháp &rarr; Hệ thống phát hành hóa đơn và sinh chuỗi mã VietQR động. Phụ huynh quét chuyển khoản &rarr; Cổng PayOS bắn Webhook tức thì &rarr; Kiểm tra khớp chính xác sẽ tự động gạch nợ và xuất biên lai.",
+          meta: "Các bên tham gia: App Phụ huynh, Kế toán trường, Dynamic Tuition Engine, Ngân hàng & VietQR (SePAY/NAPAS) · Cổng logic: Khớp đúng số tiền? (Exact Match)"
+        }
+      },
+      child_mgmt: {
+        img: "assets/kidpro-workflow-child-mgmt.png",
+        en: {
+          title: "Child Management & Facial Biometric Enrollment Workflow",
+          desc: "Student onboarding and biometric registration lifecycle: Academic Affairs views student list &rarr; Checks existing parent account profile &rarr; Links parent to student &rarr; Dispatches face ID registration notification to Parent App &rarr; Parent submits high-resolution student and guardian face portraits &rarr; System extracts vectors and updates gate AI camera models.",
+          meta: "Swimlanes: Parent, Academic Affairs, System · Gateways: Account Exists Check (Exist?)"
+        },
+        vi: {
+          title: "Quy trình Quản lý Hồ sơ Trẻ & Thu thập Sinh trắc học Face ID",
+          desc: "Vòng đời tiếp nhận học sinh và thu thập dữ liệu khuôn mặt: Giáo vụ tra cứu danh sách trẻ &rarr; Kiểm tra tài khoản phụ huynh đã tồn tại hay chưa &rarr; Liên kết phụ huynh với trẻ &rarr; Bắn thông báo yêu cầu Face ID về App Phụ huynh &rarr; Phụ huynh chụp gửi ảnh chân dung trẻ và người đón &rarr; Hệ thống trích xuất vector cập nhật camera AI cổng trường.",
+          meta: "Các bên tham gia: Phụ huynh, Giáo vụ, Hệ thống · Cổng logic: Kiểm tra tài khoản tồn tại (Exist?)"
+        }
+      },
+      schoolyear: {
+        img: "assets/kidpro-workflow-schoolyear.png",
+        en: {
+          title: "Initializing School Year, Class Allocation & Teacher Assignment",
+          desc: "Academic administrative governance workflow: Principal creates new Academic Year and configures grade-level capacity limits &rarr; Academic Affairs generates draft classes &rarr; Principal reviews and approves classes &rarr; Academic Affairs assigns classroom teachers &rarr; Principal approves teacher allocations &rarr; Students assigned into classes.",
+          meta: "Swimlanes: Principal, Academic Affairs, System · Gateways: Class Approval Decision, Teacher Assignment Approval"
+        },
+        vi: {
+          title: "Quy trình Khởi tạo Năm học, Phân bổ Lớp & Phân công Giáo viên",
+          desc: "Quy trình quản trị năm học hành chính: Hiệu trưởng tạo năm học mới và thiết lập quy tắc sĩ số trần từng khối &rarr; Giáo vụ lập danh sách lớp nháp &rarr; Hiệu trưởng xét duyệt lớp &rarr; Giáo vụ phân công giáo viên chủ nhiệm &rarr; Hiệu trưởng duyệt phân công &rarr; Phân bổ học sinh vào lớp và kích hoạt năm học.",
+          meta: "Các bên tham gia: Hiệu trưởng, Giáo vụ, Hệ thống · Cổng logic: Duyệt lớp (Class approval?), Duyệt phân công (Assign approval?)"
+        }
+      }
+    };
+
+    const ucModules = {
+      teachers: {
+        img: "assets/kidpro-usecase-teachers.png",
+        en: {
+          title: "Use Case Diagram: Class Teachers",
+          desc: "Core classroom teacher operational use cases: Morning roll-call attendance via AI FaceID camera, 1-tap manual check-in override, student health/medication administration logging, afternoon child dismissal verification, and daily classroom activity journal logging.",
+          meta: "Actor: Class Teacher · Modules: Attendance, Health Check, Medication Logs, Afternoon Dismissal, Class Journal"
+        },
+        vi: {
+          title: "Sơ đồ UC: Giáo viên Chủ nhiệm",
+          desc: "Các UC vận hành của giáo viên lớp: Điểm danh đón trẻ qua camera AI FaceID, điểm danh thủ công 1 chạm dự phòng, nhật ký cho trẻ uống thuốc và theo dõi sức khỏe, kiểm tra xác minh trả trẻ buổi chiều, và viết nhật ký sinh hoạt lớp hàng ngày.",
+          meta: "Tác nhân: Giáo viên chủ nhiệm · Các phân hệ: Điểm danh, Kiểm tra sức khỏe, Đơn dặn thuốc, Trả trẻ chiều, Nhật ký lớp"
+        }
+      },
+      parent: {
+        img: "assets/kidpro-usecase-parent.png",
+        en: {
+          title: "Use Case Diagram: Parents & Guardians",
+          desc: "Parent mobile touchpoints: Viewing real-time check-in/out photo logs, submitting advance leave requests with automatic timestamp grace checks, paying monthly tuition via dynamic VietQR, viewing daily nutrition menus, and registering authorized pickup guardians.",
+          meta: "Actor: Parent / Guardian · Modules: Check-in Notifications, Leave Requests, VietQR Tuition Payment, Menu, Authorized Pickups"
+        },
+        vi: {
+          title: "Sơ đồ UC: Phụ huynh Học sinh",
+          desc: "Các điểm chạm trên ứng dụng phụ huynh: Xem ảnh điểm danh cổng trường tức thời, gửi đơn xin nghỉ học sớm có kiểm tra giờ chốt hoàn tiền ăn, thanh toán học phí qua mã VietQR động, tra cứu thực đơn dinh dưỡng và đăng ký người đón được ủy quyền.",
+          meta: "Tác nhân: Phụ huynh / Người giám hộ · Các phân hệ: Thông báo điểm danh, Đơn xin nghỉ, Nộp học phí VietQR, Thực đơn, Ủy quyền đón"
+        }
+      },
+      accountant: {
+        img: "assets/kidpro-usecase-accountant.png",
+        en: {
+          title: "Use Case Diagram: School Accountant",
+          desc: "Financial billing governance: Configuring tuition fee structures and discount policies, executing monthly statement batch generation, monitoring PayOS VietQR payment gateway status, and handling transaction discrepancy reconciliations.",
+          meta: "Actor: School Accountant · Modules: Fee Structures, Discount Policies, Batch Statements, VietQR Monitoring, Dispute Resolution"
+        },
+        vi: {
+          title: "Sơ đồ Ca Sử dụng: Kế toán Nhà trường",
+          desc: "Quản trị quyết toán tài chính: Cấu hình các khoản thu học phí và chính sách miễn giảm, phát hành bảng kê học phí hàng loạt hàng tháng, theo dõi trạng thái gạch nợ cổng thanh toán PayOS VietQR, và xử lý các ca khiếu nại sai lệch tiền ăn/phụ phí.",
+          meta: "Tác nhân: Kế toán trường · Các phân hệ: Cấu hình khoản thu, Chính sách miễn giảm, Bảng kê học phí, Đối soát VietQR, Xử lý khiếu nại"
+        }
+      },
+      kitchen: {
+        img: "assets/kidpro-usecase-kitchen.png",
+        en: {
+          title: "Use Case Diagram: Kitchen Staff & Nutrition",
+          desc: "Nutritional governance and kitchen operations: Receiving real-time 08:30 AM student headcount for breakfast/lunch preparation, tracking supplementary meal additions, managing weekly nutrition menus, and recording food sample retention logs.",
+          meta: "Actor: Kitchen Staff / Chef · Modules: Meal Count Dashboard, Supplementary Servings, Nutrition Menu, Food Sample Retention"
+        },
+        vi: {
+          title: "Sơ đồ Ca Sử dụng: Nhân viên Bếp & Dinh dưỡng",
+          desc: "Quản trị bếp ăn bán trú và dinh dưỡng: Tiếp nhận sĩ số học sinh chốt lúc 08:30 sáng để chia suất ăn, theo dõi các yêu cầu suất ăn bổ sung sau 8h30, thiết lập thực đơn tuần và ghi chép nhật ký lưu mẫu thức ăn kiểm thực 3 bước.",
+          meta: "Tác nhân: Nhân viên bếp / Bếp trưởng · Các phân hệ: Bảng sĩ số suất ăn, Bổ sung khẩu phần, Thực đơn tuần, Lưu mẫu thức ăn"
+        }
+      },
+      academic: {
+        img: "assets/kidpro-usecase-academic.png",
+        en: {
+          title: "Use Case Diagram: Academic Affairs Officer",
+          desc: "Academic coordination and student lifecycle records: Managing classes and student enrollments, timetable planning, grade transfers, student withdrawal, and class activity records.",
+          meta: "Actor: Academic Affairs Officer · Modules: Classes, Timetable, Student Records, Grade Transfer"
+        },
+        vi: {
+          title: "Sơ đồ Ca Sử dụng: Cán bộ Giáo vụ",
+          desc: "Quản trị đào tạo và hồ sơ học sinh: Quản lý thông tin lớp học, xếp lớp cho học sinh, lập thời khóa biểu tuần, chuyển lớp, xử lý rút hồ sơ và lưu trữ hồ sơ học vụ.",
+          meta: "Tác nhân: Cán bộ giáo vụ · Các phân hệ: Quản lý lớp, Hồ sơ học sinh, Thời khóa biểu, Chuyển lớp"
+        }
+      },
+      principal_admin: {
+        img: "assets/kidpro-usecase-principal-admin.png",
+        subImgs: {
+          both: "assets/kidpro-usecase-principal-admin.png",
+          principal: "assets/kidpro-usecase-principal.png",
+          admin: "assets/kidpro-usecase-admin.png"
+        },
+        en: {
+          title: "Use Case Diagram: School Principal & Platform Super Admin",
+          desc: "Executive school governance and platform security boundaries: <strong>School Principal</strong> oversees academic year setup, class capacities, teacher assignments, tuition fee roll appraisal, weekly menu/lesson plans, and emergency alerts. <strong>Platform Super Admin</strong> enforces technical authentication with MFA, multi-tenant RBAC configuration, and system-wide audit logging.",
+          meta: "Actors: School Principal, Platform Super Admin, Base User, Push Notification (FCM) · Executive & Platform Governance"
+        },
+        vi: {
+          title: "Sơ đồ Ca Sử dụng: Hiệu trưởng Nhà trường & Quản trị Nền tảng (Super Admin)",
+          desc: "Phân quyền quản trị cấp trường và an ninh nền tảng: <strong>Hiệu trưởng</strong> phê duyệt kế hoạch năm học, quy mô lớp, phân công giáo viên, biểu phí học phí, thực đơn tuần và phát thông báo khẩn qua FCM. <strong>Platform Super Admin</strong> quản trị an ninh đăng nhập MFA, cấu hình phân quyền vai trò (RBAC) và kiểm toán nhật ký toàn hệ thống.",
+          meta: "Tác nhân: Hiệu trưởng (Principal), Quản trị viên (Super Admin), Người dùng cơ sở, FCM Push"
+        }
+      }
+    };
+
+    function renderWf(key, lang) {
+      const data = wfModules[key];
+      if (!data) return;
+      const content = data[lang] || data['en'];
+      const imgEl = document.getElementById('wfMainImg');
+      const titleEl = document.getElementById('wfTitle');
+      const descEl = document.getElementById('wfDesc');
+      const metaEl = document.getElementById('wfMeta');
+
+      imgEl.src = data.img;
+      imgEl.alt = content.title;
+      titleEl.innerText = content.title;
+      const wfBtn = document.getElementById('wfNewTabBtn');
+      if (wfBtn) wfBtn.href = data.img;
+      descEl.innerHTML = content.desc;
+      metaEl.innerText = content.meta;
+    }
+
+    function renderUc(key, lang) {
+      const data = ucModules[key];
+      if (!data) return;
+      const content = data[lang] || data['en'];
+      const imgEl = document.getElementById('ucMainImg');
+      const titleEl = document.getElementById('ucTitle');
+      const descEl = document.getElementById('ucDesc');
+      const metaEl = document.getElementById('ucMeta');
+
+      imgEl.src = data.img;
+      imgEl.alt = content.title;
+      titleEl.innerText = content.title;
+      const ucBtn = document.getElementById('ucNewTabBtn');
+      if (ucBtn) ucBtn.href = data.img;
+      const wfBtn = document.getElementById('wfNewTabBtn');
+      if (wfBtn) wfBtn.href = data.img;
+      descEl.innerHTML = content.desc;
+      metaEl.innerText = content.meta;
+    }
+
+    const mockupModules = {
+      superadmin: {
+        img: "assets/kidpro-mockup-superadmin.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_003.html",
+        platform: { en: "💻 Web Desktop (1440px)", vi: "💻 Web Desktop (1440px)" },
+        code: "Screen #03",
+        en: {
+          title: "Screen #03: System Admin Dashboard (Executive Infrastructure & AI Monitor)",
+          desc: "Central operational command center for platform Super Admins. Provides real-time telemetry across multi-tenant kindergarten branches: active school subscriptions, concurrent online users, API gateway throughput (req/sec), edge server health, and live AI microservice inference health (YOLO face detection & InsightFace 512D vector embeddings).",
+          meta: "Actor: Platform Super Admin · Modules: Central Executive Dashboard, Multi-tenant Nodes, Edge AI Health Monitor",
+          srs: "⭐ SRS Spec: UC-008 Platform Health & Infrastructure Telemetry"
+        },
+        vi: {
+          title: "Màn #03: Bàn Điều Hành Quản Trị Hệ Thống (Giám sát Hạ tầng & AI Hub)",
+          desc: "Trung tâm điều hành tổng quan toàn bộ nền tảng KIDPRO dành cho Super Admin. Giám sát thời gian thực toàn bộ chuỗi trường mầm non (multi-tenant): lưu lượng API/giây, trạng thái cụm máy chủ, hồ sơ tenant đang hoạt động và biểu đồ kiểm soát sức khỏe cụm microservice AI (nhận diện khuôn mặt YOLO & véc-tơ InsightFace 512D).",
+          meta: "Tác nhân: Quản trị viên Nền tảng · Phân hệ: Bàn điều hành cấp cao, Quản lý đa trường (Tenants), Giám sát cụm AI",
+          srs: "⭐ Quy chuẩn SRS: UC-008 Giám sát Sức khỏe Hệ thống & Hạ tầng AI"
+        }
+      },
+      principal: {
+        img: "assets/kidpro-mockup-principal.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_019.html",
+        platform: { en: "💻 Web Desktop (1440px)", vi: "💻 Web Desktop (1440px)" },
+        code: "Screen #019 / #018",
+        en: {
+          title: "Screen #019: Principal Executive Academic Dashboard",
+          desc: "Strategic oversight workspace for kindergarten principals. Delivers multidimensional operational visibility: monthly enrollment growth trends, class capacity quotas, daily schoolwide attendance check-in percentages, cashflow forecasts, tuition collection progress, and emergency schoolwide alert broadcast trigger.",
+          meta: "Actor: Kindergarten Principal · Modules: Academic KPIs, Enrollment Analytics, Cashflow Projections, Emergency Broadcast",
+          srs: "⭐ SRS Spec: UC-027 Enrollment Analytics & UC-028 Cashflow Forecast"
+        },
+        vi: {
+          title: "Màn #019: Bàn Làm Việc Điều Hành Chiến Lược của Hiệu Trưởng",
+          desc: "Bàn làm việc điều hành chiến lược đa chiều dành cho Hiệu trưởng. Tổng hợp báo cáo trực quan về biến động sĩ số học sinh, tỷ lệ chuyên cần theo từng khối tuổi, dòng tiền dự toán và tiến độ thu học phí tháng, đồng thời tích hợp cổng phát thông báo khẩn cấp toàn trường khi có sự cố.",
+          meta: "Tác nhân: Ban Giám Hiệu (Hiệu trưởng) · Phân hệ: Chỉ số KPI học vụ, Biến động tuyển sinh, Dòng tiền & Phát tin khẩn",
+          srs: "⭐ Quy chuẩn SRS: UC-027 Biến động Tuyển sinh & UC-028 Dự báo Dòng tiền"
+        }
+      },
+      academic: {
+        img: "assets/kidpro-mockup-academic.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_046.html",
+        platform: { en: "💻 Web Desktop (1440px)", vi: "💻 Web Desktop (1440px)" },
+        code: "Screen #046 / #035",
+        en: {
+          title: "Screen #046: Timetable Scheduler Workspace (Drag & Drop Planner)",
+          desc: "Interactive scheduling console for Academic Officers. Features intuitive drag-and-drop allocation of preschool activity periods (morning circle, physical education, music & arts, bilingual STEM), intelligent room quota enforcement, lead/assistant teacher conflict detection, and 1-click timetable broadcast to parents.",
+          meta: "Actor: Academic Affairs Officer · Modules: Class Timetables, Room Allocation, Teacher Conflict Detection, Parent Feed",
+          srs: "⭐ SRS Spec: UC-046 Smart Timetable Scheduler & Conflict Resolution"
+        },
+        vi: {
+          title: "Màn #046: Không Gian Xếp Thời Khóa Biểu Kéo - Thả Thông Minh",
+          desc: "Giao diện xếp thời khóa biểu thông minh dạng kéo - thả dành cho cán bộ giáo vụ. Cho phép phân bổ trực quan các tiết sinh hoạt, phát triển thể chất và làm quen tiếng Anh; tự động kiểm tra xung đột phòng học / giáo viên và hỗ trợ xuất bản thời khóa biểu tức thời đến ứng dụng phụ huynh.",
+          meta: "Tác nhân: Cán bộ Giáo vụ · Phân hệ: Thời khóa biểu lớp, Phân bổ phòng học, Chống trùng lịch giáo viên, Đồng bộ phụ huynh",
+          srs: "⭐ Quy chuẩn SRS: UC-046 Xếp Thời Khóa Biểu Kéo - Thả & Xử lý Trùng lịch"
+        }
+      },
+      accountant: {
+        img: "assets/kidpro-mockup-accountant.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_067.html",
+        platform: { en: "💻 Web Desktop (1440px)", vi: "💻 Web Desktop (1440px)" },
+        code: "Screen #067 / #061",
+        en: {
+          title: "Screen #067: Monthly Tuition Billing Run & Boarding Meal Rebate Workspace",
+          desc: "Financial reconciliation engine executing monthly batch statement generation. Automatically calculates multi-child tuition discounts, aggregates excused absence days submitted before 08:00 cutoff to deduct meal fees into the next cycle statement as scheduled, and monitors PayOS VietQR payment status.",
+          meta: "Actor: School Accountant · Modules: Batch Statements, Sibling Concessions, Meal Rebate Deduction, VietQR Webhook",
+          srs: "⭐ SRS Spec: UC-035 Tuition Billing Batch & UC-036 Meal Refund Logic"
+        },
+        vi: {
+          title: "Màn #067: Không Gian Quyết Toán Học Phí Tháng & Khấu Trừ Tiền Ăn Tự Động",
+          desc: "Bàn tính toán và phát hành hóa đơn học phí hàng loạt cho toàn trường. Tự động áp dụng quy tắc miễn giảm anh chị em, tổng hợp số ngày nghỉ học có phép nộp trước 08:00 sáng để khấu trừ hoàn tiền ăn vào hóa đơn học phí tháng kế tiếp theo quy định, và theo dõi đối soát tự động qua webhook PayOS VietQR.",
+          meta: "Tác nhân: Kế toán Nhà trường · Phân hệ: Lập bảng kê học phí, Khấu trừ tiền ăn theo quy định, Đối soát PayOS VietQR",
+          srs: "⭐ Quy chuẩn SRS: UC-035 Quyết toán Học phí Hàng loạt & UC-036 Quy tắc Khấu trừ Tiền ăn"
+        }
+      },
+      teacher: {
+        img: "assets/kidpro-mockup-teacher.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_082.html",
+        platform: { en: "📱 Mobile App", vi: "📱 Mobile App" },
+        code: "Screen #082 / #080",
+        en: {
+          title: "Screen #082: Morning Roll-Call & FaceID Verification Dashboard",
+          desc: "Mobile application interface for kindergarten teachers during morning arrival. Combines real-time AI face recognition validation results, attendance completion progress (present/absent/excused), 1-tap manual override fallback, body temperature & health symptom logging, and instant meal headcount submission to kitchen.",
+          meta: "Actor: Preschool Teacher · Modules: Morning Attendance, AI Camera FaceID, Health Incident Log, Real-time Kitchen Push",
+          srs: "⭐ SRS Spec: UC-022 Real-time FaceID Attendance & Manual Override"
+        },
+        vi: {
+          title: "Màn #082: Bàn Điểm Danh Buổi Sáng & Xác Thực Khuôn Mặt AI FaceID",
+          desc: "Giao diện ứng dụng di động dành cho cô giáo đón trẻ đầu ngày. Hiển thị kết quả nhận diện khuôn mặt AI tức thời, tiến độ sĩ số (đã đến / chưa đến / có phép), hỗ trợ điểm danh thủ công 1 chạm khi ngoại lệ, đo thân nhiệt ghi nhận triệu chứng sốt và tự động đồng bộ sĩ số ăn về nhà bếp.",
+          meta: "Tác nhân: Giáo viên Mầm non · Phân hệ: Điểm danh buổi sáng, Camera AI FaceID, Nhật ký triệu chứng sốt, Chốt suất ăn",
+          srs: "⭐ Quy chuẩn SRS: UC-022 Điểm danh AI FaceID & Điểm danh Thủ công Dự phòng"
+        }
+      },
+      parent: {
+        img: "assets/kidpro-mockup-parent.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_131.html",
+        platform: { en: "📱 Mobile App", vi: "📱 Mobile App" },
+        code: "Screen #131 / #115",
+        en: {
+          title: "Screen #131: Excused Absence Request Form with 08:00 Cutoff Timer",
+          desc: "Mobile parent portal form for filing excused leave requests. Features dynamic cutoff timer countdown (before 07:30/08:00 AM) to qualify for automatic meal fee rebate into the next cycle statement, reason selection (illness/family trip), prescription photo upload, and instant push notification to the homeroom teacher.",
+          meta: "Actor: Parent / Guardian · Modules: Absence Request, 08:00 Cutoff Rule, Meal Rebate Trigger, Teacher Direct Notice",
+          srs: "⭐ SRS Spec: UC-050 Student Absence 48H & UC-036 08:00 Cutoff Policy"
+        },
+        vi: {
+          title: "Màn #131: Đơn Xin Nghỉ Học Có Phép Kèm Đồng Hồ Chốt Tiền Ăn Tự Động",
+          desc: "Biểu mẫu nộp đơn xin nghỉ học trên ứng dụng phụ huynh. Tích hợp cảnh báo chính sách hoàn tiền ăn với mốc thời gian chốt tự động (nộp trước 08:00 sáng được hoàn học phí/tiền ăn vào tháng kế tiếp theo quy định), ghi rõ lý do kèm ảnh đơn thuốc và gửi thông báo trực tiếp đến giáo viên chủ nhiệm.",
+          meta: "Tác nhân: Phụ huynh Học sinh · Phân hệ: Nộp đơn xin nghỉ học, Mốc chốt 08:00 hoàn tiền ăn, Đính kèm đơn thuốc",
+          srs: "⭐ Quy chuẩn SRS: UC-050 Đơn Nghỉ Học & UC-036 Khấu trừ Tiền ăn theo Giờ chốt"
+        }
+      },
+      kitchen: {
+        img: "assets/kidpro-mockup-kitchen.png",
+        vercelUrl: "https://kidpro-kidsystem-mockups.vercel.app/screens/screen_144.html",
+        platform: { en: "📟 Tablet Console (1080px)", vi: "📟 Trạm Tablet Cảm ứng (1080px)" },
+        code: "Screen #144 / #148",
+        en: {
+          title: "Screen #144: Real-time Meal Headcount & Catering Operations Tablet",
+          desc: "Tablet workstation for cafeteria nutritionists and chefs. Aggregates live student headcounts confirmed at 08:30 AM across all grade levels (Nursery, Toddler, Pre-K), highlights critical dietary allergy alerts (nuts, seafood, lactose), displays weekly menu portions, and records 3-step food safety compliance.",
+          meta: "Actor: Kitchen Staff / Nutritionist · Modules: Real-time 08:30 Headcount, Severe Allergy Alerts, Weekly Menu Portions",
+          srs: "⭐ SRS Spec: UC-063 Real-time Catering Headcount & UC-053 Allergy Management"
+        },
+        vi: {
+          title: "Màn #144: Trạm Tablet Bếp Ăn Bán Trú, Chốt Sĩ Số Thực & Cảnh Báo Dị Ứng",
+          desc: "Trạm điều hành tablet dành cho đầu bếp và chuyên viên dinh dưỡng bán trú. Tự động chốt sĩ số suất ăn lúc 08:30 sáng từ dữ liệu điểm danh các lớp, bóc tách danh sách cảnh báo dị ứng thực phẩm nghiêm trọng (đậu phộng, hải sản, sữa bò), theo dõi định lượng khẩu phần và ghi nhận kiểm thực 3 bước.",
+          meta: "Tác nhân: Nhân viên Bếp Bán trú · Phân hệ: Bảng sĩ số suất ăn 08:30, Cảnh báo dị ứng nghiêm trọng, Định lượng khẩu phần",
+          srs: "⭐ Quy chuẩn SRS: UC-063 Chốt Sĩ số Suất ăn & UC-053 Quản lý Trẻ Dị ứng Thực phẩm"
+        }
+      }
+    };
+
+    let currentMockupKey = 'superadmin';
+
+    function selectMockupTab(key, btn) {
+      currentMockupKey = key;
+      document.querySelectorAll('#mockupTabs .erd-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderMockup(key, currentLang);
+    }
+
+    function renderMockup(key, lang) {
+      const data = mockupModules[key];
+      if (!data) return;
+      const content = data[lang] || data['en'];
+      const imgEl = document.getElementById('mockupMainImg');
+      const titleEl = document.getElementById('mockupTitle');
+      const descEl = document.getElementById('mockupDesc');
+      const metaEl = document.getElementById('mockupMeta');
+      const srsEl = document.getElementById('mockupSrsTag');
+      const platEl = document.getElementById('mockupPlatformBadge');
+      const codeEl = document.getElementById('mockupScreenCode');
+      const vercelBtn = document.getElementById('mockupVercelBtn');
+      const fullImgBtn = document.getElementById('mockupFullImgBtn');
+
+      if (imgEl) {
+        imgEl.src = data.img;
+        imgEl.alt = content.title;
+      }
+      if (titleEl) titleEl.innerText = content.title;
+      if (descEl) descEl.innerHTML = content.desc;
+      if (metaEl) metaEl.innerText = content.meta;
+      if (srsEl) srsEl.innerText = content.srs;
+      if (platEl) platEl.innerText = data.platform[lang] || data.platform['en'];
+      if (codeEl) codeEl.innerText = data.code;
+      if (vercelBtn) vercelBtn.href = data.vercelUrl;
+      if (fullImgBtn) fullImgBtn.href = data.img;
+    }
+
+    function selectWfTab(key, btn) {
+      currentWfKey = key;
+      document.querySelectorAll('#wfTabs .erd-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderWf(key, currentLang);
+    }
+
+    function selectUcTab(key, btn) {
+      currentUcKey = key;
+      document.querySelectorAll('#ucTabs .uc-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const subTabs = document.getElementById('ucSubTabs');
+      if (subTabs) {
+        if (key === 'principal_admin') {
+          subTabs.style.display = 'flex';
+          document.querySelectorAll('#ucSubTabs .uc-sub-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = '#fff';
+            b.style.color = 'var(--navy)';
+            b.style.borderColor = '#c7d7f2';
+          });
+          const bothBtn = document.querySelector('#ucSubTabs button[data-sub="both"]');
+          if (bothBtn) {
+            bothBtn.classList.add('active');
+            bothBtn.style.background = 'var(--navy)';
+            bothBtn.style.color = '#fff';
+            bothBtn.style.borderColor = 'var(--accent)';
+          }
+        } else {
+          subTabs.style.display = 'none';
+        }
+      }
+
+      renderUc(key, currentLang);
+    }
+
+    function switchUcSub(subKey, btn) {
+      document.querySelectorAll('#ucSubTabs .uc-sub-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '#fff';
+        b.style.color = 'var(--navy)';
+        b.style.borderColor = '#c7d7f2';
+      });
+      btn.classList.add('active');
+      btn.style.background = 'var(--navy)';
+      btn.style.color = '#fff';
+      btn.style.borderColor = 'var(--accent)';
+
+      const data = ucModules['principal_admin'];
+      if (!data) return;
+      const imgSrc = data.subImgs ? data.subImgs[subKey] : data.img;
+      const imgEl = document.getElementById('ucMainImg');
+      const ucBtn = document.getElementById('ucNewTabBtn');
+      if (imgEl) imgEl.src = imgSrc;
+      if (ucBtn) ucBtn.href = imgSrc;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      localStorage.setItem('kidpro_lang', lang);
+
+      const btnEn = document.getElementById('btn-en');
+      const btnVi = document.getElementById('btn-vi');
+      if (btnEn && btnVi) {
+        btnEn.classList.toggle('active', lang === 'en');
+        btnVi.classList.toggle('active', lang === 'vi');
+      }
+
+      renderWf(currentWfKey, lang);
+      renderUc(currentUcKey, lang);
+      renderMockup(currentMockupKey, lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const savedLang = localStorage.getItem('kidpro_lang') || 'en';
+      setLanguage(savedLang);
+    });
+
+    // Zoom Lightbox
+    function zoomArtifact(el) {
+      var img = el.querySelector('img');
+      var box = document.getElementById('lightbox');
+      var content = document.getElementById('boxContent');
+      var newTab = document.getElementById('lightboxNewTab');
+      if (img) {
+        content.innerHTML = '<img src="' + img.src + '" alt="' + (img.alt || 'Architectural Diagram') + '" onclick="this.classList.toggle(\'zoom-full\')">';
+        if (newTab) newTab.href = img.src;
+        box.classList.add('open');
+      }
+    }
+
+    function closeBox(e) {
+      if (e.target.id === 'lightbox' || e.target.className === 'close') {
+        document.getElementById('lightbox').classList.remove('open');
+      }
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('open');
+      }
+    });
+
+    // Scroll Progress, Back-to-Top & ScrollSpy
+    window.addEventListener('scroll', function () {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      const bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = scrolled + '%';
+
+      const btnTop = document.getElementById('backToTop');
+      if (btnTop) {
+        if (winScroll > 320) {
+          btnTop.classList.add('visible');
+        } else {
+          btnTop.classList.remove('visible');
+        }
+      }
+
+      // ScrollSpy
+      const sections = ['overview', 'contribution', 'evidence', 'impact'];
+      let currentSection = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop - 120;
+          if (winScroll >= top) {
+            currentSection = id;
+          }
+        }
+      });
+      document.querySelectorAll('.links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href === '#' + currentSection) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
+      });
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>

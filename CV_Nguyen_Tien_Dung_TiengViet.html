@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Nguyễn Tiến Dũng - Business Analyst</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 13mm 10mm 13mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, "Helvetica Neue", "Segoe UI", sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.38;
+      color: #222222;
+      background: #f4f6f8;
+      padding: 20px 10px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .cv-page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 24px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #ffffff;
+      }
+
+      .cv-page {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-size: 21pt;
+      font-weight: 800;
+      color: #17335c;
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .header .role-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #17335c;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .header .contact-line {
+      font-size: 9.3pt;
+      color: #333333;
+      line-height: 1.4;
+    }
+
+    .header .contact-line a {
+      color: #17335c;
+      text-decoration: underline;
+    }
+
+    .header .contact-line a:hover {
+      color: #2b6cb0;
+    }
+
+    .sep {
+      margin: 0 6px;
+      color: #888888;
+    }
+
+    /* Section Headings */
+    .section {
+      margin-top: 10px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #17335c;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .section-line {
+      height: 1.5px;
+      background-color: #17335c;
+      width: 100%;
+      margin-bottom: 6px;
+    }
+
+    /* Giới thiệu */
+    .intro-text {
+      text-align: justify;
+      color: #2d3748;
+      font-size: 9.4pt;
+      line-height: 1.42;
+    }
+
+    /* Học vấn */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 700;
+      font-size: 9.7pt;
+      color: #17335c;
+    }
+
+    .edu-sub {
+      color: #333333;
+      font-size: 9.3pt;
+      margin: 1px 0 3px 0;
+    }
+
+    .edu-list {
+      margin-left: 17px;
+      font-size: 9.2pt;
+      color: #2d3748;
+    }
+
+    .edu-list li {
+      margin-bottom: 2px;
+    }
+
+    /* Dự án */
+    .project-item {
+      margin-bottom: 8px;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 2px;
+    }
+
+    .project-header {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #111111;
+    }
+
+    .project-header span.group {
+      font-weight: normal;
+      font-style: italic;
+      color: #4a5568;
+    }
+
+    .project-tags {
+      font-size: 8.8pt;
+      font-style: italic;
+      color: #4a5568;
+      margin: 1px 0 3px 0;
+    }
+
+    .project-tags a {
+      color: #17335c;
+      font-style: normal;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Bullet Points */
+    ul.bullet-list {
+      margin-left: 17px;
+    }
+
+    ul.bullet-list li {
+      margin-bottom: 2px;
+      text-align: justify;
+      color: #262626;
+      font-size: 9.25pt;
+      line-height: 1.38;
+    }
+
+    ul.bullet-list li strong {
+      color: #111111;
+    }
+
+    /* Kỹ năng */
+    .skill-row {
+      margin-bottom: 3.5px;
+      font-size: 9.25pt;
+      line-height: 1.38;
+      text-align: justify;
+      color: #262626;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: #111111;
+    }
+
+    /* Ngoại ngữ & Chứng chỉ */
+    .misc-row {
+      margin-bottom: 3px;
+      font-size: 9.25pt;
+      line-height: 1.38;
+      color: #262626;
+    }
+
+    .misc-label {
+      font-weight: 700;
+      color: #111111;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cv-page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <h1>NGUYỄN TIẾN DŨNG</h1>
+      <div class="role-title">BUSINESS ANALYST</div>
+      <div class="contact-line">
+        Hà Nội <span class="sep">|</span>
+        (+84) 363 262 xxx <span class="sep">|</span>
+        <a href="mailto:tiendunga2k13@gmail.com">tiendunga2k13@gmail.com</a>
+      </div>
+      <div class="contact-line" style="margin-top: 2px;">
+        <a href="./index.html" target="_blank">Portfolio</a> <span class="sep">|</span>
+        <a href="https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link"
+          target="_blank">Notion</a>
+      </div>
+    </header>
+
+    <!-- GIỚI THIỆU -->
+    <section class="section">
+      <div class="section-title">GIỚI THIỆU</div>
+      <div class="section-line"></div>
+      <p class="intro-text">
+        Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT, có kinh nghiệm qua các đồ án phần mềm học thuật về
+        phân tích yêu cầu, mô hình hóa quy trình nghiệp vụ, xây dựng tài liệu và sử dụng Postman để kiểm tra luồng
+        truyền/nhận dữ liệu theo spec. Có nền tảng UML, SQL và cơ sở dữ liệu quan hệ; đã thực hành vẽ sơ đồ bằng
+        Draw.io, thiết kế wireframe/prototype trên Figma, sử dụng Jira trong quản lý backlog/user story dự án và ứng
+        dụng bộ công cụ AI (Stitch AI, Claude Code) giúp tối ưu tốc độ xây dựng tài liệu. Mong muốn đảm nhận vị trí
+        Business Analyst để đóng góp giải pháp giá trị cho các dự án phần mềm thực tế.
+      </p>
+    </section>
+
+    <!-- HỌC VẤN -->
+    <section class="section">
+      <div class="section-title">HỌC VẤN</div>
+      <div class="section-line"></div>
+      <div class="edu-row">
+        <span>Trường Đại học FPT</span>
+        <span style="font-weight: normal; font-size: 9.3pt; color: #4a5568;">2023 – Hiện tại</span>
+      </div>
+      <div class="edu-sub">
+        Kỹ thuật Phần mềm – <strong>Sinh viên năm cuối</strong> <span class="sep">|</span> GPA: <strong>3.0 /
+          4.0</strong> (Dự kiến tốt nghiệp: 2027)
+      </div>
+      <ul class="edu-list">
+        <li>Đạt <strong>Học bổng Thành tích 30%</strong> toàn khóa học đại học (4 năm).</li>
+      </ul>
+    </section>
+
+    <!-- DỰ ÁN TIÊU BIỂU -->
+    <section class="section">
+      <div class="section-title">DỰ ÁN TIÊU BIỂU</div>
+      <div class="section-line"></div>
+
+      <!-- Dự án 1: Kidpro -->
+      <div class="project-item">
+        <div class="project-header">
+          Kidpro – Hệ thống Quản lý Mầm non Thông minh &amp; AI điểm danh khuôn mặt <span class="group">| Đồ án tốt
+            nghiệp</span>
+        </div>
+        <div class="project-tags">
+          Phân tích quy trình <span class="sep">|</span> User Story &amp; AC <span class="sep">|</span> BPMN 2.0 <span
+            class="sep">|</span> Wireframe <span class="sep">|</span> Jira <span class="sep">|</span> <a
+            href="./kidpro-ai-system.html" target="_blank">Xem case study</a>
+        </div>
+        <ul class="bullet-list">
+          <li>Phân tích các quy trình nghiệp vụ mầm non gồm điểm danh bán trú, đón trả trẻ, thời khóa biểu và tính tiền
+            học phí; xây dựng tài liệu SRS và phân rã thành User Story kèm tiêu chí nghiệm thu (Acceptance Criteria) rõ
+            ràng.</li>
+          <li>Mô hình hóa quy trình điểm danh và đón trẻ; xác định quy tắc khấu trừ tiền ăn theo gói dịch vụ, cơ chế
+            fallback xử lý khi mất kết nối mạng và quy trình xác thực người đón nhằm hạn chế nhầm lẫn khi chốt phí.</li>
+          <li>Thiết kế wireframe và prototype giao diện bằng Figma; sử dụng Jira để quản lý công việc và log bug, tham
+            gia kiểm thử luồng truyền/nhận dữ liệu theo với tài liệu yêu cầu trước khi hoàn thiện đồ án.</li>
+        </ul>
+      </div>
+
+      <!-- Dự án 2: HMS -->
+      <div class="project-item">
+        <div class="project-header">
+          Hệ thống Quản lý Bệnh viện (HMS) <span class="group">| COURSE PROJECT REPORT</span>
+        </div>
+        <div class="project-tags">
+          Phân tích yêu cầu <span class="sep">|</span> Quy tắc nghiệp vụ <span class="sep">|</span> UML <span
+            class="sep">|</span> Kiến trúc SOA <span class="sep">|</span> <a href="./hospital-management.html"
+            target="_blank">Xem case study</a>
+        </div>
+        <ul class="bullet-list">
+          <li>Phân tích quy trình khám chữa bệnh ngoại trú/nội trú gồm tiếp nhận bệnh nhân, đặt lịch khám, lập bệnh án
+            điện tử, kê đơn thuốc và thanh toán viện phí.</li>
+          <li>Xác định các quy tắc nghiệp vụ về phân quyền và quy trình Khám chữa bệnh &amp; Kê đơn; mô hình hóa các
+            luồng xử lý và tương tác giữa các khoa phòng bằng biểu đồ Use Case, Activity, Sequence, Class diagram và
+            State Diagram.</li>
+          <li>Đề xuất giải pháp kiến trúc hướng dịch vụ (SOA) để phân tách các phân hệ chức năng độc lập dưới sự hướng
+            dẫn của supervisor; phối hợp kiểm tra tính nhất quán giữa tài liệu thiết kế và yêu cầu nghiệp vụ.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- KỸ NĂNG -->
+    <section class="section">
+      <div class="section-title">KỸ NĂNG</div>
+      <div class="section-line"></div>
+
+      <div class="skill-row">
+        <span class="skill-label">Business Analysis:</span> Phân tích yêu cầu nghiệp vụ, Yêu cầu chức năng / phi chức
+        năng, Viết User Story, Acceptance Criteria, Mô hình hóa quy trình nghiệp vụ, Mô hình hóa hệ thống (UML: Use
+        Case, Sequence, Activity,...), Wireframing &amp; Prototyping, Kiểm thử chấp nhận người dùng (UAT).
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Technical:</span> REST API, Postman, SQL (PostgreSQL, SQL Server).
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; Quản lý:</span> Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion,
+        Microsoft Office, Teams.
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">AI-Assisted BA:</span> Ứng dụng Stitch AI và Claude AI trong việc phác thảo nhanh
+        wireframe, sinh kịch bản kiểm thử và kiểm tra tính khả thi của giao diện.
+      </div>
+    </section>
+
+    <!-- NGOẠI NGỮ & CHỨNG CHỈ -->
+    <section class="section">
+      <div class="section-title">NGOẠI NGỮ &amp; CHỨNG CHỈ</div>
+      <div class="section-line"></div>
+
+      <div class="misc-row">
+        <span class="misc-label">Ngoại ngữ:</span> Tiếng Anh: IELTS 5.0 (2023-2025)
+      </div>
+    </section>
+
+  </div>
+
+</body>
+
+</html>

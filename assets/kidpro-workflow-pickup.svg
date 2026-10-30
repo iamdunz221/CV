@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 540" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b" />
+    </marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f87171" />
+    </marker>
+    <filter id="shadow" x="-5%" y="-10%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Boundary -->
+  <rect x="1" y="1" width="2558" height="538" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Horizontal Lane Dividers -->
+  <line x1="0" y1="180" x2="2560" y2="180" stroke="#1e293b" stroke-width="2"/>
+  <line x1="0" y1="360" x2="2560" y2="360" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Vertical Header Dividers -->
+  <line x1="42" y1="0" x2="42" y2="540" stroke="#1e293b" stroke-width="2"/>
+  <line x1="84" y1="0" x2="84" y2="540" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Top-left indicators [x] [x] -->
+  <rect x="4" y="4" width="34" height="20" fill="none" stroke="#94a3b8" stroke-width="1"/>
+  <rect x="46" y="4" width="34" height="20" fill="none" stroke="#94a3b8" stroke-width="1"/>
+  <text x="21" y="18" text-anchor="middle" font-size="12" fill="#64748b" font-weight="bold">[x]</text>
+  <text x="63" y="18" text-anchor="middle" font-size="12" fill="#64748b" font-weight="bold">[x]</text>
+
+  <!-- Vertical Headers -->
+  <g transform="translate(26, 270) rotate(-90)">
+    <text text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a" letter-spacing="1">Afternoon Pickup Attendance</text>
+  </g>
+  <g transform="translate(68, 90) rotate(-90)">
+    <text text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Parent</text>
+  </g>
+  <g transform="translate(68, 270) rotate(-90)">
+    <text text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Teacher</text>
+  </g>
+  <g transform="translate(68, 450) rotate(-90)">
+    <text text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">System</text>
+  </g>
+
+  <!-- Connections / Connectors -->
+  <!-- Start -> Node 1 -->
+  <line x1="137" y1="270" x2="180" y2="270" stroke="#f87171" stroke-width="2" marker-end="url(#arrow-pink)"/>
+
+  <!-- Node 1 -> Node 2 (dashed down) -->
+  <line x1="300" y1="300" x2="300" y2="418" stroke="#1e293b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="300" y="360" text-anchor="middle" font-size="13" font-style="italic" fill="#475569" background="#fff">dữ liệu ảnh/vector</text>
+
+  <!-- Node 2 -> Diamond 3 -->
+  <line x1="410" y1="450" x2="480" y2="450" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Diamond 3 -> Yes -> Node 4 -->
+  <path d="M 550 415 L 550 205 L 1630 205 L 1630 238" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="522" y="340" width="36" height="22" fill="#ffffff" rx="4"/>
+  <text x="540" y="356" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">Yes</text>
+
+  <!-- Diamond 3 -> No -> Node 4B -->
+  <line x1="620" y1="450" x2="688" y2="450" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="635" y="425" width="30" height="20" fill="#ffffff" rx="4"/>
+  <text x="650" y="440" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">No</text>
+
+  <!-- Node 4B -> Node 5B -->
+  <line x1="805" y1="420" x2="805" y2="302" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 5B -> Diamond 6B -->
+  <line x1="920" y1="270" x2="988" y2="270" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Diamond 6B -> Yes -> Node 4 -->
+  <line x1="1110" y1="270" x2="1548" y2="270" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1120" y="246" width="36" height="20" fill="#ffffff" rx="4"/>
+  <text x="1138" y="261" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">Yes</text>
+
+  <!-- Diamond 6B -> No -> Node 7B -->
+  <line x1="1050" y1="302" x2="1050" y2="418" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1056" y="348" width="30" height="20" fill="#ffffff" rx="4"/>
+  <text x="1071" y="363" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">No</text>
+
+  <!-- Node 7B -> Node 8B -->
+  <path d="M 1155 450 L 1295 450 L 1295 302" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 8B -> Node 9 (Parent lane) -->
+  <path d="M 1295 240 L 1295 45 L 2175 45 L 2175 58" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 4 -> Node 5 -->
+  <line x1="1665" y1="300" x2="1665" y2="418" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 5 -> Diamond 6 -->
+  <line x1="1770" y1="450" x2="1848" y2="450" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Diamond 6 -> No -> Node 9 (Parent lane) -->
+  <path d="M 1910 415 L 1910 90 L 2068 90" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1916" y="338" width="30" height="20" fill="#ffffff" rx="4"/>
+  <text x="1931" y="353" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">No</text>
+
+  <!-- Diamond 6 -> Yes -> Node 7 -->
+  <path d="M 1970 450 L 1985 450 L 1985 490 L 2068 490 L 2068 460" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1992" y="475" width="36" height="20" fill="#ffffff" rx="4"/>
+  <text x="2010" y="490" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">Yes</text>
+
+  <!-- Node 7 -> Node 9 -->
+  <line x1="2175" y1="420" x2="2175" y2="122" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 9 -> End Event -->
+  <line x1="2280" y1="90" x2="2368" y2="90" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Nodes and Elements -->
+
+  <!-- Start Event -->
+  <circle cx="125" cy="270" r="12" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Node 1 -->
+  <g filter="url(#shadow)">
+    <rect x="180" y="240" width="240" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="300" y="265" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">1. Scan Pickup Person's</text>
+    <text x="300" y="285" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">Face With Camera</text>
+  </g>
+
+  <!-- Node 2 -->
+  <g filter="url(#shadow)">
+    <rect x="190" y="420" width="220" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="300" y="456" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">2. Validate Face ID</text>
+  </g>
+
+  <!-- Diamond 3 -->
+  <g filter="url(#shadow)">
+    <polygon points="550,415 620,450 550,485 480,450" fill="#fffbeb" stroke="#dc2626" stroke-width="2"/>
+    <text x="550" y="446" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">3. Check Eligibility</text>
+    <text x="550" y="462" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">of Picker?</text>
+  </g>
+
+  <!-- Node 4B -->
+  <g filter="url(#shadow)">
+    <rect x="690" y="420" width="230" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="805" y="445" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">4B. Send Valid Pickup</text>
+    <text x="805" y="465" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">Person Picture to Teacher</text>
+  </g>
+
+  <!-- Node 5B -->
+  <g filter="url(#shadow)">
+    <rect x="690" y="240" width="230" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="805" y="265" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">5B. View valid Pickup</text>
+    <text x="805" y="285" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">Person Picture</text>
+  </g>
+
+  <!-- Diamond 6B -->
+  <g filter="url(#shadow)">
+    <polygon points="1050,238 1110,270 1050,302 990,270" fill="#fffbeb" stroke="#dc2626" stroke-width="2"/>
+    <text x="1050" y="275" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">6B. Valid?</text>
+  </g>
+
+  <!-- Node 7B -->
+  <g filter="url(#shadow)">
+    <rect x="945" y="420" width="210" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="1050" y="445" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">7B. Send Alert</text>
+    <text x="1050" y="465" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">Notification</text>
+  </g>
+
+  <!-- Node 8B -->
+  <g filter="url(#shadow)">
+    <rect x="1180" y="240" width="230" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="1295" y="265" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">8B. Keep Children Safe</text>
+    <text x="1295" y="285" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">&amp; Call Verification</text>
+  </g>
+
+  <!-- Node 4 -->
+  <g filter="url(#shadow)">
+    <rect x="1550" y="240" width="230" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="1665" y="265" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">4. Handover of Children</text>
+    <text x="1665" y="285" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">&amp; Closing of Pick Up Time</text>
+  </g>
+
+  <!-- Node 5 -->
+  <g filter="url(#shadow)">
+    <rect x="1560" y="420" width="210" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="1665" y="456" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">5. Log Attendance</text>
+  </g>
+
+  <!-- Diamond 6 -->
+  <g filter="url(#shadow)">
+    <polygon points="1910,415 1970,450 1910,485 1850,450" fill="#fffbeb" stroke="#dc2626" stroke-width="2"/>
+    <text x="1910" y="455" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">6. After 5:30?</text>
+  </g>
+
+  <!-- Node 7 -->
+  <g filter="url(#shadow)">
+    <rect x="2070" y="420" width="210" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="2175" y="445" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">7. Auto calculate</text>
+    <text x="2175" y="465" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">late pick up fee</text>
+  </g>
+
+  <!-- Node 9 -->
+  <g filter="url(#shadow)">
+    <rect x="2070" y="60" width="210" height="60" rx="10" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+    <text x="2175" y="96" text-anchor="middle" font-size="15" font-weight="500" fill="#0f172a">9. Send Notification</text>
+  </g>
+
+  <!-- End Event -->
+  <circle cx="2390" cy="90" r="18" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="2390" cy="90" r="13" fill="#0f172a"/>
+</svg>
