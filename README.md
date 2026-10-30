@@ -73,7 +73,7 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem â†
 
 | Dimension | Methodologies & Technologies | Tools |
 | :--- | :--- | :--- |
-| **Requirements Engineering** | Stakeholder Elicitation, BRD, SRS (IEEE 830), Agile User Stories, Gherkin Acceptance Criteria, Scope Creep Control, UAT Plans | Jira, Confluence, Notion |
+| **Requirements Engineering** | Stakeholder Elicitation, BRD, SRS (IEEE 830), Agile User Stories, Gherkin Acceptance Criteria, Scope Creep Control, UAT Plans | Jira, Notion |
 | **Process & System Modeling** | BPMN 2.0 (Pools, Lanes, Gateways), UML (Use Case, Activity, Sequence, Component Diagrams), Relational ERD | Draw.io, Lucidchart, PlantUML |
 | **AI & Software Architecture**| 3-Tier Layered Architecture, SOA & Microservices, Netflix Eureka Service Discovery, AI Fallbacks & Edge Cases, RBAC, BCrypt/Argon2 | Postman (API Testing), PostgreSQL |
 | **UI/UX & Prototyping** | Component Design, Interactive Wireframing, Rapid Demo Generation | Figma, Stitch AI, Claude Code |
