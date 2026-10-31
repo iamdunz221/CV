@@ -6,7 +6,7 @@ Hanoi, Vietnam | (+84) 363 262 xxx | tiendunga2k13@gmail.com
 ---
 
 ### PROFESSIONAL SUMMARY
-Final-year Software Engineering student at FPT University with academic project experience in requirements analysis, business process modeling, technical documentation, and utilizing Postman to validate data transmission flows against specifications. Solid foundation in UML, SQL, and relational databases; hands-on experience in diagramming with Draw.io, designing wireframes/prototypes in Figma, managing project backlogs/user stories with Jira, and leveraging AI toolsets (Stitch AI, Claude Code) to accelerate documentation efficiency. Seeking an IT Business Analyst position to deliver impactful, high-value solutions to real-world software projects.
+Final-year Software Engineering student at FPT University seeking an **IT Business Analyst (Intern/Fresher)** role. Practical academic project experience in business process modeling (BPMN 2.0), authoring standardized SRS specifications, decomposing requirements into User Stories with testable Acceptance Criteria (Gherkin format), and resolving complex business rules/edge cases. Strong technical foundation (SQL, REST APIs) bridging business requirements with engineering implementation.
 
 ---
 
@@ -21,21 +21,22 @@ Final-year Software Engineering student at FPT University with academic project 
 
 **Kidpro – Smart Preschool Management System & AI Face Attendance** | *Graduation Capstone Project*  
 *Process Analysis | User Story & AC | BPMN 2.0 | Wireframe | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
-· Analyzed core preschool operations including day-boarding attendance, child pickup/dismissal, class timetabling, and tuition billing; authored SRS documentation and decomposed requirements into User Stories with clear Acceptance Criteria (AC).  
-· Modeled attendance and pickup/dismissal workflows; specified business rules for package-based meal fee deductions, network offline fallback mechanisms, and guardian verification procedures to prevent billing discrepancies.  
-· Designed UI wireframes and interactive prototypes in Figma; managed tasks and bug tracking via Jira, and tested data transmission and API payloads against requirement specifications prior to project delivery.  
+· Analyzed 5 core preschool operational workflows; authored standardized SRS documentation and decomposed requirements into User Stories with testable Acceptance Criteria (Given-When-Then format) to guide development and acceptance testing.  
+· Defined dynamic meal fee deduction rules by subscription package (07:00 & 08:30 cutoffs) and an Offline Grace Policy evaluating actual submission timestamps (`submitted_at`) to protect parent meal refunds during network disruptions.  
+· Specified AI FaceID roll-call workflows with 1-tap manual fallback mechanisms for low-confidence detections; modeled dual-factor guardian pickup authorization with Teacher Familiarity Override fallback and automated post-17:30 late fee billing.  
+· Designed interactive Figma prototypes to clarify functional UI flows across 7 user roles; validated API request/response payloads against specifications using Postman, and tracked requirement defects to resolution via Jira.  
 
 **Hospital Management System (HMS)** | *COURSE PROJECT REPORT*  
 *Requirements Analysis | Business Rules | UML | SOA Architecture | [View Case Study](https://iamdunz221.github.io/CV/hospital-management.html)*  
-· Analyzed outpatient and inpatient clinical workflows including patient intake, appointment scheduling, Electronic Medical Records (EMR), prescription issuance, and hospital billing.  
-· Specified business rules for role-based access control (RBAC) and clinical consultation/prescription procedures; modeled process flows and inter-departmental interactions using UML diagrams (Use Case, Activity, Sequence, Class, and State diagrams).  
-· Proposed Service-Oriented Architecture (SOA) solutions to decouple independent functional subsystems under supervisor guidance; collaborated in verifying consistency between design specifications and business requirements.
+· Analyzed inpatient and outpatient clinical workflows including patient intake, appointment scheduling, Electronic Medical Records (EMR), prescription fulfillment, and hospital billing.  
+· Defined business rules for role-based access control (RBAC) and clinical prescription safety controls; modeled inter-departmental interactions using UML diagrams (Use Case, Activity, Sequence) to clarify actor permissions and system behavior.  
+· Proposed a Service-Oriented Architecture (SOA) design to decouple core functional subsystems under supervisor guidance; collaborated in verifying end-to-end consistency between system specifications and clinical requirements.  
 
 ---
 
 ### SKILLS
 - **Business Analysis:** Requirements Elicitation & Analysis, Functional / Non-Functional Requirements (FR/NFR), User Stories & Acceptance Criteria, Business Process Modeling (BPMN 2.0), System Modeling (UML: Use Case, Sequence, Activity,...), Wireframing & Prototyping, User Acceptance Testing (UAT).
-- **Technical:** REST API, Postman, SQL (PostgreSQL, SQL Server).
+- **Technical:** REST API, Postman, SQL (SQL Server).
 - **Tools & Management:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, Microsoft Office, Teams.
 - **AI-Assisted BA:** Leveraging Stitch AI and Claude AI for rapid wireframe drafting, test scenario generation, and UI feasibility verification.
 
