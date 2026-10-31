@@ -23,7 +23,7 @@ Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT �
 *Phân tích quy trình | User Story & AC | BPMN 2.0 | Wireframe | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Phân tích 5 quy trình nghiệp vụ mầm non cốt lõi; xây dựng tài liệu đặc tả SRS chuẩn hóa và phân rã thành các User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria theo cấu trúc Given-When-Then) làm căn cứ phát triển và nghiệm thu.  
 · Thiết lập quy tắc khấu trừ tiền ăn tự động theo gói dịch vụ (mốc chốt 07:00 & 08:30) và cơ chế Offline Grace Policy đánh giá theo thời gian gửi đơn thực tế (`submitted_at`) thay vì thời gian duyệt để bảo vệ quyền lợi hoàn tiền của phụ huynh khi thiết bị mất mạng.  
-· Đặc tả quy trình điểm danh Camera AI FaceID tích hợp cơ chế fallback thủ công 1 chạm khi độ tin cậy thấp; mô hình hóa quy trình xác thực đón trẻ với cơ chế đối soát thủ công có kiểm soát (controlled manual verification fallback) và tự động tính phí trông muộn sau 17:30.  
+· Đặc tả quy trình điểm danh Camera AI FaceID tích hợp cơ chế fallback thủ công 1 chạm khi độ tin cậy thấp; mô hình hóa quy trình xác thực đón trẻ với cơ chế đối soát thủ công có kiểm soát và tự động tính phí trông muộn sau 17:30.  
 · Thiết kế prototype tương tác trên Figma để làm rõ yêu cầu giao diện cho 7 nhóm người dùng; sử dụng Postman kiểm thử payload API nhằm đảm bảo luồng dữ liệu khớp chính xác với tài liệu đặc tả, đồng thời theo dõi và quản lý lỗi phát sinh trên Jira.  
 
 **Hệ thống Quản lý Bệnh viện (HMS)** | *COURSE PROJECT REPORT*  
