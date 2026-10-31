@@ -48,7 +48,7 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem �
 * **My Direct Ownership:**
   - Formulated Use Cases & User Stories for **Boarding Attendance (Điểm danh bán trú)**, **Child Pickup & Late Fee Billing (Đón trẻ về & Phí trông muộn)**, and **Classroom Timetables (Quản lý lớp học)**.
   - Specified AI facial recognition roll-call via gate camera (YOLOv11 + InsightFace).
-  - Modeled dual-factor pickup verification with **Teacher Familiarity Override fallback** (allowing immediate 1-tap release for recognized parents).
+  - Modeled dual-factor pickup verification with **controlled manual verification fallback** (allowing immediate 1-tap release for recognized parents).
   - Designed dynamic meal fee refund policies: **Package A (Full Day)** cutoff before 07:00 AM vs **Package B (Lunch & Snack)** cutoff before 08:30 AM.
   - Engineered **Network Offline Grace Policy**: evaluates `request.submitted_at` on the server rather than `approval.timestamp` to protect parent refunds during teacher device disconnections.
   - Prototyped workflows using **Stitch AI**, **Figma**, and executable UI demos with **Claude Code**.
@@ -85,5 +85,5 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem �
 - **Name:** Nguyen Tien Dung (Nguyễn Tiến Dũng)
 - **Location:** Hanoi, Vietnam
 - **Email:** [tiendunga2k13@gmail.com](mailto:tiendunga2k13@gmail.com)
-- **Phone:** (+84) 363 262 xxx
+- **Phone:** (+84) 363 262 292
 - **Education:** FPT University — Software Engineering (2023 - 2027)

@@ -136,6 +136,6 @@ Feature: Automated Meal Fee Accrual via AI Attendance
 - **Name:** Nguyen Tien Dung (Nguyễn Tiến Dũng)
 - **Location:** Hanoi, Vietnam
 - **Email:** [tiendunga2k13@gmail.com](mailto:tiendunga2k13@gmail.com)
-- **Phone:** (+84) 363 262 xxx
+- **Phone:** (+84) 363 262 292
 - **Education:** FPT University — Software Engineering (2023 - 2027)
 - **Portfolio Repository:** [github.com/your-username/ba-portfolio](https://github.com)

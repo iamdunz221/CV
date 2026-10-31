@@ -1668,7 +1668,7 @@
             <p style="font-size: 13px; color: #475569; margin: 0; line-height: 1.65;">
               <span class="lang-en">Teacher scans pickup guardian <span class="flow-arrow">&rarr;</span> system verifies
                 against authorized profile <span class="flow-arrow">&rarr;</span> child handoff logged. If
-                unidentifiable, registered photo is pushed to teacher for Teacher Familiarity Override inspection <span
+                unidentifiable, registered photo is pushed to teacher for Controlled Manual Verification Fallback inspection <span
                   class="flow-arrow">&rarr;</span> auto calculates incremental late fees for departures after
                 17:30.</span>
               <span class="lang-vi">Giáo viên quét mặt người đón <span class="flow-arrow">&rarr;</span> hệ thống kiểm
@@ -1774,7 +1774,7 @@
             </div>
             <p class="contrib-body">
               <span class="lang-en">Formulated dual-verification security logic (matching child with registered guardian
-                profile), designed the <strong>Teacher Familiarity Override</strong> fallback flow, and specified
+                profile), designed the <strong>Controlled Manual Verification Fallback</strong> fallback flow, and specified
                 automatic incremental late fee calculations.</span>
               <span class="lang-vi">Xây dựng logic bảo mật xác minh kép (đối khớp trẻ với hồ sơ người đón đã đăng ký),
                 thiết kế luồng dự phòng <strong>Giáo viên quen mặt cho trả trẻ thủ công</strong>, và
@@ -2613,12 +2613,12 @@
         img: "assets/kidpro-workflow-pickup.png",
         en: {
           title: "Afternoon Child Pick-up & Dual-Verification Workflow (BPMN)",
-          desc: "Afternoon dismissal security workflow: Teacher scans pickup guardian's face &rarr; System checks eligibility against authorized profiles &rarr; If verified, teacher executes child handoff. If unverified, system pushes registered guardian photo to teacher for Teacher Familiarity Override inspection. Automatically calculates incremental late fees for departures after 17:30.",
+          desc: "Afternoon dismissal security workflow: Teacher scans pickup guardian's face &rarr; System checks eligibility against authorized profiles &rarr; If verified, teacher executes child handoff. If unverified, system pushes registered guardian photo to teacher for Controlled Manual Verification Fallback inspection. Automatically calculates incremental late fees for departures after 17:30.",
           meta: "Swimlanes: Parent, Teacher, System · Gateways: Eligibility Verification, Visual Inspection (Valid?), After 5:30 Cutoff"
         },
         vi: {
           title: "Sơ đồ Quy trình Trả trẻ Buổi chiều & Xác thực Người đón Hợp lệ",
-          desc: "Quy trình an toàn đón trẻ chiều: Giáo viên quét mặt người đón &rarr; Hệ thống kiểm tra tính hợp lệ &rarr; Nếu khớp, bàn giao trẻ. Nếu không nhận diện được, gửi ảnh hồ sơ người đón về máy giáo viên để đối chiếu bằng mắt (Teacher Familiarity Override). Tự động kích hoạt tính phí trông muộn sau 17:30.",
+          desc: "Quy trình an toàn đón trẻ chiều: Giáo viên quét mặt người đón &rarr; Hệ thống kiểm tra tính hợp lệ &rarr; Nếu khớp, bàn giao trẻ. Nếu không nhận diện được, gửi ảnh hồ sơ người đón về máy giáo viên để đối chiếu bằng mắt (Controlled Manual Verification Fallback). Tự động kích hoạt tính phí trông muộn sau 17:30.",
           meta: "Các bên tham gia: Phụ huynh, Giáo viên, Hệ thống · Cổng logic: Kiểm tra tính hợp lệ, Giáo viên xác nhận, Mốc sau 17:30"
         }
       },

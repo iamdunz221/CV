@@ -1,6 +1,6 @@
 # NGUYEN TIEN DUNG
 ### IT BUSINESS ANALYST
-Hanoi, Vietnam | (+84) 363 262 xxx | tiendunga2k13@gmail.com  
+Hanoi, Vietnam | (+84) 363 262 292 | tiendunga2k13@gmail.com  
 [Portfolio](https://iamdunz221.github.io/CV/) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
 
 ---
@@ -23,7 +23,7 @@ Final-year Software Engineering student at FPT University seeking an **IT Busine
 *Process Analysis | User Story & AC | BPMN 2.0 | Wireframe | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Analyzed 5 core preschool operational workflows; authored standardized SRS documentation and decomposed requirements into User Stories with testable Acceptance Criteria (Given-When-Then format) to guide development and acceptance testing.  
 · Defined dynamic meal fee deduction rules by subscription package (07:00 & 08:30 cutoffs) and an Offline Grace Policy evaluating actual submission timestamps (`submitted_at`) to protect parent meal refunds during network disruptions.  
-· Specified AI FaceID roll-call workflows with 1-tap manual fallback mechanisms for low-confidence detections; modeled dual-factor guardian pickup authorization with Teacher Familiarity Override fallback and automated post-17:30 late fee billing.  
+· Specified AI FaceID roll-call workflows with 1-tap manual fallback mechanisms for low-confidence detections; modeled guardian pickup authorization with controlled manual verification fallback and automated post-17:30 late fee billing.  
 · Designed interactive Figma prototypes to clarify functional UI flows across 7 user roles; validated API request/response payloads against specifications using Postman, and tracked requirement defects to resolution via Jira.  
 
 **Hospital Management System (HMS)** | *COURSE PROJECT REPORT*  
