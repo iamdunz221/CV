@@ -20,11 +20,11 @@ Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT �
 ### DỰ ÁN TIÊU BIỂU
 
 **Kidpro – Hệ thống Quản lý Mầm non Thông minh & AI điểm danh khuôn mặt** | *Đồ án tốt nghiệp*  
-*Phân tích quy trình | User Story & AC | BPMN 2.0 | Wireframe | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
-· Phân tích 5 quy trình nghiệp vụ mầm non cốt lõi; xây dựng tài liệu đặc tả SRS chuẩn hóa và phân rã thành các User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria theo cấu trúc Given-When-Then) làm căn cứ phát triển và nghiệm thu.  
-· Thiết lập quy tắc khấu trừ tiền ăn tự động theo gói dịch vụ (mốc chốt 07:00 & 08:30) và cơ chế Offline Grace Policy đánh giá theo thời gian gửi đơn thực tế (`submitted_at`) thay vì thời gian duyệt để bảo vệ quyền lợi hoàn tiền của phụ huynh khi thiết bị mất mạng.  
-· Đặc tả quy trình điểm danh Camera AI FaceID tích hợp cơ chế fallback thủ công 1 chạm khi độ tin cậy thấp; mô hình hóa quy trình xác thực đón trẻ với cơ chế đối soát thủ công có kiểm soát và tự động tính phí trông muộn sau 17:30.  
-· Thiết kế prototype tương tác trên Figma để làm rõ yêu cầu giao diện cho 7 nhóm người dùng; sử dụng Postman kiểm thử payload API nhằm đảm bảo luồng dữ liệu khớp chính xác với tài liệu đặc tả, đồng thời theo dõi và quản lý lỗi phát sinh trên Jira.  
+*Phân tích quy trình | User Stories & Acceptance Criteria | BPMN 2.0 | Wireframing | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
+· Phân tích 5 quy trình nghiệp vụ mầm non cốt lõi và xây dựng tài liệu đặc tả SRS chuẩn hóa; chuyển hóa các yêu cầu thành User Stories kèm tiêu chí nghiệm thu Given-When-Then kiểm thử được nhằm hỗ trợ phát triển và xác minh yêu cầu.  
+· Thiết lập quy tắc khấu trừ tiền ăn theo gói dịch vụ với các mốc chốt 07:00 và 08:30, đồng thời đặc tả yêu cầu xử lý ngoại lệ khi mất mạng nhằm hỗ trợ ghi nhận điểm danh chính xác và điều chỉnh tiền ăn khi gặp sự cố kết nối.  
+· Đặc tả quy trình điểm danh với cơ chế xác minh thủ công dự phòng cho kết quả nhận diện khuôn mặt có độ tin cậy thấp; mô hình hóa quy trình xác thực người đón trẻ và quy tắc tính phí đón muộn nhằm xử lý các lỗi nhận diện và ngoại lệ vận hành.  
+· Thiết kế prototype tương tác trên Figma để làm rõ luồng giao diện chức năng cho 7 nhóm người dùng; lập tài liệu đặc tả yêu cầu chức năng và quy tắc nghiệp vụ, đồng thời tổ chức và quản trị các tác vụ, vấn đề liên quan đến yêu cầu trên Jira.  
 
 **Hệ thống Quản lý Bệnh viện (HMS)** | *COURSE PROJECT REPORT*  
 *Phân tích yêu cầu | Quy tắc nghiệp vụ | UML | Kiến trúc SOA | [Xem case study](https://iamdunz221.github.io/CV/hospital-management.html)*  
@@ -35,10 +35,11 @@ Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT �
 ---
 
 ### KỸ NĂNG
-- **Business Analysis:** Phân tích yêu cầu nghiệp vụ, Yêu cầu chức năng / phi chức năng, Viết User Story, Acceptance Criteria, Mô hình hóa quy trình nghiệp vụ, Mô hình hóa hệ thống (UML: Use Case, Sequence, Activity,...), Wireframing & Prototyping, Kiểm thử chấp nhận người dùng (UAT).
-- **Technical:** REST API, Postman, SQL (SQL Server).
-- **Tools & Quản lý:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, Microsoft Office, Teams.
-- **AI-Assisted BA:** Ứng dụng Stitch AI và Claude AI trong việc phác thảo nhanh wireframe, sinh kịch bản kiểm thử và kiểm tra tính khả thi của giao diện.
+- **Business Analysis:** Requirements Elicitation & Analysis, Functional/Non-functional Requirements, User Stories, Acceptance Criteria, Business Rules, UAT
+- **Process & System Modeling:** BPMN 2.0, UML, Wireframing & Prototyping
+- **Technical:** SQL Server, REST API Fundamentals, Postman
+- **Tools:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, MS Office, Teams
+- **AI-Assisted Analysis:** Claude AI, Stitch AI — hỗ trợ soạn thảo tài liệu đặc tả yêu cầu và phác thảo wireframe
 
 ---
 

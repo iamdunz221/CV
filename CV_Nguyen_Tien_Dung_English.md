@@ -20,11 +20,11 @@ Final-year Software Engineering student at FPT University seeking an **IT Busine
 ### FEATURED PROJECTS
 
 **Kidpro – Smart Preschool Management System & AI Face Attendance** | *Graduation Capstone Project*  
-*Process Analysis | User Story & AC | BPMN 2.0 | Wireframe | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
-· Analyzed 5 core preschool operational workflows; authored standardized SRS documentation and decomposed requirements into User Stories with testable Acceptance Criteria (Given-When-Then format) to guide development and acceptance testing.  
-· Defined dynamic meal fee deduction rules by subscription package (07:00 & 08:30 cutoffs) and an Offline Grace Policy evaluating actual submission timestamps (`submitted_at`) to protect parent meal refunds during network disruptions.  
-· Specified AI FaceID roll-call workflows with 1-tap manual fallback mechanisms for low-confidence detections; modeled guardian pickup authorization with controlled manual verification fallback and automated post-17:30 late fee billing.  
-· Designed interactive Figma prototypes to clarify functional UI flows across 7 user roles; validated API request/response payloads against specifications using Postman, and tracked requirement defects to resolution via Jira.  
+*Process Analysis | User Stories & Acceptance Criteria | BPMN 2.0 | Wireframing | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
+· Analyzed 5 core preschool operational workflows and authored standardized SRS documentation; translated requirements into User Stories with testable Given-When-Then Acceptance Criteria to support development and requirements validation.  
+· Defined package-based meal-fee deduction rules with 07:00 and 08:30 cutoffs, and specified offline exception-handling requirements to support accurate attendance records and meal-fee adjustments during network disruptions.  
+· Specified attendance workflows with a manual verification fallback for low-confidence face recognition results, and modeled guardian pickup authorization and late-pickup fee rules to address identification failures and operational exceptions.  
+· Designed interactive Figma prototypes to clarify functional UI flows across 7 user roles; documented functional requirements and business rules, and organized requirement-related tasks and issues in Jira.  
 
 **Hospital Management System (HMS)** | *COURSE PROJECT REPORT*  
 *Requirements Analysis | Business Rules | UML | SOA Architecture | [View Case Study](https://iamdunz221.github.io/CV/hospital-management.html)*  
@@ -35,10 +35,11 @@ Final-year Software Engineering student at FPT University seeking an **IT Busine
 ---
 
 ### SKILLS
-- **Business Analysis:** Requirements Elicitation & Analysis, Functional / Non-Functional Requirements (FR/NFR), User Stories & Acceptance Criteria, Business Process Modeling (BPMN 2.0), System Modeling (UML: Use Case, Sequence, Activity,...), Wireframing & Prototyping, User Acceptance Testing (UAT).
-- **Technical:** REST API, Postman, SQL (SQL Server).
-- **Tools & Management:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, Microsoft Office, Teams.
-- **AI-Assisted BA:** Leveraging Stitch AI and Claude AI for rapid wireframe drafting, test scenario generation, and UI feasibility verification.
+- **Business Analysis:** Requirements Elicitation & Analysis, Functional/Non-functional Requirements, User Stories, Acceptance Criteria, Business Rules, UAT
+- **Process & System Modeling:** BPMN 2.0, UML, Wireframing & Prototyping
+- **Technical:** SQL Server, REST API Fundamentals, Postman
+- **Tools:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, MS Office, Teams
+- **AI-Assisted Analysis:** Claude AI, Stitch AI — requirements documentation and wireframe drafting support
 
 ---
 
