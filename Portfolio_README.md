@@ -19,7 +19,7 @@ I am a final-year **Software Engineering** student at **FPT University** (Expect
 
 - 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (GPA: 3.0 / 4.0).
 - 🏆 **Honors:** Awarded **30% Academic Merit Scholarship** across all 4 undergraduate years.
-- 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin AC), BPMN 2.0 Process Modeling, UML Architecture (Use Case, Sequence, Component Diagrams), and AI Use Case Feasibility Analysis.
+- 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin AC), BPMN Process Modeling, UML Architecture (Use Case, Sequence, Component Diagrams), and AI Use Case Feasibility Analysis.
 
 ---
 
@@ -28,7 +28,7 @@ I am a final-year **Software Engineering** student at **FPT University** (Expect
 | Dimension | Methodologies & Technologies | Tools |
 | :--- | :--- | :--- |
 | **Requirements Engineering** | Stakeholder Elicitation, BRD, SRS (IEEE 830), Agile User Stories, Gherkin Acceptance Criteria, Scope Creep Control, Gap Analysis, UAT Validation | Jira, Confluence, Notion, Google Workspace |
-| **Process & System Modeling** | BPMN 2.0, UML (Use Case, Activity, Sequence, Communication, Component, Package, Class Diagrams), ERD | Draw.io, Lucidchart, PlantUML |
+| **Process & System Modeling** | BPMN, UML (Use Case, Activity, Sequence, Communication, Component, Package, Class Diagrams), ERD | Draw.io, Lucidchart, PlantUML |
 | **Technical & AI Architecture**| 3-Tier Layered Architecture, Service-Oriented Architecture (SOA), Microservices, Netflix Eureka Service Discovery, RESTful API specifications, RBAC Security, BCrypt/Argon2 Cryptography | Postman (API Testing), PostgreSQL/MySQL, Docker basics |
 | **UI/UX & Prototyping** | Low/High-Fidelity Wireframing, User Journey Mapping, Design-Dev Handoff | Figma, Stitch AI |
 
@@ -125,7 +125,7 @@ Feature: Automated Meal Fee Accrual via AI Attendance
 ## 📜 BA Artifacts & Sample Deliverables
 
 - **Requirements Specifications:** IEEE 830 SRS Document, Business Requirements Document (BRD).
-- **Process Maps:** BPMN 2.0 Pool & Lane Diagrams for Outpatient & Kindergarten operations.
+- **Process Maps:** BPMN Pool & Lane Diagrams for Outpatient & Kindergarten operations.
 - **UI Prototypes:** Interactive Figma wireframes validating user flows prior to developer sprint handoff.
 - **Quality Assurance:** UAT Test Plan, Traceability Matrix (RTM), and Defect Triage logs.
 
