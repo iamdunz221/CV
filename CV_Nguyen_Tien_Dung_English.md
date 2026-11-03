@@ -1,12 +1,12 @@
 # NGUYEN TIEN DUNG
-### IT BUSINESS ANALYST
+### IT BUSINESS ANALYST (INTERN / FRESHER FULL-TIME)
 Hanoi, Vietnam | (+84) 363 262 292 | tiendunga2k13@gmail.com  
 [Portfolio](https://iamdunz221.github.io/CV/) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
 
 ---
 
 ### PROFESSIONAL SUMMARY
-Final-year Software Engineering student at FPT University seeking an **IT Business Analyst (Intern/Fresher)** role. Practical academic project experience in business process modeling (BPMN 2.0), authoring standardized SRS specifications, decomposing requirements into User Stories with testable Acceptance Criteria (Gherkin format), and resolving complex business rules/edge cases. Strong technical foundation (SQL, REST APIs) bridging business requirements with engineering implementation.
+Final-year Software Engineering student at FPT University seeking an **IT Business Analyst (Intern / Fresher Full-time)** role. Practical academic project experience in business process modeling (BPMN 2.0), authoring standardized SRS specifications, decomposing requirements into User Stories with testable Acceptance Criteria (Gherkin format), and resolving complex business rules/edge cases. Strong technical foundation (SQL, REST APIs) bridging business requirements with engineering implementation.
 
 ---
 
