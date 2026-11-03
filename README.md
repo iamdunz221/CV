@@ -19,7 +19,7 @@ I am a **Software Engineering** student at **FPT University** (Graduation: 2027)
 
 - 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (GPA: 3.0 / 4.0).
 - 🏆 **Honors:** Awarded **30% Academic Merit Scholarship** across all 4 undergraduate years.
-- 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin Acceptance Criteria), BPMN 2.0 Process Modeling, UML System Architecture, and AI Feature Feasibility (Edge Cases & Fallbacks).
+- 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin Acceptance Criteria), BPMN Process Modeling, UML System Architecture, and AI Feature Feasibility (Edge Cases & Fallbacks).
 
 ---
 
@@ -74,7 +74,7 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem �
 | Dimension | Methodologies & Technologies | Tools |
 | :--- | :--- | :--- |
 | **Requirements Engineering** | Stakeholder Elicitation, BRD, SRS (IEEE 830), Agile User Stories,  Acceptance Criteria, UAT Plans | Jira, Notion |
-| **Process & System Modeling** | BPMN 2.0 (Pools, Lanes, Gateways), UML (Use Case, Activity, Sequence, Component Diagrams), Relational ERD | Draw.io, Visual pradigm, PlantUML |
+| **Process & System Modeling** | BPMN (Pools, Lanes, Gateways), UML (Use Case, Activity, Sequence, Component Diagrams), Relational ERD | Draw.io, Visual pradigm, PlantUML |
 | **AI & Software Architecture**| 3-Tier Layered Architecture, SOA , AI Fallbacks & Edge Cases, RBAC | Postman (API Testing), PostgreSQL, SQL Server |
 | **UI/UX & Prototyping** | Component Design, Interactive Wireframing, Rapid Demo Generation | Figma, Stitch AI, Claude Code |
 

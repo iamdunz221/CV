@@ -6,7 +6,7 @@ Hà Nội | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### GIỚI THIỆU
-Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Intern / Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN 2.0), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
+Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Intern / Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
 
 ---
 
@@ -20,7 +20,7 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 ### DỰ ÁN TIÊU BIỂU
 
 **Kidpro – Hệ thống Quản lý Mầm non Thông minh & AI điểm danh khuôn mặt** | *Đồ án tốt nghiệp*  
-*09/2026 – Hiện tại | Phân tích quy trình | User Stories & Acceptance Criteria | BPMN 2.0 | Wireframing | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
+*09/2026 – Hiện tại | Phân tích quy trình | User Stories & Acceptance Criteria | BPMN | Wireframing | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Phân tích 5 quy trình nghiệp vụ mầm non cốt lõi và xây dựng tài liệu đặc tả SRS chuẩn hóa; chuyển hóa các yêu cầu thành User Stories kèm tiêu chí nghiệm thu Given-When-Then kiểm thử được nhằm hỗ trợ phát triển và xác minh yêu cầu.  
 · Thiết lập quy tắc khấu trừ tiền ăn theo gói dịch vụ với các mốc chốt 07:00 và 08:30, đồng thời đặc tả yêu cầu xử lý ngoại lệ khi mất mạng nhằm hỗ trợ ghi nhận điểm danh chính xác và điều chỉnh tiền ăn khi gặp sự cố kết nối.  
 · Đặc tả quy trình điểm danh với cơ chế xác minh thủ công dự phòng cho kết quả nhận diện khuôn mặt có độ tin cậy thấp; mô hình hóa quy trình xác thực người đón trẻ và quy tắc tính phí đón muộn nhằm xử lý các lỗi nhận diện và ngoại lệ vận hành.  
@@ -36,7 +36,7 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 
 ### KỸ NĂNG
 - **Business Analysis:** Requirements Elicitation & Analysis, Functional/Non-functional Requirements, User Stories, Acceptance Criteria, Business Rules, UAT
-- **Process & System Modeling:** BPMN 2.0, UML, Wireframing & Prototyping
+- **Process & System Modeling:** BPMN, UML, Wireframing & Prototyping
 - **Technical:** SQL Server, REST API Fundamentals, Postman
 - **Tools:** Jira, Figma, Draw.io, Visual Paradigm, Git/GitHub, Notion, MS Office, Teams
 - **AI-Assisted Analysis:** Claude AI, Stitch AI — hỗ trợ soạn thảo tài liệu đặc tả yêu cầu và phác thảo wireframe
