@@ -44,7 +44,7 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem �
 ## 🌟 Selected Case Studies
 
 ### 1. 🤖 Kidpro – Smart Preschool Management System (AI & Boarding Automation)
-* **Context:** Major Capstone Project (SEP490_G23) · FPT University · 4 Months · Team of 5.
+* **Context:** Major Capstone Project (SEP490_G23) · FPT University · 09/2026 – Present · Team of 5.
 * **My Direct Ownership:**
   - Formulated Use Cases & User Stories for **Boarding Attendance (Điểm danh bán trú)**, **Child Pickup & Late Fee Billing (Đón trẻ về & Phí trông muộn)**, and **Classroom Timetables (Quản lý lớp học)**.
   - Specified AI facial recognition roll-call via gate camera (YOLOv11 + InsightFace).
