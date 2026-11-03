@@ -6,7 +6,7 @@ Hanoi, Vietnam | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### PROFESSIONAL SUMMARY
-Final-year Software Engineering student at FPT University seeking an **IT Business Analyst (Intern / Fresher Full-time)** role. Practical academic project experience in business process modeling (BPMN 2.0), authoring standardized SRS specifications, decomposing requirements into User Stories with testable Acceptance Criteria (Gherkin format), and resolving complex business rules/edge cases. Strong technical foundation (SQL, REST APIs) bridging business requirements with engineering implementation.
+Final-year Software Engineering student at FPT University seeking an **IT Business Analyst (Intern / Fresher Full-time)** role. Practical academic project experience in business process modeling (BPMN 2.0), authoring standardized SRS specifications, decomposing requirements into User Stories with testable Acceptance Criteria (Gherkin format), and resolving complex business rules/edge cases. Technical foundation (SQL, REST APIs) bridging business requirements with engineering implementation.
 
 ---
 
