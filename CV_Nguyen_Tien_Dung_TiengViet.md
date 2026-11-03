@@ -6,7 +6,7 @@ Hà Nội | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### GIỚI THIỆU
-Sinh viên năm cuối ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Intern / Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN 2.0), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
+Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Intern / Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN 2.0), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
 
 ---
 
