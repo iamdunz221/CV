@@ -44,4 +44,4 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 ---
 
 ### NGOẠI NGỮ & CHỨNG CHỈ
-- **Ngoại ngữ:** Tiếng Anh: IELTS 5.0 (2023-2025)
+- **Ngoại ngữ:** Tiếng Anh: IELTS 5.5 (2023-2025)

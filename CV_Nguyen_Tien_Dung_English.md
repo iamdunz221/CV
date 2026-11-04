@@ -44,4 +44,4 @@ Software Engineering student at FPT University seeking an **IT Business Analyst 
 ---
 
 ### LANGUAGES & CERTIFICATIONS
-- **Languages:** English: IELTS 5.0 (2023-2025)
+- **Languages:** English: IELTS 5.5 (2023-2025)
