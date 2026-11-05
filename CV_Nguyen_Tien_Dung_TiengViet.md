@@ -12,7 +12,7 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 
 ### HỌC VẤN
 **Trường Đại học FPT** | 2023 – Hiện tại  
-**Kỹ thuật Phần mềm – Sinh viên năm cuối** | Dự kiến tốt nghiệp: 2027  
+**Kỹ thuật Phần mềm – Sinh viên năm cuối**  
 - Đạt **Học bổng Thành tích 30%** toàn khóa học đại học (4 năm).
 
 ---
