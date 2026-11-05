@@ -12,7 +12,7 @@ Software Engineering student at FPT University seeking an **IT Business Analyst 
 
 ### EDUCATION
 **FPT University** | 2023 – Present  
-**Software Engineering – Final-year Student** | GPA: 3.0 / 4.0 (Expected Graduation: 2027)  
+**Software Engineering – Final-year Student** | Expected Graduation: 2027  
 - Awarded **30% Academic Merit Scholarship** for the entire 4-year undergraduate program.
 
 ---

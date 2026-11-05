@@ -17,7 +17,7 @@
 
 I am a **Software Engineering** student at **FPT University** (Graduation: 2027) pursuing an **IT Business Analyst (Fresher Full-time)** role. By combining technical depth (API architectures, database schemas, cryptographic integrity) with user-centric requirements engineering, I translate complex business problems into clear, executable technical specifications.
 
-- 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (GPA: 3.0 / 4.0).
+- 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (Expected Graduation: 2027).
 - 🏆 **Honors:** Awarded **30% Academic Merit Scholarship** across all 4 undergraduate years.
 - 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin Acceptance Criteria), BPMN Process Modeling, UML System Architecture, and AI Feature Feasibility (Edge Cases & Fallbacks).
 

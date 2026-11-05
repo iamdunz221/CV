@@ -17,7 +17,7 @@
 
 I am a final-year **Software Engineering** student at **FPT University** (Expected 2027) pursuing an **IT Business Analyst** career path. By combining software architecture fundamentals with user-centric requirements engineering, I bridge the communication gap between business stakeholders and technical engineering teams.
 
-- 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (GPA: 3.0 / 4.0).
+- 🎓 **Education:** Bachelor of Science in Software Engineering, FPT University (Expected Graduation: 2027).
 - 🏆 **Honors:** Awarded **30% Academic Merit Scholarship** across all 4 undergraduate years.
 - 🎯 **Core Strengths:** Requirements Elicitation, Agile User Stories (Gherkin AC), BPMN Process Modeling, UML Architecture (Use Case, Sequence, Component Diagrams), and AI Use Case Feasibility Analysis.
 
