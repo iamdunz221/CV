@@ -6,7 +6,7 @@ Hà Nội | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### GIỚI THIỆU
-Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
+Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Fresher Full-time)**. Có kinh nghiệm thực hành trong việc khảo sát yêu cầu, mô hình hóa quy trình (BPMN, UML) và viết User Stories kèm tiêu chí nghiệm thu (AC) rõ ràng. Nền tảng kỹ thuật vững về SQL và REST API giúp trao đổi hiệu quả với lập trình viên và kiểm tra tính đúng đắn của hệ thống theo tài liệu đặc tả.
 
 ---
 
@@ -21,16 +21,16 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 
 **Kidpro – Hệ thống Quản lý Mầm non Thông minh & AI điểm danh khuôn mặt** | *Đồ án tốt nghiệp*  
 *09/2026 – Hiện tại | Phân tích quy trình | User Stories & Acceptance Criteria | BPMN | Wireframing | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
-· Phân tích 5 quy trình nghiệp vụ mầm non cốt lõi và xây dựng tài liệu đặc tả SRS chuẩn hóa; chuyển hóa các yêu cầu thành User Stories kèm tiêu chí nghiệm thu Given-When-Then kiểm thử được nhằm hỗ trợ phát triển và xác minh yêu cầu.  
-· Thiết lập quy tắc khấu trừ tiền ăn theo gói dịch vụ với các mốc chốt 07:00 và 08:30, đồng thời đặc tả yêu cầu xử lý ngoại lệ khi mất mạng nhằm hỗ trợ ghi nhận điểm danh chính xác và điều chỉnh tiền ăn khi gặp sự cố kết nối.  
-· Đặc tả quy trình điểm danh với cơ chế xác minh thủ công dự phòng cho kết quả nhận diện khuôn mặt có độ tin cậy thấp; mô hình hóa quy trình xác thực người đón trẻ và quy tắc tính phí đón muộn nhằm xử lý các lỗi nhận diện và ngoại lệ vận hành.  
-· Thiết kế prototype tương tác trên Figma để làm rõ luồng giao diện chức năng cho 7 nhóm người dùng; lập tài liệu đặc tả yêu cầu chức năng và quy tắc nghiệp vụ, đồng thời tổ chức và quản trị các tác vụ, vấn đề liên quan đến yêu cầu trên Jira.  
+· Khảo sát 5 quy trình nghiệp vụ mầm non và hoàn thiện tài liệu đặc tả SRS; phân rã yêu cầu thành các User Stories kèm tiêu chí nghiệm thu (Given-When-Then) rõ ràng để bàn giao cho đội dev.  
+· Xây dựng quy tắc khấu trừ tiền ăn tự động theo gói dịch vụ (mốc 07:00 & 08:30); thiết lập cơ chế xử lý ngoại tuyến (offline) để đảm bảo dữ liệu điểm danh và hoàn phí không bị sai lệch khi mất mạng.  
+· Mô hình hóa quy trình điểm danh bằng Camera AI với cơ chế xác minh thủ công khi độ tin cậy thấp; thiết lập quy trình kiểm soát đón trẻ an toàn và công thức tính phụ phí trông muộn sau 17:30.  
+· Thiết kế prototype tương tác trên Figma cho 7 nhóm người dùng; xây dựng kịch bản kiểm thử UAT dựa trên AC và theo dõi tiến độ công việc trên Jira.  
 
 **Hệ thống Quản lý Bệnh viện (HMS)** | *COURSE PROJECT REPORT*  
 *01/2026 – 03/2026 | Phân tích yêu cầu | Quy tắc nghiệp vụ | UML | Kiến trúc SOA | [Xem case study](https://iamdunz221.github.io/CV/hospital-management.html)*  
-· Phân tích quy trình khám chữa bệnh nội/ngoại trú gồm tiếp nhận bệnh nhân, đặt lịch khám, lập hồ sơ bệnh án điện tử (EMR), kê đơn thuốc và thanh toán viện phí.  
-· Xác định các quy tắc nghiệp vụ về phân quyền dữ liệu y tế (RBAC) và quy trình kê đơn thuốc an toàn; mô hình hóa luồng tương tác giữa các khoa phòng bằng các biểu đồ UML trọng tâm (Use Case, Activity, Sequence) làm rõ hành vi hệ thống.  
-· Đề xuất giải pháp kiến trúc hướng dịch vụ (SOA) để phân tách các phân hệ chức năng độc lập dưới sự hướng dẫn của supervisor; phối hợp kiểm tra tính nhất quán giữa tài liệu thiết kế và yêu cầu nghiệp vụ.
+· Phân tích quy trình khám chữa bệnh nội/ngoại trú, bao gồm tiếp đón bệnh nhân, đặt lịch khám, hồ sơ bệnh án điện tử (EMR), kê đơn thuốc và thanh toán viện phí.  
+· Xác định các quy tắc nghiệp vụ về an toàn kê đơn và phân quyền dữ liệu y tế (RBAC); mô hình hóa luồng tương tác giữa các khoa phòng bằng biểu đồ Use Case, Activity và Sequence trên Draw.io.  
+· Viết truy vấn SQL Server để kiểm tra dữ liệu và sử dụng Postman kiểm thử các payload API, đảm bảo luồng truyền nhận khớp chính xác với tài liệu đặc tả nghiệp vụ.
 
 ---
 
