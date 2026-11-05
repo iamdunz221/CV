@@ -6,7 +6,7 @@ Hanoi, Vietnam | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### PROFESSIONAL SUMMARY
-Software Engineering student at FPT University seeking an **IT Business Analyst (Fresher Full-time)** role. Practical experience gathering requirements, analyzing workflows with BPMN/UML, and writing clear User Stories with Acceptance Criteria. Solid foundation in SQL and REST API to communicate effectively with developers and verify system behavior against specifications.
+Software Engineering student at FPT University seeking an **IT Business Analyst (Fresher Full-time)** role. Practical experience gathering requirements, analyzing workflows with BPMN/UML, and writing clear User Stories with Acceptance Criteria. Solid foundation in SQL and REST API to communicate effectively with developers and understand technical system constraints.
 
 ---
 
@@ -30,7 +30,7 @@ Software Engineering student at FPT University seeking an **IT Business Analyst 
 *01/2026 – 03/2026 | Requirements Analysis | Business Rules | UML | SOA Architecture | [View Case Study](https://iamdunz221.github.io/CV/hospital-management.html)*  
 · Analyzed inpatient and outpatient clinical workflows, including patient registration, appointment scheduling, Electronic Medical Records (EMR), prescription issuance, and hospital billing.  
 · Defined business rules for prescription safety and medical data permissions (RBAC); modeled inter-departmental interactions using Use Case, Activity, and Sequence diagrams in Draw.io.  
-· Wrote SQL Server queries to inspect database records and used Postman to validate API payloads against requirement specifications, ensuring data consistency across clinical modules.  
+· Proposed a Service-Oriented Architecture (SOA) solution to decouple 5 independent business modules; verified requirements traceability and consistency between business analysis models and relational database schemas (ERD).  
 
 ---
 

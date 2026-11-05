@@ -6,7 +6,7 @@ Hà Nội | (+84) 363 262 292 | tiendunga2k13@gmail.com
 ---
 
 ### GIỚI THIỆU
-Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Fresher Full-time)**. Có kinh nghiệm thực hành trong việc khảo sát yêu cầu, mô hình hóa quy trình (BPMN, UML) và viết User Stories kèm tiêu chí nghiệm thu (AC) rõ ràng. Nền tảng kỹ thuật vững về SQL và REST API giúp trao đổi hiệu quả với lập trình viên và kiểm tra tính đúng đắn của hệ thống theo tài liệu đặc tả.
+Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Fresher Full-time)**. Có kinh nghiệm thực hành trong việc khảo sát yêu cầu, mô hình hóa quy trình (BPMN, UML) và viết User Stories kèm tiêu chí nghiệm thu (AC) rõ ràng. Nền tảng kỹ thuật về SQL và REST API giúp trao đổi hiệu quả với lập trình viên và nắm bắt nhanh kiến trúc hệ thống.
 
 ---
 
@@ -30,7 +30,7 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 *01/2026 – 03/2026 | Phân tích yêu cầu | Quy tắc nghiệp vụ | UML | Kiến trúc SOA | [Xem case study](https://iamdunz221.github.io/CV/hospital-management.html)*  
 · Phân tích quy trình khám chữa bệnh nội/ngoại trú, bao gồm tiếp đón bệnh nhân, đặt lịch khám, hồ sơ bệnh án điện tử (EMR), kê đơn thuốc và thanh toán viện phí.  
 · Xác định các quy tắc nghiệp vụ về an toàn kê đơn và phân quyền dữ liệu y tế (RBAC); mô hình hóa luồng tương tác giữa các khoa phòng bằng biểu đồ Use Case, Activity và Sequence trên Draw.io.  
-· Viết truy vấn SQL Server để kiểm tra dữ liệu và sử dụng Postman kiểm thử các payload API, đảm bảo luồng truyền nhận khớp chính xác với tài liệu đặc tả nghiệp vụ.
+· Đề xuất kiến trúc hướng dịch vụ (SOA) nhằm phân tách 5 phân hệ độc lập; rà soát tính nhất quán và khả năng truy vết yêu cầu (Traceability) giữa tài liệu phân tích nghiệp vụ và mô hình dữ liệu quan hệ (ERD).
 
 ---
 
