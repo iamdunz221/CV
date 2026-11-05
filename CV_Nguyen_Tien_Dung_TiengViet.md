@@ -1,12 +1,12 @@
 # NGUYỄN TIẾN DŨNG
-### IT BUSINESS ANALYST (INTERN / FRESHER FULL-TIME)
+### IT BUSINESS ANALYST (FRESHER FULL-TIME)
 Hà Nội | (+84) 363 262 292 | tiendunga2k13@gmail.com  
 | [Portfolio](https://iamdunz221.github.io/CV/) | [Notion](https://app.notion.com/p/Kho-t-i-li-u-d-n-409a9fea79a581da96afda0cd1060dba?source=copy_link)
 
 ---
 
 ### GIỚI THIỆU
-Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Intern / Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
+Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hướng **IT Business Analyst (Fresher Full-time)**. Có kinh nghiệm thực chiến qua các đồ án trong việc phân tích quy trình nghiệp vụ (BPMN), xây dựng tài liệu đặc tả SRS, bóc tách User Stories kèm tiêu chí nghiệm thu kiểm thử được (Acceptance Criteria) và làm rõ các quy tắc nghiệp vụ/luồng ngoại lệ. Nền tảng kỹ thuật vững (SQL, REST API) giúp kết nối chặt chẽ giữa bài toán kinh doanh và giải pháp phát triển phần mềm.
 
 ---
 
@@ -44,4 +44,4 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 ---
 
 ### NGOẠI NGỮ & CHỨNG CHỈ
-- **Ngoại ngữ:** Tiếng Anh: IELTS 5.5 (2023-2025)
+- **Ngoại ngữ:** Tiếng Anh: IELTS 5.5
