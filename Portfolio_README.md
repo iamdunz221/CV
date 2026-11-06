@@ -37,7 +37,7 @@ I am a final-year **Software Engineering** student at **FPT University** pursuin
 ## 📂 Featured Case Studies
 
 ### 1. 🤖 Kidpro – Smart Preschool Management System (AI-Driven)
-> **Role:** Business Analyst & QA Lead | **Timeline:** 4 Months | **Team Size:** 5 (Capstone Project)
+> **Role:** Business Analyst & QA Lead | **Timeline:** 09/2026 – Present | **Team Size:** 5 (Capstone Project)
 
 #### The Business Problem
 - **Boarding Meal Fee Disputes:** Daily morning roll-calls conducted manually on paper frequently caused billing discrepancies between parents and school accountants regarding absent-day fee deductions.
