@@ -22,7 +22,7 @@ Software Engineering student at FPT University seeking an **IT Business Analyst 
 **Kidpro – Smart Preschool Management System & AI Face Attendance** | *Graduation Capstone Project*  
 *09/2026 – Present | Process Analysis | User Stories & Acceptance Criteria | BPMN | Wireframing | Jira | [View Case Study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Analyzed 5 core preschool workflows and authored the SRS document; broke down requirements into User Stories with clear Given-When-Then Acceptance Criteria to guide the dev team.  
-· Defined package-based meal fee deduction rules with morning cutoffs (07:00 & 08:30); established offline fallback rules so attendance and fee adjustments remain accurate during network drops.  
+· Defined package-based meal fee deduction rules (request cutoffs 07:00 & 08:00, kitchen lock at 08:30); established offline fallback rules to guarantee accurate fee adjustments during network drops.
 · Specified Camera AI roll-call workflows with manual verification fallbacks; modeled guardian pickup authorization and automatic late-fee calculations after 17:30.  
 · Designed interactive Figma prototypes across 7 user roles; built UAT test scenarios based on Acceptance Criteria and tracked sprint tasks in Jira.  
 

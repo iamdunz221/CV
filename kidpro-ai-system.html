@@ -1418,7 +1418,7 @@
         <a href="#overview" class="jump-pill"><span class="lang-en">🎯 Overview &amp; Scope</span><span
             class="lang-vi">🎯 Tổng quan &amp; Phạm vi</span></a>
         <a href="#workflows-section" class="jump-pill"><span class="lang-en">🏥 5 Preschool Workflows</span><span
-            class="lang-vi">🏥 4 Luồng vận hành mầm non</span></a>
+            class="lang-vi">🏥 5 Luồng vận hành mầm non</span></a>
         <a href="#contribution" class="jump-pill"><span class="lang-en">💼 BA Ownership</span><span class="lang-vi">💼
             Vai trò &amp; Đóng góp BA</span></a>
         <a href="#context-diagram" class="jump-pill"><span class="lang-en">🌐 System Context</span><span
@@ -1506,9 +1506,9 @@
               <strong><span class="lang-en">Package-Differentiated Meal Policies:</span><span class="lang-vi">Chính sách
                   hoàn tiền ăn theo gói:</span></strong>
               <span class="lang-en">Enforce strict, transparent cutoff times for meal fee refunds based on service
-                packages (07:00 AM for Full Boarding vs 08:30 AM for Lunch-Only).</span>
-              <span class="lang-vi">Thiết lập giờ chốt hủy suất ăn minh bạch theo từng gói dịch vụ bán trú (07:00 sáng
-                cho gói Toàn phần vs 08:30 sáng cho gói Chỉ ăn trưa và xế chiều).</span>
+                packages (before 07:00 AM for Full Boarding vs before 08:00 AM for Lunch-Only, with kitchen inventory lock at 08:30 AM).</span>
+              <span class="lang-vi">Thiết lập giờ chốt nộp đơn hủy suất ăn minh bạch theo từng gói dịch vụ bán trú (trước 07:00 sáng
+                cho gói Toàn phần vs trước 08:00 sáng cho gói Chỉ ăn trưa; bếp khóa sổ lúc 08:30 sáng).</span>
             </li>
             <li>
               <strong><span class="lang-en">Dual-Verification Pickup with Human Backup:</span><span class="lang-vi">Xác
@@ -2145,11 +2145,10 @@
             <li>
               <strong><span class="lang-en">Package B (Standard Boarding - Trưa, Xế):</span><span class="lang-vi">Gói B
                   (Bán trú Tiêu chuẩn - Trưa, Xế):</span></strong>
-              <span class="lang-en">Includes lunch and afternoon snack only. The kitchen lock cutoff is 08:30 AM;
-                therefore, leave requests submitted <strong>before 08:00 AM</strong> are eligible for meal
-                deduction.</span>
-              <span class="lang-vi">Chỉ bao gồm bữa trưa và xế. Giờ khóa thực phẩm bữa trưa là 08:30; do đó, đơn xin
-                nghỉ nộp <strong>trước 08:00 sáng</strong> sẽ hợp lệ để trừ tiền ăn.</span>
+              <span class="lang-en">Includes lunch and afternoon snack only. Parents must submit leave requests <strong>before 08:00 AM</strong>
+                to qualify for meal deduction (allowing a 30-minute buffer for system aggregation before the kitchen lock cutoff at 08:30 AM).</span>
+              <span class="lang-vi">Chỉ bao gồm bữa trưa và xế. Phụ huynh cần nộp đơn xin nghỉ <strong>trước 08:00 sáng</strong>
+                để được hoàn tiền ăn (dành 30 phút đệm để hệ thống tổng hợp khẩu phần trước khi nhà bếp chính thức khóa sổ xuất kho lúc 08:30 sáng).</span>
             </li>
             <li>
               <strong><span class="lang-en">Unexcused Absence (Nghỉ không phép):</span><span class="lang-vi">Nghỉ không
@@ -2211,11 +2210,11 @@
         <span class="kw">And</span> updates the kitchen headcount dashboard before breakfast ingredient allocation.
 
         <span class="sn">Scenario 2: Offline Network Grace Policy (Teacher Device Disconnected)</span>
-        <span class="kw">Given</span> parent of student "Nguyen Bao An" submitted a leave request at "08:15 AM" (before
-        08:30 AM cutoff for Package B)
+        <span class="kw">Given</span> parent of student "Nguyen Bao An" submitted a leave request at "07:45 AM" (before
+        08:00 AM cutoff for Package B)
         <span class="kw">And</span> the classroom teacher's tablet loses internet connection until 10:15 AM
         <span class="kw">When</span> the financial batch job runs monthly statement reconciliations
-        <span class="kw">Then</span> the engine evaluates `request.submitted_at` (&lt; 08:30 AM) rather than
+        <span class="kw">Then</span> the engine evaluates `request.submitted_at` (&lt; 08:00 AM) rather than
         `approval.timestamp`
         <span class="kw">And</span> grants the full meal refund according to statutory boarding regulations.
       </div>
@@ -2231,11 +2230,11 @@
         <span class="kw">Và</span> cập nhật sĩ số suất ăn hiển thị trên bảng điều khiển của nhà bếp trước giờ xuất kho.
 
         <span class="sn">Kịch bản 2: Cơ chế Bảo vệ khi Mất mạng (Thiết bị giáo viên mất kết nối)</span>
-        <span class="kw">Cho biết</span> phụ huynh của học sinh "Nguyễn Bảo An" đã nộp đơn xin nghỉ lúc "08:15 AM"
-        (trước giờ chốt 08:30 AM của Gói B(gói trưa và xế))
-        <span class="kw">Và</span>thiết bị của giáo viên bị mất mạng internet đến tận 10:15 AM
+        <span class="kw">Cho biết</span> phụ huynh của học sinh "Nguyễn Bảo An" đã nộp đơn xin nghỉ lúc "07:45 AM"
+        (trước giờ chốt 08:00 AM của Gói B (gói trưa và xế))
+        <span class="kw">Và</span> thiết bị của giáo viên bị mất mạng internet đến tận 10:15 AM
         <span class="kw">Khi</span> tác vụ định kỳ tự động chạy đối soát sao kê tài chính cuối tháng
-        <span class="kw">Thì</span> hệ thống kiểm tra trường `request.submitted_at` (&lt; 08:30 AM) thay vì
+        <span class="kw">Thì</span> hệ thống kiểm tra trường `request.submitted_at` (&lt; 08:00 AM) thay vì
         `approval.timestamp`
         <span class="kw">Và</span> chấp thuận hoàn tiền ăn đầy đủ theo quy định của nhà trường.
       </div>

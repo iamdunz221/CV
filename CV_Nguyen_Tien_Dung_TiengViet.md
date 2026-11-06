@@ -22,7 +22,7 @@ Sinh viên ngành Kỹ thuật Phần mềm tại Đại học FPT định hư�
 **Kidpro – Hệ thống Quản lý Mầm non Thông minh & AI điểm danh khuôn mặt** | *Đồ án tốt nghiệp*  
 *09/2026 – Hiện tại | Phân tích quy trình | User Stories & Acceptance Criteria | BPMN | Wireframing | Jira | [Xem case study](https://iamdunz221.github.io/CV/kidpro-ai-system.html)*  
 · Khảo sát 5 quy trình nghiệp vụ mầm non và hoàn thiện tài liệu đặc tả SRS; phân rã yêu cầu thành các User Stories kèm tiêu chí nghiệm thu (Given-When-Then) rõ ràng để bàn giao cho đội dev.  
-· Xây dựng quy tắc khấu trừ tiền ăn tự động theo gói dịch vụ (mốc 07:00 & 08:30); thiết lập cơ chế xử lý ngoại tuyến (offline) để đảm bảo dữ liệu điểm danh và hoàn phí không bị sai lệch khi mất mạng.  
+· Xây dựng quy tắc khấu trừ tiền ăn tự động theo gói dịch vụ (chốt nộp đơn 07:00 & 08:00, bếp khóa sổ 08:30); thiết lập cơ chế xử lý ngoại tuyến (offline) đảm bảo dữ liệu điểm danh và hoàn phí không bị sai lệch.
 · Mô hình hóa quy trình điểm danh bằng Camera AI với cơ chế xác minh thủ công khi độ tin cậy thấp; thiết lập quy trình kiểm soát đón trẻ an toàn và công thức tính phụ phí trông muộn sau 17:30.  
 · Thiết kế prototype tương tác trên Figma cho 7 nhóm người dùng; xây dựng kịch bản kiểm thử UAT dựa trên AC và theo dõi tiến độ công việc trên Jira.  
 

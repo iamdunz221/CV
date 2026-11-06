@@ -49,7 +49,7 @@ This portfolio follows a structured, interview-oriented narrative: **`Problem �
   - Formulated Use Cases & User Stories for **Boarding Attendance (Điểm danh bán trú)**, **Child Pickup & Late Fee Billing (Đón trẻ về & Phí trông muộn)**, and **Classroom Timetables (Quản lý lớp học)**.
   - Specified AI facial recognition roll-call via gate camera (YOLOv11 + InsightFace).
   - Modeled dual-factor pickup verification with **controlled manual verification fallback** (allowing immediate 1-tap release for recognized parents).
-  - Designed dynamic meal fee refund policies: **Package A (Full Day)** cutoff before 07:00 AM vs **Package B (Lunch & Snack)** cutoff before 08:30 AM.
+  - Designed dynamic meal fee refund policies: **Package A (Full Day)** cutoff before 07:00 AM vs **Package B (Lunch & Snack)** cutoff before 08:00 AM (kitchen lock cutoff at 08:30 AM).
   - Engineered **Network Offline Grace Policy**: evaluates `request.submitted_at` on the server rather than `approval.timestamp` to protect parent refunds during teacher device disconnections.
   - Prototyped workflows using **Stitch AI**, **Figma**, and executable UI demos with **Claude Code**.
 * **Impact:** Reduced accountant monthly reconciliation time by **~60%**, eliminated 100% of meal fee disputes, and established a 100% digital departure audit trail.
