@@ -137,5 +137,5 @@ Feature: Automated Meal Fee Accrual via AI Attendance
 - **Location:** Hanoi, Vietnam
 - **Email:** [tiendunga2k13@gmail.com](mailto:tiendunga2k13@gmail.com)
 - **Phone:** (+84) 363 262 292
-- **Education:** FPT University — Software Engineering (2023 - 2027)
+- **Education:** FPT University — Software Engineering (2023 - Present)
 - **Portfolio Repository:** [github.com/your-username/ba-portfolio](https://github.com)
